@@ -1,0 +1,73 @@
+========= Job started at Tue Oct  1 23:47:29 CEST 2024 ==========
+ /!\ PyMultiNest detected but MultiNest likely not installed correctly. You can
+     safely ignore this if not running with option -m NS
+Running Monte Python v3.5.0
+
+--> Scanning file /home/maanson/Speciale/connect/data/lcdm_example/number_4/2024-09-26_1000000__1.txt: Removed 0 non-markovian points, 0 points of burn-in, keep 605 steps
+                                                                            2024-09-26_1000000__2.txt: Removed 0 non-markovian points, 3 points of burn-in, keep 745 steps
+                                                                            2024-09-26_1000000__3.txt: Removed 0 non-markovian points, 4 points of burn-in, keep 681 steps
+                                                                            2024-09-26_1000000__4.txt: Removed 0 non-markovian points, 0 points of burn-in, keep 706 steps
+--> Computing mean values
+--> Computing variance
+--> Computing convergence criterium (Gelman-Rubin)
+ -> R-1 is 0.015920 	for  omega_b
+           0.012203 	for  omega_cdm
+           0.013176 	for  H0
+           0.011444 	for  ln10^{10}A_s
+           0.009418 	for  n_s
+           0.011026 	for  tau_reio
+           0.003464 	for  A_planck
+           0.011073 	for  z_reio
+           0.011232 	for  Omega_Lambda
+           0.011325 	for  YHe
+           0.010981 	for  A_s
+           0.008916 	for  sigma8
+           0.011035 	for  100*theta_s
+--> Computing covariance matrix
+--> Scanning file /home/maanson/Speciale/connect/data/lcdm_example/number_1/2024-09-26_1000000__2.txt: Removed 0 non-markovian points, 18 points of burn-in, keep 1232 steps
+                                                                            2024-09-26_1000000__3.txt: Removed 0 non-markovian points, 0 points of burn-in, keep 1250 steps
+                                                                            2024-09-26_1000000__4.txt: Removed 0 non-markovian points, 1 points of burn-in, keep 1249 steps
+                                                                            2024-09-26_1000000__1.txt: Removed 0 non-markovian points, 2 points of burn-in, keep 1248 steps
+--> Computing mean values
+--> Computing variance
+--> Computing convergence criterium (Gelman-Rubin)
+ -> R-1 is 0.179127 	for  omega_b
+           0.153705 	for  omega_cdm
+           0.225178 	for  H0
+           0.076039 	for  ln10^{10}A_s
+           0.136079 	for  n_s
+           0.135027 	for  tau_reio
+           0.043826 	for  A_planck
+           0.099173 	for  z_reio
+           0.098752 	for  Omega_Lambda
+           0.094957 	for  YHe
+           0.075382 	for  A_s
+           0.078074 	for  sigma8
+           0.034098 	for  100*theta_s
+--> Computing covariance matrix
+-----------------------------------------------
+ -> Computing histograms for  omega_b
+ -> Computing histograms for  omega_cdm
+ -> Computing histograms for  H0
+ -> Computing histograms for  ln10^{10}A_s
+ /!\ could not derive minimum credible intervals for this multimodal posterior
+ /!\ please try running longer chains or reducing the number of bins with --bins
+     BINS (default: 20)
+ -> Computing histograms for  n_s
+ -> Computing histograms for  tau_reio
+ -> Computing histograms for  A_planck
+ /!\ the loop to check for sigma deviations was taking too long to converge
+ -> Computing histograms for  z_reio
+ -> Computing histograms for  Omega_Lambda
+ -> Computing histograms for  YHe
+ /!\ Polyfit may be poorly conditioned
+ /!\ Polyfit may be poorly conditioned
+ -> Computing histograms for  A_s
+ -> Computing histograms for  sigma8
+ -> Computing histograms for  100*theta_s
+ /!\ Polyfit may be poorly conditioned
+ /!\ Polyfit may be poorly conditioned
+-----------------------------------------------
+--> Saving figures to .pdf files
+--> Writing .info and .tex files
+========= Job finished at Tue Oct  1 23:47:46 CEST 2024 ==========

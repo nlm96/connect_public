@@ -1,0 +1,125 @@
+# Parameter file for the example model
+
+# Specify the parameters for the model, their minimum value and their maximum value
+# (as you would in CLASS) 
+#
+#           | name              | min-value     | max-value      |
+#           |-------------------|---------------|----------------|
+parameters={'omega_b'        :  [ 0.014,          0.039          ],
+            'omega_cdm'      :  [ 1e-11,          0.25           ],
+            'H0'             :  [ 30,             120            ],
+            'ln10^{10}A_s'   :  [ 1,              5              ],
+            'n_s'            :  [ 0.7,            1.3            ],
+            'tau_reio'       :  [ 0.01,           0.4            ]}
+
+
+# Specify additional parameters
+
+
+
+
+#########--------- Training parameters ---------#########
+
+train_ratio          = 0.95		  # Amount of data used for training
+                                          # (rest is used for testing)
+
+val_ratio            = 0.05	      	  # Amount of training data used for validation
+
+epochs               = 100	      	  # Number of cycles/epochs during training
+
+batchsize            = 512	          # Batchsize of data when training
+
+activation_function  = 'alsing'	          # Activation function - as defined in TensorFlow
+                                          # or source/custom_functions.py
+
+loss_function        = 'cosmic_variance'  # Loss function - as defined in TensorFlow
+                                          # or source/custom_functions.py
+
+N_hidden_layers      = 6                  # Number of hidden layers in fully-connected
+                                          # architecture
+
+N_nodes	             = 512	          # Number of nodes in each hidden layer
+
+normalisation_method = 'standardisation'  # Normalisation method for output data
+
+
+
+
+#########--------- Sampling parameters ---------#########
+
+N = 1e+4       # Amount of points in lhc. When using the iterative 
+               # method this number refers to only the initial lhc
+
+output_Cl      = ['tt', 'te', 'ee']         # Cl spectra in output
+
+output_Pk      = ['pk','pk_cb']		    # Matter power spectra in output
+z_Pk_list      = [0.0, 1.5, 13.65]	    # z-values for matter power spectra
+
+output_bg      = ['ang.diam.dist.',         # Background functions in output
+	          'conf. time [Mpc]',
+	          'H [1/Mpc]'
+		  ]
+z_bg_list      = [0.35, 0.57, 0.106]        # Optional list of z-values for background
+
+output_th      = ['w_b',                    # Thermodynamics functions in output
+	          'tau_d'
+		  ]
+z_th_list      = [0.35, 0.57, 0.106]        # Optional list of z-values	for thermodynamics
+
+output_derived = ['z_reio',                 # Derived parameters in output
+		  'Omega_Lambda', 
+		  'YHe', 
+		  'A_s', 
+		  'sigma8', 
+		  '100*theta_s'
+		  ]
+
+extra_output   = {'rs_drag': 'cosmo.rs_drag()'}  # Additional output {name: string of code}
+
+
+extra_input    = {'k_pivot': 0.05,	    # Extra input to CLASS
+		  'N_ur':    2.0328,
+		  'N_ncdm':  1,
+		  'm_ncdm':  0.06,
+		  'T_ncdm':  0.71611,
+		  }
+
+#bestfit_guesses = {'parameter': value}  # Guesses for bestfit for parameters
+
+#sigma_guesses   = {'parameter': value}  # Guesses for sigma for parameters 
+
+prior_ranges     = parameters            # Prior ranges for mcmc sampling. A dictionary
+                                         # in the same form as parameters
+
+#log_priors      = []                    # List of parameter names to be sampled
+                                         # with a logarithmic prior
+
+
+sampling      = 'iterative'    # Sampling of training data can be done with the
+                               # methods 'lhc' and 'iterative'. Some parameters
+                               # are only usable wth the iterative method
+
+mcmc_sampler  = 'montepython'  # mcmc sampler to use in iterations (cobaya or montepython)
+
+initial_model = None           # Name of initial model to start the iterations
+
+mcmc_tol      = 0.01           # Tolerance of R-1 values for individual mcmc runs
+
+iter_tol      = 0.1            # Tolerance of R-1 values for subsequent iterations
+
+N_max_points  = 2e+4           # The maximum number of points to take from each iteration
+
+keep_first_iteration = False   # Whether to keep data from first iteration (usually bad)
+
+sampling_likelihoods = ['Planck_lite']
+
+
+
+
+#########---------- Saving parameters ----------#########
+
+jobname = 'lcdm_example'     # Name job and output folder
+
+save_name = 'example'        # Name of trained models
+
+overwrite_model = False      # Whether or not to overwrite model names or to append a suffix
