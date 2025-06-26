@@ -109,11 +109,48 @@ iter_tol      = 0.1            # Tolerance of R-1 values for subsequent iteratio
 
 N_max_points  = 2e+4           # The maximum number of points to take from each iteration
 
-keep_first_iteration = False   # Whether to keep data from first iteration (usually bad)
+keep_first_iteration = True    # Whether to keep data from first iteration (usually bad if run without likelihood-filter)
+							   # If you run CONNECT with the likelihood-filter, you probably want this to be True.
+							   # It is now set to True as default in likelihood-filter-CONNECT.
+							   # Remember to set to False, if you turn off the likelihood-filter.
+							   # (Default : True)
 
 sampling_likelihoods = ['Planck_lite']
 
+#########--------- Likelihood filter ---------#########
 
+use_likelihood_filter = True   # Enables the likelihood filter during iterative sampling (default: True).
+							   # If False, the remaining parameters below is turned off. This also means keep_initial_data = False.
+							   (Recommended; Default : True)
+
+delta_chi2_threshold = 200	   # Threshold for Δχ² values. Points with Δχ² > threshold are discarded
+							   # Δχ² is computed as Δχ² = 2 × (-log(ℒ_sample) - (-log(ℒ_best-fit)))
+							   # using the current global best-fit point's -log(lkl) at each iteration
+                               # Smaller threshold apply stricter filtering.
+							   # Early tests have shown the threshold needs to be many relatively large: above 200.
+							   # (Recommended; Default: 200)
+
+min_points_to_keep = 5000      # Minimum number of points to retain after filtering at each iteration. 
+							   # Prevents filtering away too many points. (Optional; Default = 5000)
+
+nuisance_params_lkl = {'A_planck': 1.0} 
+							   # Fixed values for nuisance parameters used in likelihood calculations.
+							   # example: nuisance_params_lkl = {'A_planck': 1.0, 'param2': 0.999, 'param3': 0.02}
+							   # *Has to be set if CONNECT is run with other likelihood codes than Planck.
+							   # (Recommended*; Default: {'A_planck': 1.0})
+
+keep_initial_data = True	   # Whether to include initial sampling data in training (default: True). 
+							   # If True, combines initial data with the first iteration generated data, before applying the Likelihood-filter.
+							   # keep_initial_data = True forces keep_first_iterations= True, if use_likelihood_filter = True.
+							   # (Default : True)
+
+discard_worst_first = True     # Controls the filtering order for the likelihood filter (default: True).
+                               # If True, removes points with the worst Δχ² values (furthest from the best-fit) first.
+                               # If False, processes points sequentially as they appear in the data file, typically 
+                               # removing older iteration points before newer ones.
+                               # Set to True to prioritize data quality or False to retain recent iterations.
+
+#Read the 'README_likelihood_filter' document in connect/source/lkl_filter_module/README_likelihood_filter.md for more documentation.
 
 
 #########---------- Saving parameters ----------#########

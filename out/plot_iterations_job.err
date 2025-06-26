@@ -1,0 +1,18 @@
+/home/maanson/.conda/envs/ConnectEnvironment/lib/python3.10/site-packages/numpy/core/_methods.py:176: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/maanson/Speciale/connectv2/plotting/plot_iterations.py:4873: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels(
+/home/maanson/Speciale/connectv2/plotting/plot_iterations.py:4873: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels(
+/home/maanson/Speciale/connectv2/plotting/plot_iterations.py:4873: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels(
+/home/maanson/Speciale/connectv2/plotting/plot_iterations.py:4873: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels(
+/home/maanson/Speciale/connectv2/plotting/plot_iterations.py:4873: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels(
+/home/maanson/Speciale/connectv2/plotting/plot_iterations.py:4873: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels(
+/home/maanson/Speciale/connectv2/plotting/plot_iterations.py:4918: UserWarning: The palette list has more values (80) than needed (40), which may not be intended.
+  global_bin_edges = self.compute_global_bin_edges_seaborn_internal(
+/home/maanson/Speciale/connectv2/plotting/plot_iterations.py:4918: UserWarning: The palette list has more values (80) than needed (40), which may not be intended.
+  global_bin_edges = self.compute_global_bin_edges_seaborn_internal(

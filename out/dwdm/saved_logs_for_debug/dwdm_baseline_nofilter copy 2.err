@@ -1,0 +1,871 @@
+/usr/bin/ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   s42n20
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_8.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_10.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_12.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_5.txt does not exist. Skipping sync.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_10.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_8.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_8.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_8.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_12.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_12.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_12.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_10.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_10.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_5.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_5.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_5.txt. Skipping truncation for all files.
+[CHILD][Parent Rank 8] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 12] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 10] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 5] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_47.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_53.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_34.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_48.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_32.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_43.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_42.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_46.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_30.txt does not exist. Skipping sync.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_53.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_34.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_47.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_48.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_53.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_53.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_32.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_43.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_42.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_48.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_48.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_47.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_47.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_43.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_43.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_42.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_42.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_34.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_34.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_32.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_32.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_46.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_46.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_46.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_30.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_30.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_30.txt. Skipping truncation for all files.
+[CHILD][Parent Rank 43] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 47] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 48] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 34] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 32] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 53] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 46] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 42] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 30] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_118.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_72.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_145.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_161.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_180.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_100.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_190.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_110.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_79.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_139.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_175.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_185.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_93.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_188.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_182.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_97.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_115.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_82.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_151.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_168.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_184.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_104.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_119.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_71.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_150.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_173.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_87.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_131.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_65.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_143.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_159.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_187.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_122.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_66.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_155.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_174.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_105.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_88.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_107.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_78.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_147.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_164.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_130.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_160.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_127.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_135.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_111.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_132.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_136.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_61.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_55.txt does not exist. Skipping sync.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_185.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_180.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_185.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_185.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_180.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_180.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_184.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_187.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_182.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_139.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_145.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_188.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_190.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_184.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_184.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_187.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_187.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_182.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_182.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_188.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_188.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_190.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_190.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_139.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_139.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_155.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_145.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_145.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_150.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_151.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_79.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_71.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_100.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_155.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_155.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_72.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_65.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_150.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_150.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_93.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_66.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_147.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_105.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_87.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_161.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_88.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_97.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_159.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_173.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_82.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_79.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_79.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_71.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_71.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_160.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_151.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_151.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_147.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_147.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_174.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_100.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_100.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_136.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_72.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_72.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_127.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_65.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_65.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_175.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_104.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_135.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_78.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_168.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_105.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_105.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_88.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_88.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_111.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_66.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_66.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_164.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_93.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_93.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_118.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_82.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_82.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_173.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_173.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_78.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_78.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_160.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_160.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_104.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_104.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_107.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_174.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_174.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_87.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_87.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_119.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_97.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_97.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_115.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_161.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_161.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_130.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_159.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_159.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_132.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_175.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_175.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_122.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_168.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_168.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_110.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_164.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_164.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_131.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_111.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_111.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_127.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_127.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_118.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_118.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_135.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_135.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_136.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_136.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_115.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_115.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_130.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_130.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_107.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_107.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_132.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_132.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_131.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_131.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_122.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_122.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_119.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_119.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_110.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_110.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_61.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_61.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_61.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_143.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_143.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_143.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_55.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_55.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_55.txt. Skipping truncation for all files.
+[CHILD][Parent Rank 66] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 182] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 135] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 122] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 185] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 100] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 110] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 71] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 174] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 161] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 147] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 65] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 188] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 118] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 145] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 115] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 180] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 184] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 175] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 78] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 72] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 119] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 79] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 127] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 190] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 131] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 155] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 97] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 87] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 61] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 168] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 173] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 139] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 88] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 104] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 164] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 82] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 105] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 160] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 111] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 93] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 143] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 150] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 132] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 151] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 136] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 107] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 159] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 187] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 130] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 55] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_193.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_384.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_222.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_330.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_481.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_324.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_465.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_477.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_218.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_464.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_483.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_390.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_300.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_466.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_386.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_302.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_388.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_333.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_496.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_381.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_301.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_221.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_361.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_440.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_473.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_336.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_306.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_321.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_458.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_312.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_406.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_286.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_262.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_391.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_298.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_453.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_448.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_288.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_305.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_445.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_397.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_213.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_309.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_278.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_246.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_358.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_294.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_423.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_442.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_480.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_447.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_399.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_340.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_497.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_395.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_348.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_207.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_304.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_274.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_237.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_284.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_417.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_436.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_446.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_296.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_421.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_433.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_338.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_203.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_315.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_265.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_267.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_289.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_425.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_345.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_215.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_308.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_211.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_254.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_290.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_416.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_341.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_268.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_292.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_422.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_355.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_347.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_270.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_256.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_276.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_202.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_235.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_234.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_491.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_485.txt does not exist. Skipping sync.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_193.txt: FileNotFoundError(2, 'No such file or directory')
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_486.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_492.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_383.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_370.txt does not exist. Skipping sync.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_193.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_193.txt. Skipping truncation for all files.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_194.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 193] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_384.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_384.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_384.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_222.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_324.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_477.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_222.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_222.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_324.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_324.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_330.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_390.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_473.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_391.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_483.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_218.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_465.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_481.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_330.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_330.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_302.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_300.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_386.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_390.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_390.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_221.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_218.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_218.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_391.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_391.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_246.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_458.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_301.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_294.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_381.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_440.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_388.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_477.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_477.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_448.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_221.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_221.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_397.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_321.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_496.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_336.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_305.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_440.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_440.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_386.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_386.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_473.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_473.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_446.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_397.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_397.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_321.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_321.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_496.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_496.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_333.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_306.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_237.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_464.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_302.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_302.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_286.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_381.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_381.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_497.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_333.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_333.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_308.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_246.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_246.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_458.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_458.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_301.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_301.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_288.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_388.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_388.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_466.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_453.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_406.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_464.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_464.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_300.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_296.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_465.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_465.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_447.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_399.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_497.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_497.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_336.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_336.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_304.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_298.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_483.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_483.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_445.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_395.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_315.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_237.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_237.txt. Skipping truncation for all files.
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_300.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_309.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_284.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_481.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_481.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_446.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_446.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_406.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_406.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_312.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_292.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_466.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_466.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_448.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_448.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_289.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_480.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_453.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_453.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_294.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_294.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_480.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_480.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_290.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_286.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_286.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_442.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_305.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_305.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_288.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_288.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_395.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_395.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_358.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_361.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_433.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_399.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_399.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_447.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_447.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_274.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_436.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_445.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_445.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_338.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_345.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_306.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_306.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_340.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_292.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_292.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_355.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_308.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_308.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_315.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_315.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_312.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_312.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_304.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_304.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_348.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_298.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_298.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_341.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_296.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_296.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_309.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_309.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_358.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_358.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_284.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_284.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_289.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_289.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_347.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_290.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_290.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_268.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_433.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_433.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_361.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_361.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_442.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_442.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_436.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_436.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_256.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_262.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_270.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_254.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_340.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_340.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_278.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_267.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_276.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_265.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_345.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_345.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_421.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_338.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_338.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_207.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_274.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_274.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_268.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_268.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_423.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_355.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_355.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_203.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_262.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_262.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_417.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_348.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_348.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_215.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_256.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_256.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_425.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_341.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_341.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_211.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_347.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_347.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_213.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_254.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_254.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_416.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_270.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_270.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_422.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_207.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_207.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_278.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_278.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_421.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_421.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_203.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_203.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_211.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_211.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_267.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_267.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_423.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_423.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_215.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_215.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_265.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_265.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_417.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_417.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_276.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_276.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_425.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_425.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_213.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_213.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_416.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_416.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_422.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_422.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_202.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_202.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_202.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_235.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_491.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_235.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_235.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_486.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_492.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_485.txt: FileNotFoundError(2, 'No such file or directory')
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_383.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_383.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_383.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_491.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_491.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_486.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_486.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_492.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_492.txt. Skipping truncation for all files.
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_485.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_485.txt. Skipping truncation for all files.
+[CHILD][Parent Rank 477] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 213] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 395] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 336] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 423] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 267] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 315] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 347] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 278] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 442] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 480] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 211] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 333] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 453] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 254] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 289] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 290] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 341] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_194.txt: FileNotFoundError(2, 'No such file or directory')
+[CHILD][Parent Rank 458] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 296] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 202] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 497] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 448] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 215] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_194.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_194.txt. Skipping truncation for all files.
+[CHILD][Parent Rank 306] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 473] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 483] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 397] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 465] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 203] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_234.txt: FileNotFoundError(2, 'No such file or directory')
+[CHILD][Parent Rank 422] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_234.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_234.txt. Skipping truncation for all files.
+[CHILD][Parent Rank 436] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_370.txt: FileNotFoundError(2, 'No such file or directory')
+[CHILD][Parent Rank 276] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_370.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_370.txt. Skipping truncation for all files.
+[CHILD][Parent Rank 218] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 399] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 292] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 390] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 406] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 330] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 340] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 300] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 466] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 308] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 485] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 265] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 286] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 386] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 446] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 361] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 207] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 221] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 309] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 274] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 284] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 384] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 481] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 298] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 324] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 496] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 301] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 425] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 421] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 302] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 237] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 246] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 348] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 355] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 268] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 262] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 433] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 388] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 321] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 345] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 391] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 464] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 381] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 222] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 312] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 338] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 270] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 304] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 305] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 416] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 288] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 491] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 194] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 445] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 447] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 294] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 417] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 256] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 440] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 358] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 486] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 492] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 383] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 235] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 234] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 370] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[PARENT][Rank 429] | ERROR: Timeout while waiting for response from child process after CLASS computations. Child may be unresponsive.
+
+[PARENT][Rank 427] | ERROR: Timeout while waiting for response from child process after CLASS computations. Child may be unresponsive.
+
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_429.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_427.txt does not exist. Skipping sync.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_429.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_429.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_429.txt. Skipping truncation for all files.
+Error counting samples in /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_427.txt: FileNotFoundError(2, 'No such file or directory')
+Error computing expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_427.txt: FileNotFoundError(2, 'No such file or directory')
+coudldn't determine expected lines for /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_nofilter/number_6/extra_rs_drag_data/rs_drag_data_427.txt. Skipping truncation for all files.
+[Worker 8] WARNING: Master unresponsive. Exiting.
+[Worker 12] WARNING: Master unresponsive. Exiting.
+[Worker 10] WARNING: Master unresponsive. Exiting.
+[Worker 5] WARNING: Master unresponsive. Exiting.
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 8 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+An MPI communication peer process has unexpectedly disconnected.  This
+usually indicates a failure in the peer process (e.g., a crash or
+otherwise exiting without calling MPI_FINALIZE first).
+
+Although this local MPI process will likely now behave unpredictably
+(it may even hang or crash), the root cause of this problem is the
+failure of the peer -- that is what you need to investigate.  For
+example, there may be a core file that you can examine.  More
+generally: such peer hangups are frequently caused by application bugs
+or other external events.
+
+  Local host: s44n04
+  Local PID:  230607
+  Peer host:  (null)
+--------------------------------------------------------------------------
+[s42n20.grendel.cscaa.dk:2289621] 3 more processes have sent help message help-mpi-api.txt / mpi-abort
+[s42n20.grendel.cscaa.dk:2289621] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[s42n20.grendel.cscaa.dk:2289621] 1 more process has sent help message help-mpi-btl-tcp.txt / peer hung up
+ERROR: mpirun failed with exit code 1, and calculations did not complete. Exiting...

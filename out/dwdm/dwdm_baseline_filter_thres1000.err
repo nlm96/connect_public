@@ -1,0 +1,229 @@
+/usr/bin/ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+[CHILD][Parent Rank 298] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02301459, 'omega_cdm': 0.1347101, 'Neff_ini_dncdm': 0.9885688, 'log10lifetime_ncdm_decay_dr': 3.425913, 'm_ncdm_decay_dr': 0.7951677, 'H0': 73.61542, 'ln10^{10}A_s': 3.102055, 'n_s': 1.010558, 'tau_reio': 0.0664168, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 298] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02301459, 'omega_cdm': 0.1347101, 'Neff_ini_dncdm': 0.9885688, 'log10lifetime_ncdm_decay_dr': 3.425913, 'm_ncdm_decay_dr': 0.7951677, 'H0': 73.61542, 'ln10^{10}A_s': 3.102055, 'n_s': 1.010558, 'tau_reio': 0.0664168, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 296] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02302633, 'omega_cdm': 0.1383908, 'Neff_ini_dncdm': 0.9713995, 'log10lifetime_ncdm_decay_dr': 2.144373, 'm_ncdm_decay_dr': 6.921314, 'H0': 72.85236, 'ln10^{10}A_s': 3.16963, 'n_s': 0.9923455, 'tau_reio': 0.1087007, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 296] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02302633, 'omega_cdm': 0.1383908, 'Neff_ini_dncdm': 0.9713995, 'log10lifetime_ncdm_decay_dr': 2.144373, 'm_ncdm_decay_dr': 6.921314, 'H0': 72.85236, 'ln10^{10}A_s': 3.16963, 'n_s': 0.9923455, 'tau_reio': 0.1087007, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 294] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.023371961, 'omega_cdm': 0.1367317, 'Neff_ini_dncdm': 0.9788251, 'log10lifetime_ncdm_decay_dr': 3.702868, 'm_ncdm_decay_dr': 0.2993439, 'H0': 73.98454, 'ln10^{10}A_s': 3.158272, 'n_s': 0.9974139, 'tau_reio': 0.1053162, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 294] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.023371961, 'omega_cdm': 0.1367317, 'Neff_ini_dncdm': 0.9788251, 'log10lifetime_ncdm_decay_dr': 3.702868, 'm_ncdm_decay_dr': 0.2993439, 'H0': 73.98454, 'ln10^{10}A_s': 3.158272, 'n_s': 0.9974139, 'tau_reio': 0.1053162, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 289] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.023076309, 'omega_cdm': 0.1387604, 'Neff_ini_dncdm': 1.090091, 'log10lifetime_ncdm_decay_dr': 3.389323, 'm_ncdm_decay_dr': 0.3764931, 'H0': 72.74047, 'ln10^{10}A_s': 3.199169, 'n_s': 1.003973, 'tau_reio': 0.1240996, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 289] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.023076309, 'omega_cdm': 0.1387604, 'Neff_ini_dncdm': 1.090091, 'log10lifetime_ncdm_decay_dr': 3.389323, 'm_ncdm_decay_dr': 0.3764931, 'H0': 72.74047, 'ln10^{10}A_s': 3.199169, 'n_s': 1.003973, 'tau_reio': 0.1240996, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 253] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02223989, 'omega_cdm': 0.1311104, 'Neff_ini_dncdm': 0.6667339, 'log10lifetime_ncdm_decay_dr': 2.229805, 'm_ncdm_decay_dr': 0.01127472, 'H0': 70.13236, 'ln10^{10}A_s': 3.009882, 'n_s': 0.9904792, 'tau_reio': 0.02907036, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 253] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02223989, 'omega_cdm': 0.1311104, 'Neff_ini_dncdm': 0.6667339, 'log10lifetime_ncdm_decay_dr': 2.229805, 'm_ncdm_decay_dr': 0.01127472, 'H0': 70.13236, 'ln10^{10}A_s': 3.009882, 'n_s': 0.9904792, 'tau_reio': 0.02907036, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 293] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02249618, 'omega_cdm': 0.1250826, 'Neff_ini_dncdm': 0.6995272, 'log10lifetime_ncdm_decay_dr': 3.550779, 'm_ncdm_decay_dr': 0.1279542, 'H0': 72.69982, 'ln10^{10}A_s': 3.104852, 'n_s': 0.995073, 'tau_reio': 0.07941592, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 293] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02249618, 'omega_cdm': 0.1250826, 'Neff_ini_dncdm': 0.6995272, 'log10lifetime_ncdm_decay_dr': 3.550779, 'm_ncdm_decay_dr': 0.1279542, 'H0': 72.69982, 'ln10^{10}A_s': 3.104852, 'n_s': 0.995073, 'tau_reio': 0.07941592, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[PARENT][Rank 297] | ERROR: Timeout while waiting for response from child process after CLASS computations. Child may be unresponsive.
+
+[CHILD][Parent Rank 297] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02249618, 'omega_cdm': 0.1250826, 'Neff_ini_dncdm': 0.6995272, 'log10lifetime_ncdm_decay_dr': 3.550779, 'm_ncdm_decay_dr': 0.1279542, 'H0': 72.69982, 'ln10^{10}A_s': 3.104852, 'n_s': 0.995073, 'tau_reio': 0.07941592, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 297] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022416169, 'omega_cdm': 0.1277182, 'Neff_ini_dncdm': 0.3450357, 'log10lifetime_ncdm_decay_dr': 3.816996, 'm_ncdm_decay_dr': 5.761034, 'H0': 71.63391, 'ln10^{10}A_s': 3.17011, 'n_s': 0.9928748, 'tau_reio': 0.09558218, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 296] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02260607, 'omega_cdm': 0.1291629, 'Neff_ini_dncdm': 0.4784354, 'log10lifetime_ncdm_decay_dr': 4.199426, 'm_ncdm_decay_dr': 0.7775088, 'H0': 70.8693, 'ln10^{10}A_s': 3.121919, 'n_s': 0.9848191, 'tau_reio': 0.07534569, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 296] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02260607, 'omega_cdm': 0.1291629, 'Neff_ini_dncdm': 0.4784354, 'log10lifetime_ncdm_decay_dr': 4.199426, 'm_ncdm_decay_dr': 0.7775088, 'H0': 70.8693, 'ln10^{10}A_s': 3.121919, 'n_s': 0.9848191, 'tau_reio': 0.07534569, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[PARENT][Rank 297] | ERROR: Timeout while waiting for PONG response from child process. Child may be unresponsive.
+Respawning child process...
+[PARENT][Rank 297] | WARNING: Child process died or is unresponsive. Respawning...
+[PARENT][Rank 297] | [INFO] Successfully respawned child process.
+[CHILD][Parent Rank 297] | ERROR: Timeout while waiting for parent command. returning to PING PONG loop.
+[CHILD][Parent Rank 297] | ERROR: Timeout while waiting for message.
+Exiting safely.
+[PARENT][Rank 297] | ERROR: Failed to send or receive data to/from child process. Child process may have crashed.Possibly due to out-of-memory or other critical error during CLASS computation    .
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02325911, 'omega_cdm': 0.1246645, 'Neff_ini_dncdm': 0.7785304, 'log10lifetime_ncdm_decay_dr': 2.682623, 'm_ncdm_decay_dr': 0.1462965, 'H0': 75.337, 'ln10^{10}A_s': 3.043683, 'n_s': 0.9988938, 'tau_reio': 0.04671397, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[PARENT][Rank 297] | Exception: TimeoutError('Timeout while waiting for child to respond.')
+[CHILD][Parent Rank 297] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02325911, 'omega_cdm': 0.1246645, 'Neff_ini_dncdm': 0.7785304, 'log10lifetime_ncdm_decay_dr': 2.682623, 'm_ncdm_decay_dr': 0.1462965, 'H0': 75.337, 'ln10^{10}A_s': 3.043683, 'n_s': 0.9988938, 'tau_reio': 0.04671397, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 297] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02316225, 'omega_cdm': 0.1230518, 'Neff_ini_dncdm': 0.5378495, 'log10lifetime_ncdm_decay_dr': 2.214281, 'm_ncdm_decay_dr': 11.10605, 'H0': 74.13346, 'ln10^{10}A_s': 3.07267, 'n_s': 1.012596, 'tau_reio': 0.06395384, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[PARENT][Rank 297] | ERROR: Unexpected error during PING-PONG check: TimeoutError('Timeout while waiting for child to respond.')Attemping to respawn child process...
+[PARENT][Rank 297] | WARNING: Child process died or is unresponsive. Respawning...
+[PARENT][Rank 297] | [INFO] Successfully respawned child process.
+[PARENT][Rank 296] | ERROR: Timeout while waiting for response from child process after CLASS computations. Child may be unresponsive.
+
+[CHILD][Parent Rank 296] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022576649, 'omega_cdm': 0.1265547, 'Neff_ini_dncdm': 0.6151738, 'log10lifetime_ncdm_decay_dr': 3.858752, 'm_ncdm_decay_dr': 0.3867272, 'H0': 72.73583, 'ln10^{10}A_s': 3.017891, 'n_s': 0.984435, 'tau_reio': 0.03299892, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 296] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02309835, 'omega_cdm': 0.1307244, 'Neff_ini_dncdm': 0.3969598, 'log10lifetime_ncdm_decay_dr': 2.114577, 'm_ncdm_decay_dr': 39.39279, 'H0': 70.9671, 'ln10^{10}A_s': 3.099308, 'n_s': 0.9820466, 'tau_reio': 0.05010418, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 297] | ERROR: Timeout while waiting for message.
+Exiting safely.
+[PARENT][Rank 296] | ERROR: Timeout while waiting for PONG response from child process. Child may be unresponsive.
+Respawning child process...
+[PARENT][Rank 296] | WARNING: Child process died or is unresponsive. Respawning...
+[PARENT][Rank 296] | [INFO] Successfully respawned child process.
+[CHILD][Parent Rank 290] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02271594, 'omega_cdm': 0.1326065, 'Neff_ini_dncdm': 0.5968044, 'log10lifetime_ncdm_decay_dr': 2.459776, 'm_ncdm_decay_dr': 0.4352219, 'H0': 69.72923, 'ln10^{10}A_s': 3.132909, 'n_s': 0.9767683, 'tau_reio': 0.07265319, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 290] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02271594, 'omega_cdm': 0.1326065, 'Neff_ini_dncdm': 0.5968044, 'log10lifetime_ncdm_decay_dr': 2.459776, 'm_ncdm_decay_dr': 0.4352219, 'H0': 69.72923, 'ln10^{10}A_s': 3.132909, 'n_s': 0.9767683, 'tau_reio': 0.07265319, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 296] | ERROR: Timeout while waiting for parent command. returning to PING PONG loop.
+[CHILD][Parent Rank 296] | ERROR: Timeout while waiting for message.
+Exiting safely.
+[CHILD][Parent Rank 297] | ERROR: Timeout while waiting for message.
+Exiting safely.
+[PARENT][Rank 297] | ERROR: Unexpected error during PING-PONG check: TimeoutError('Timeout while waiting for child to respond.')Attemping to respawn child process...
+[PARENT][Rank 297] | WARNING: Child process died or is unresponsive. Respawning...
+[PARENT][Rank 297] | [INFO] Successfully respawned child process.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[CHILD][Parent Rank 296] | ERROR: Timeout while waiting for message.
+Exiting safely.
+[PARENT][Rank 296] | ERROR: Failed to send or receive data to/from child process. Child process may have crashed.Possibly due to out-of-memory or other critical error during likelihood computation.
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02202402, 'omega_cdm': 0.1240886, 'Neff_ini_dncdm': 0.0207075, 'log10lifetime_ncdm_decay_dr': 2.462088, 'm_ncdm_decay_dr': 314.6334, 'H0': 67.5117, 'ln10^{10}A_s': 3.042034, 'n_s': 0.9686751, 'tau_reio': 0.05890003, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[PARENT][Rank 296] | Exception: TimeoutError('Timeout while waiting for child to respond.')
+--------------------------------------------------------------------------
+WARNING: Open MPI failed to TCP connect to a peer MPI process.  This
+should not happen.
+
+Your Open MPI job may now hang or fail.
+
+  Local host: s41n11
+  PID:        1434787
+  Message:    connect() to 10.10.41.11:1050 failed
+  Error:      Operation now in progress (115)
+--------------------------------------------------------------------------
+[PARENT][Rank 296] | ERROR: Unexpected error during PING-PONG check: TimeoutError('Timeout while waiting for child to respond.')Attemping to respawn child process...
+[PARENT][Rank 296] | WARNING: Child process died or is unresponsive. Respawning...
+[PARENT][Rank 296] | [INFO] Successfully respawned child process.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[CHILD][Parent Rank 145] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 145] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 254] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 254] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 91] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 91] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 127] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+
+[CHILD][Parent Rank 226] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 226] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[PARENT][Rank 127] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 115] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 115] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 94] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 94] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 105] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 105] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 113] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 113] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.022551948, 'omega_cdm': 0.1332474, 'Neff_ini_dncdm': 0.3678575, 'log10lifetime_ncdm_decay_dr': 4.177632, 'm_ncdm_decay_dr': 0.1598121, 'H0': 67.92445, 'ln10^{10}A_s': 3.003489, 'n_s': 0.9555027, 'tau_reio': 0.02378859, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 98] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02218582, 'omega_cdm': 0.1370556, 'Neff_ini_dncdm': 0.3789703, 'log10lifetime_ncdm_decay_dr': 3.597793, 'm_ncdm_decay_dr': 0.1354755, 'H0': 65.10888, 'ln10^{10}A_s': 3.010523, 'n_s': 0.9389822, 'tau_reio': 0.04002666, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 98] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02218582, 'omega_cdm': 0.1370556, 'Neff_ini_dncdm': 0.3789703, 'log10lifetime_ncdm_decay_dr': 3.597793, 'm_ncdm_decay_dr': 0.1354755, 'H0': 65.10888, 'ln10^{10}A_s': 3.010523, 'n_s': 0.9389822, 'tau_reio': 0.04002666, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[CHILD][Parent Rank 125] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02218582, 'omega_cdm': 0.1370556, 'Neff_ini_dncdm': 0.3789703, 'log10lifetime_ncdm_decay_dr': 3.597793, 'm_ncdm_decay_dr': 0.1354755, 'H0': 65.10888, 'ln10^{10}A_s': 3.010523, 'n_s': 0.9389822, 'tau_reio': 0.04002666, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 125] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02218582, 'omega_cdm': 0.1370556, 'Neff_ini_dncdm': 0.3789703, 'log10lifetime_ncdm_decay_dr': 3.597793, 'm_ncdm_decay_dr': 0.1354755, 'H0': 65.10888, 'ln10^{10}A_s': 3.010523, 'n_s': 0.9389822, 'tau_reio': 0.04002666, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[PARENT][Rank 297] | [IDLE] Waiting for master to send 'Done'.
+[CHILD][Parent Rank 129] | The following model took too long to complete: 
+params: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02233839, 'omega_cdm': 0.1224169, 'Neff_ini_dncdm': 0.1915718, 'log10lifetime_ncdm_decay_dr': 4.175359, 'm_ncdm_decay_dr': 0.25146, 'H0': 68.97044, 'ln10^{10}A_s': 3.054376, 'n_s': 0.9693452, 'tau_reio': 0.06281829, 'P_k_max_1/Mpc': 1.0}
+
+[PARENT][Rank 129] | ERROR: Child process failed during CLASS computation
+Model: {'lensing': 'yes', 'output': 'tCl,lCl,pCl,mPk', 'l_max_scalars': 2508, 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'N_ncdm_decay_dr': 1, 'quadrature_strategy_ncdm_decay_dr': 3, 'ncdm_fluid_approximation': 3, 'maximum_q_ncdm_decay_dr': 15.0, 'background_method': 0, 'evolver': 1, 'N_momentum_bins_ncdm_decay_dr': 7, 'l_max_ncdm': 13, 'l_max_dr': 13, 'l_max_dr_col': 13, 'omega_b': 0.02233839, 'omega_cdm': 0.1224169, 'Neff_ini_dncdm': 0.1915718, 'log10lifetime_ncdm_decay_dr': 4.175359, 'm_ncdm_decay_dr': 0.25146, 'H0': 68.97044, 'ln10^{10}A_s': 3.054376, 'n_s': 0.9693452, 'tau_reio': 0.06281829, 'P_k_max_1/Mpc': 1.0}
+skipping to the next model...
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD
+with errorcode 0.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+[CHILD][Parent Rank 180] | CRITICAL ERROR: Process killed by SIGTERM (Job Cancelled or Terminated)
+[CHILD][Parent Rank 238] | CRITICAL ERROR: Process killed by SIGTERM (Job Cancelled or Terminated)
+[CHILD][Parent Rank 232] | CRITICAL ERROR: Process killed by SIGTERM (Job Cancelled or Terminated)
+[CHILD][Parent Rank 276] | CRITICAL ERROR: Process killed by SIGTERM (Job Cancelled or Terminated)
+[s41n04.grendel.cscaa.dk:124152] 1 more process has sent help message help-mpi-btl-tcp.txt / client connect fail
+[s41n04.grendel.cscaa.dk:124152] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

@@ -155,7 +155,6 @@ class Class(real_classy.Class):
                     except:
                         raise KeyError(f'The parameter {par_name} is not listed with a default value. You can add one in the load_model method in file: {os.path.join(CONNECT_PATH,__file__)}')
             v = tf.constant([params])
-        
             self.output_predict = self.model(v).numpy()[0]
         except:
             raise SystemError('No model has been loaded - Set the attribute model_name to the name of a trained CONNECT model')

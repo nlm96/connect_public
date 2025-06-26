@@ -1,0 +1,367 @@
+[1740781923.126499] [s41n01:857959:0]           debug.c:1157 UCX  DEBUG using signal stack 0x7f7674118000 size 141824
+[1740781923.127393] [s41n01:857959:0]            init.c:120  UCX  DEBUG /home/maanson/ucx/ucx-1.18.0/lib/libucs.so.0 loaded at 0x7f7667666000
+[1740781923.127408] [s41n01:857959:0]            init.c:122  UCX  DEBUG cmd line: /home/maanson/.conda/envs/ConnectDWDM_MPI/bin/python /home/maanson/Speciale/connectv2/source/calc_models_mpi_child.py --child-mode /home/maanson/Speciale/connectv2/d[1740781923.217048] [s41n01:856152:0]          select.c:644  UCX  ERROR   no active messages transport to <no debug data>: dc_mlx5/mlx5_0:1 - Destination is unreachable
+n/ucx/ucx-1.18.0/lib/libucs.so.0
+[1740781923.127423] [s41n01:857959:0]          module.c:280  UCX  DEBUG loading modules for ucs
+[1740781923.127568] [s41n01:857959:0]            time.c:22   UCX  DEBUG arch clock frequency: 3000000000.00 Hz
+[1740781923.127635] [s41n01:857959:0]     ucp_context.c:2257 UCX  INFO  Version 1.18.0 (loaded from /home/maanson/ucx/ucx-1.18.0/lib/libucp.so.0)
+[1740781923.127643] [s41n01:857959:0]     ucp_context.c:2015 UCX  DEBUG estimated number of endpoints is 1
+[1740781923.127645] [s41n01:857959:0]     ucp_context.c:2022 UCX  DEBUG estimated number of endpoints per node is 1
+[1740781923.127647] [s41n01:857959:0]     ucp_context.c:2033 UCX  DEBUG estimated bcopy bandwidth is 7340032000.000000
+[1740781923.127654] [s41n01:857959:0]     ucp_context.c:2092 UCX  DEBUG allocation method[0] is md 'sysv'
+[1740781923.127656] [s41n01:857959:0]     ucp_context.c:2092 UCX  DEBUG allocation method[1] is md 'posix'
+[1740781923.127660] [s41n01:857959:0]     ucp_context.c:2104 UCX  DEBUG allocation method[2] is 'thp'
+[1740781923.127661] [s41n01:857959:0]     ucp_context.c:2092 UCX  DEBUG allocation method[3] is md '*'
+[1740781923.127663] [s41n01:857959:0]     ucp_context.c:2104 UCX  DEBUG allocation method[4] is 'mmap'
+[1740781923.127665] [s41n01:857959:0]     ucp_context.c:2104 UCX  DEBUG allocation method[5] is 'heap'
+[1740781923.127681] [s41n01:857959:0]          module.c:280  UCX  DEBUG loading modules for uct
+[1740781923.128445] [s41n01:857959:0]          module.c:258  UCX  DEBUG dlopen('/home/maanson/ucx/ucx-1.18.0/lib/ucx/libuct_cuda.so.0', mode=0x1) failed: libcuda.so.1: cannot open shared object file: No such file or directory
+[1740781923.128851] [s41n01:857959:0]          module.c:258  UCX  DEBUG dlopen('/home/maanson/ucx/ucx-1.18.0/lib/ucx/libuct_cuda.so.0', mode=0x1) failed: libcuda.so.1: cannot open shared object file: No such file or directory
+[1740781923.129172] [s41n01:857959:0]          module.c:280  UCX  DEBUG loading modules for uct_ib
+[1740781923.130236] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md self because it has no selected transport resources
+[1740781923.130688] [s41n01:857959:0]            topo.c:898  UCX  DEBUG /sys/class/net/eno3: PF sysfs path is '/sys/devices/pci0000:17/0000:17:00.0/0000:18:00.0/0000:19:03.0/0000:1a:00.2'
+[1740781923.130725] [s41n01:857959:0]            topo.c:298  UCX  DEBUG added sys_dev 0 for bus id 1a:00.2
+[1740781923.130729] [s41n01:857959:0]            topo.c:552  UCX  DEBUG eno3: bdf_name 0000:1a:00.2 sys_dev 0
+[1740781923.130936] [s41n01:857959:0]            topo.c:898  UCX  DEBUG /sys/class/net/ib0: PF sysfs path is '/sys/devices/pci0000:3a/0000:3a:00.0/0000:3b:00.0'
+[1740781923.130954] [s41n01:857959:0]            topo.c:298  UCX  DEBUG added sys_dev 1 for bus id 3b:00.0
+[1740781923.130957] [s41n01:857959:0]            topo.c:552  UCX  DEBUG ib0: bdf_name 0000:3b:00.0 sys_dev 1
+[1740781923.131038] [s41n01:857959:0]            topo.c:895  UCX  DEBUG /sys/class/net/lo: sysfs path undetected
+[1740781923.131041] [s41n01:857959:0]            topo.c:556  UCX  DEBUG lo: system device unknown
+[1740781923.131056] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md tcp because it has no selected transport resources
+[1740781923.131090] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md sysv because it has no selected transport resources
+[1740781923.131135] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md posix because it has no selected transport resources
+[1740781923.145881] [s41n01:857959:0]            topo.c:898  UCX  DEBUG /sys/class/infiniband/mlx5_0: PF sysfs path is '/sys/devices/pci0000:3a/0000:3a:00.0/0000:3b:00.0'
+[1740781923.145892] [s41n01:857959:0]            topo.c:552  UCX  DEBUG mlx5_0: bdf_name 0000:3b:00.0 sys_dev 1
+[1740781923.145914] [s41n01:857959:0]       ib_device.c:497  UCX  DEBUG mlx5_0: vendor_id 0x15b3 device_id 4123
+[1740781923.146364] [s41n01:857959:0]    ib_mlx5dv_md.c:1877 UCX  DEBUG mlx5_0: crossing_vhca_mkey is not supported
+[1740781923.146367] [s41n01:857959:0]    ib_mlx5dv_md.c:1924 UCX  DEBUG mlx5_0: mkey_by_name_reserve is not supported
+[1740781923.146369] [s41n01:857959:0]    ib_mlx5dv_md.c:1907 UCX  DEBUG mlx5_0: dp_ordering support: force=1 ooo_rw_rc=1 ooo_rw_dc=1
+[1740781923.146494] [s41n01:857959:0]    ib_mlx5dv_md.c:1704 UCX  DEBUG mlx5_0: ODP is disabled because version 1 is not supported for DevX QP
+[1740781923.146647] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x2d78010 [id=23 ref 1] ???() to hash
+[1740781923.146722] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 23 events 0x1 mode thread_spinlock
+[1740781923.146727] [s41n01:857959:0]       ib_device.c:595  UCX  DEBUG initialized device 'mlx5_0' (InfiniBand channel adapter) with 1 ports
+[1740781923.146737] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool devx dbrec: align 64, maxelems 4294967295, elemsize 40
+[1740781923.147026] [s41n01:857959:0]    ib_mlx5dv_md.c:2422 UCX  DEBUG mlx5_0: opened DEVX md log_max_qp=17
+[1740781923.147039] [s41n01:857959:0]    ib_mlx5dv_md.c:2006 UCX  DEBUG mlx5_0: ibv_alloc_dm(length=32) failed: Cannot allocate memory
+[1740781923.147043] [s41n01:857959:0]    ib_mlx5dv_md.c:2123 UCX  DEBUG Out of memory: KSM over device memory is not supported
+[1740781923.147049] [s41n01:857959:0]           ib_md.c:1160 UCX  DEBUG mlx5_0: relaxed order memory access is disabled
+[1740781923.147432] [s41n01:857959:0]    ib_mlx5dv_md.c:121  UCX  DEBUG mlx5_0: KSM flush-mr memory registration status "Success" range 0x2dc1000..0x2dc1008 iova 0x0 mkey_index 0x0
+[1740781923.147435] [s41n01:857959:0]           ib_md.c:1030 UCX  DEBUG mlx5_0: md open by 'uct_ib_mlx5_devx_md_ops' is successful
+[1740781923.152314] [s41n01:857959:0]            topo.c:898  UCX  DEBUG /sys/class/infiniband/mlx5_0: PF sysfs path is '/sys/devices/pci0000:3a/0000:3a:00.0/0000:3b:00.0'
+[1740781923.152321] [s41n01:857959:0]            topo.c:552  UCX  DEBUG mlx5_0: bdf_name 0000:3b:00.0 sys_dev 1
+[1740781923.152334] [s41n01:857959:0]       ib_device.c:497  UCX  DEBUG mlx5_0: vendor_id 0x15b3 device_id 4123
+[1740781923.152748] [s41n01:857959:0]    ib_mlx5dv_md.c:1877 UCX  DEBUG mlx5_0: crossing_vhca_mkey is not supported
+[1740781923.152751] [s41n01:857959:0]    ib_mlx5dv_md.c:1924 UCX  DEBUG mlx5_0: mkey_by_name_reserve is not supported
+[1740781923.152753] [s41n01:857959:0]    ib_mlx5dv_md.c:1907 UCX  DEBUG mlx5_0: dp_ordering support: force=1 ooo_rw_rc=1 ooo_rw_dc=1
+[1740781923.152878] [s41n01:857959:0]    ib_mlx5dv_md.c:1704 UCX  DEBUG mlx5_0: ODP is disabled because version 1 is not supported for DevX QP
+[1740781923.153006] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x2d79c20 [id=28 ref 1] ???() to hash
+[1740781923.153012] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 28 events 0x1 mode thread_spinlock
+[1740781923.153014] [s41n01:857959:0]       ib_device.c:595  UCX  DEBUG initialized device 'mlx5_0' (InfiniBand channel adapter) with 1 ports
+[1740781923.153021] [s41n01:857959:0]           ib_md.c:1175 UCX  DEBUG mlx5_0: cuda GPUDirect RDMA is not detected by checking /sys/kernel/mm/memory_peers/nv_mem/version
+[1740781923.153025] [s41n01:857959:0]           ib_md.c:1175 UCX  DEBUG mlx5_0: cuda GPUDirect RDMA is not detected by checking /sys/module/nvidia_peermem/version
+[1740781923.153028] [s41n01:857959:0]           ib_md.c:1175 UCX  DEBUG mlx5_0: cuda GPUDirect RDMA is not detected by checking /sys/module/nv_peer_mem/version
+[1740781923.153070] [s41n01:857959:0]           ib_md.c:1175 UCX  DEBUG mlx5_0: rocm GPUDirect RDMA is not detected by checking /dev/kfd
+[1740781923.153081] [s41n01:857959:0]           ib_md.c:1202 UCX  DEBUG mlx5_0: dmabuf is supported
+[1740781923.153084] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool devx dbrec: align 64, maxelems 4294967295, elemsize 40
+[1740781923.153335] [s41n01:857959:0]    ib_mlx5dv_md.c:2422 UCX  DEBUG mlx5_0: opened DEVX md log_max_qp=17
+[1740781923.153340] [s41n01:857959:0]    ib_mlx5dv_md.c:2006 UCX  DEBUG mlx5_0: ibv_alloc_dm(length=32) failed: Cannot allocate memory
+[1740781923.153342] [s41n01:857959:0]    ib_mlx5dv_md.c:2123 UCX  DEBUG Out of memory: KSM over device memory is not supported
+[1740781923.153344] [s41n01:857959:0]           ib_md.c:1160 UCX  DEBUG mlx5_0: relaxed order memory access is disabled
+[1740781923.153648] [s41n01:857959:0]    ib_mlx5dv_md.c:121  UCX  DEBUG mlx5_0: KSM flush-mr memory registration status "Success" range 0x2e0a000..0x2e0a008 iova 0x0 mkey_index 0x0
+[1740781923.153674] [s41n01:857959:0]          uct_md.c:96   UCX  DEBUG failed to query gga_mlx5 resources: No such device
+[1740781923.153677] [s41n01:857959:0]     ucp_context.c:1188 UCX  DEBUG No tl resources found for md mlx5_0
+[1740781923.153679] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md mlx5_0 because it has no selected transport resources
+[1740781923.153686] [s41n01:857959:0]    ib_mlx5dv_md.c:2494 UCX  DEBUG mlx5_0: md=0x2d7eb40 md->flags=0x3fa1d7f flush_rkey=0x290400
+[1740781923.154074] [s41n01:857959:0]           mpool.c:194  UCX  DEBUG mpool devx dbrec destroyed
+[1740781923.154081] [s41n01:857959:0]       ib_device.c:616  UCX  DEBUG destroying ib device mlx5_0
+[1740781923.154087] [s41n01:857959:0]           async.c:172  UCX  DEBUG removed async handler 0x2d79c20 [id=28 ref 1] ???() from hash
+[1740781923.154090] [s41n01:857959:0]           async.c:575  UCX  DEBUG removing async handler 0x2d79c20 [id=28 ref 1] ???()
+[1740781923.154094] [s41n01:857959:0]           async.c:187  UCX  DEBUG release async handler 0x2d79c20 [id=28 ref 0] ???()
+[1740781923.154490] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md cma because it has no selected transport resources
+[1740781923.154526] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md knem because it has no selected transport resources
+[1740781923.154534] [s41n01:857959:0]     ucp_context.c:1712 UCX  DEBUG register host memory on: mlx5_0
+[1740781923.154536] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering cuda memory
+[1740781923.154538] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering cuda-managed memory
+[1740781923.154539] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering rocm memory
+[1740781923.154541] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering rocm-managed memory
+[1740781923.154542] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering rdma memory
+[1740781923.154544] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering ze-host memory
+[1740781923.154546] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering ze-device memory
+[1740781923.154547] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering ze-managed memory
+[1740781923.154579] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rcache_mp: align 8, maxelems 4294967295, elemsize 144
+[1740781923.154600] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x2d79ca0 [id=27 ref 1] ???() to hash
+[1740781923.154605] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 27 events 0x1 mode thread_spinlock
+[1740781923.154640] [s41n01:857959:0]          module.c:280  UCX  DEBUG loading modules for ucm
+[1740781923.155196] [s41n01:857959:0]          module.c:258  UCX  DEBUG dlopen('/home/maanson/ucx/ucx-1.18.0/lib/ucx/libucm_cuda.so.0', mode=0x1001) failed: libcuda.so.1: cannot open shared object file: No such file or directory
+[1740781923.155583] [s41n01:857959:0]          module.c:258  UCX  DEBUG dlopen('/home/maanson/ucx/ucx-1.18.0/lib/ucx/libucm_cuda.so.0', mode=0x1001) failed: libcuda.so.1: cannot open shared object file: No such file or directory
+[1740781923.155598] [s41n01:857959:0]     ucp_context.c:2329 UCX  DEBUG created ucp context ucp_context_0 0x2d727d0 [1 mds 5 tls] features 0x1 tl bitmap 0x1f 0x0
+[1740781923.159674] [s41n01:857959:0]        ib_iface.c:1077 UCX  DEBUG using pkey[0] 0xffff on mlx5_0:1/IB
+[1740781923.160604] [s41n01:857959:0]        ib_iface.c:1664 UCX  DEBUG created uct_ib_iface_t headroom_ofs 12 payload_ofs 92 hdr_ofs 91 data_sz 8256
+[1740781923.160625] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rc_recv_desc: align 64, maxelems 4294967295, elemsize 8355
+[1740781923.160630] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rc_send_desc: align 64, maxelems 4294967295, elemsize 8320
+[1740781923.160676] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool send-ops-mpool: align 64, maxelems 4294967295, elemsize 48
+[1740781923.161141] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool pending-ops: align 1, maxelems 4294967295, elemsize 64
+[1740781923.161146] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rc_verbs_short_desc: align 64, maxelems 4294967295, elemsize 192
+[1740781923.161732] [s41n01:857959:0]        ib_iface.c:1196 UCX  DEBUG mlx5_0: iface 0x2de93c0 created RC QP 0x140e5 on mlx5_0:1 TX wr:409 sge:5 inl:124 resp:64 RX wr:0 sge:0 resp:64
+[1740781923.162523] [s41n01:857959:0]      ucp_worker.c:1434 UCX  DEBUG created interface[0]=0x2de93c0 using rc_verbs/mlx5_0:1 on worker 0x2e0d050
+[1740781923.162644] [s41n01:857959:0]        ib_iface.c:1077 UCX  DEBUG using pkey[0] 0xffff on mlx5_0:1/IB
+[1740781923.163531] [s41n01:857959:0]        ib_iface.c:1664 UCX  DEBUG created uct_ib_iface_t headroom_ofs 12 payload_ofs 92 hdr_ofs 44 data_sz 4136
+[1740781923.163990] [s41n01:857959:0]        ib_iface.c:1196 UCX  DEBUG mlx5_0: iface 0x2eed310 created UD QP 0x140e6 on mlx5_0:1 TX wr:341 sge:6 inl:124 resp:0 RX wr:4096 sge:1 resp:0
+[1740781923.164317] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool ud_recv_skb: align 64, maxelems 4294967295, elemsize 4188
+[1740781923.164548] [s41n01:857959:0]           mpool.c:281  UCX  DEBUG mpool ud_recv_skb: allocated chunk 0x7f767408e018 of 544744 bytes with 128 elements
+[1740781923.164553] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool ud_tx_skb: align 64, maxelems 4294967295, elemsize 4208
+[1740781923.164573] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x2eed310: adding gid fe80::c42:a103:2b:7752 to hash on device mlx5_0 port 1 index 0)
+[1740781923.164583] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x2eed310: adding gid fe80:: to hash on device mlx5_0 port 1 index 1)
+[1740781923.164592] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x2eed310: adding gid fe80:: to hash on device mlx5_0 port 1 index 2)
+[1740781923.164601] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x2eed310: adding gid fe80:: to hash on device mlx5_0 port 1 index 3)
+[1740781923.164610] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x2eed310: adding gid fe80:: to hash on device mlx5_0 port 1 index 4)
+[1740781923.164618] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x2eed310: adding gid fe80:: to hash on device mlx5_0 port 1 index 5)
+[1740781923.164627] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x2eed310: adding gid fe80:: to hash on device mlx5_0 port 1 index 6)
+[1740781923.164635] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x2eed310: adding gid fe80:: to hash on device mlx5_0 port 1 index 7)
+[1740781923.164791] [s41n01:857959:0]     timer_wheel.c:40   UCX  DEBUG high res timer created log=23 resolution=2796.202667 usec wanted: 2500.000000 usec
+[1740781923.164802] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x2dcb780 [id=30 ref 1] ???() to hash
+[1740781923.164837] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 30 events 0x5 mode thread_spinlock
+[1740781923.164856] [s41n01:857959:0]      ucp_worker.c:1434 UCX  DEBUG created interface[1]=0x2eed310 using ud_verbs/mlx5_0:1 on worker 0x2e0d050
+[1740781923.165067] [s41n01:857959:0]        ib_iface.c:1077 UCX  DEBUG using pkey[0] 0xffff on mlx5_0:1/IB
+[1740781923.165093] [s41n01:857959:0]       ib_device.c:1432 UCX  DEBUG max IB CQE size is 128
+[1740781923.165345] [s41n01:857959:0]           mpool.c:281  UCX  DEBUG mpool devx dbrec: allocated chunk 0x2fbd010 of 8176 bytes with 127 elements
+[1740781923.167381] [s41n01:857959:0]        ib_iface.c:1664 UCX  DEBUG created uct_ib_iface_t headroom_ofs 12 payload_ofs 92 hdr_ofs 90 data_sz 8256
+[1740781923.167403] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rc_recv_desc: align 64, maxelems 4294967295, elemsize 8354
+[1740781923.167405] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rc_send_desc: align 64, maxelems 4294967295, elemsize 8320
+[1740781923.167694] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool send-ops-mpool: align 64, maxelems 4294967295, elemsize 48
+[1740781923.168153] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool pending-ops: align 1, maxelems 4294967295, elemsize 112
+[1740781923.168262] [s41n01:857959:0]         ib_mlx5.c:1079 UCX  DEBUG SL=0 (AR support - no) was selected on mlx5_0:1, SLs with AR support = { <none> }, SLs without AR support = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }
+[1740781923.168279] [s41n01:857959:0]  rc_mlx5_common.c:796  UCX  DEBUG ibv_alloc_dm(dev=mlx5_0 length=2048) failed: Cannot allocate memory
+[1740781923.168283] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rc_mlx5_atomic_desc: align 64, maxelems 4294967295, elemsize 72
+[1740781923.168302] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x2dc93b0 [id=32 ref 1] ???() to hash
+[1740781923.168309] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 32 events 0x1 mode thread_spinlock
+[1740781923.169810] [s41n01:857959:0]    ib_mlx5dv_md.c:2615 UCX  DEBUG counter_set_id on mlx5_0:1 is 0x1
+[1740781923.171097] [s41n01:857959:0]         dc_mlx5.c:406  UCX  DEBUG created DevX DCI 0x140ea, rdma_wr_disabled=1
+[1740781923.171490] [s41n01:857959:0]         dc_mlx5.c:1726 UCX  DEBUG dc iface 0x3066050: using 'dcs_quota' policy with 32 dcis and 16384 cqes, dct 0x140e9
+[1740781923.171503] [s41n01:857959:0]         dc_mlx5.c:822  UCX  DEBUG creating dci pool 0 with 32 QPs
+[1740781923.171505] [s41n01:857959:0]         dc_mlx5.c:804  UCX  DEBUG dci pool config: (path_index=0, max_rd_atomic=16)
+[1740781923.178726] [s41n01:857959:0]           mpool.c:281  UCX  DEBUG mpool rc_recv_desc: allocated chunk 0x7f765d600018 of 39845864 bytes with 4752 elements
+[1740781923.178839] [s41n01:857959:0]         dc_mlx5.c:1749 UCX  DEBUG created dc iface 0x3066050
+[1740781923.178865] [s41n01:857959:0]      ucp_worker.c:1434 UCX  DEBUG created interface[2]=0x3066050 using dc_mlx5/mlx5_0:1 on worker 0x2e0d050
+[1740781923.179066] [s41n01:857959:0]        ib_iface.c:1077 UCX  DEBUG using pkey[0] 0xffff on mlx5_0:1/IB
+[1740781923.180428] [s41n01:857959:0]        ib_iface.c:1664 UCX  DEBUG created uct_ib_iface_t headroom_ofs 12 payload_ofs 92 hdr_ofs 90 data_sz 8256
+[1740781923.180439] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rc_recv_desc: align 64, maxelems 4294967295, elemsize 8354
+[1740781923.180443] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rc_send_desc: align 64, maxelems 4294967295, elemsize 8320
+[1740781923.180524] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool send-ops-mpool: align 64, maxelems 4294967295, elemsize 48
+[1740781923.180973] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool pending-ops: align 1, maxelems 4294967295, elemsize 64
+[1740781923.181068] [s41n01:857959:0]         ib_mlx5.c:1079 UCX  DEBUG SL=0 (AR support - no) was selected on mlx5_0:1, SLs with AR support = { <none> }, SLs without AR support = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }
+[1740781923.181076] [s41n01:857959:0]  rc_mlx5_common.c:796  UCX  DEBUG ibv_alloc_dm(dev=mlx5_0 length=2048) failed: Cannot allocate memory
+[1740781923.181079] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rc_mlx5_atomic_desc: align 64, maxelems 4294967295, elemsize 72
+[1740781923.181086] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x33cbcb0 [id=35 ref 1] ???() to hash
+[1740781923.181093] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 35 events 0x1 mode thread_spinlock
+[1740781923.181116] [s41n01:857959:0]      ucp_worker.c:1434 UCX  DEBUG created interface[3]=0x33c30b0 using rc_mlx5/mlx5_0:1 on worker 0x2e0d050
+[1740781923.182220] [s41n01:857959:0]        ib_iface.c:1077 UCX  DEBUG using pkey[0] 0xffff on mlx5_0:1/IB
+[1740781923.183117] [s41n01:857959:0]        ib_iface.c:1664 UCX  DEBUG created uct_ib_iface_t headroom_ofs 12 payload_ofs 92 hdr_ofs 44 data_sz 4136
+[1740781923.183480] [s41n01:857959:0]        ib_iface.c:1196 UCX  DEBUG mlx5_0: iface 0x34f6180 created UD QP 0x140ec on mlx5_0:1 TX wr:256 sge:2 inl:60 resp:0 RX wr:4096 sge:1 resp:0
+[1740781923.183487] [s41n01:857959:0]         ib_mlx5.c:773  UCX  DEBUG tx wq 32768 bytes [bb=64, nwqe=512] mmio_mode bf_post_mt
+[1740781923.183772] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool ud_recv_skb: align 64, maxelems 4294967295, elemsize 4188
+[1740781923.183964] [s41n01:857959:0]           mpool.c:281  UCX  DEBUG mpool ud_recv_skb: allocated chunk 0x7f7674009018 of 544744 bytes with 128 elements
+[1740781923.183969] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool ud_tx_skb: align 64, maxelems 4294967295, elemsize 4208
+[1740781923.183984] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x34f6180: adding gid fe80::c42:a103:2b:7752 to hash on device mlx5_0 port 1 index 0)
+[1740781923.183993] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x34f6180: adding gid fe80:: to hash on device mlx5_0 port 1 index 1)
+[1740781923.184002] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x34f6180: adding gid fe80:: to hash on device mlx5_0 port 1 index 2)
+[1740781923.184011] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x34f6180: adding gid fe80:: to hash on device mlx5_0 port 1 index 3)
+[1740781923.184019] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x34f6180: adding gid fe80:: to hash on device mlx5_0 port 1 index 4)
+[1740781923.184028] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x34f6180: adding gid fe80:: to hash on device mlx5_0 port 1 index 5)
+[1740781923.184036] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x34f6180: adding gid fe80:: to hash on device mlx5_0 port 1 index 6)
+[1740781923.184044] [s41n01:857959:0]        ud_iface.c:380  UCX  DEBUG iface 0x34f6180: adding gid fe80:: to hash on device mlx5_0 port 1 index 7)
+[1740781923.184138] [s41n01:857959:0]         ib_mlx5.c:1079 UCX  DEBUG SL=0 (AR support - no) was selected on mlx5_0:1, SLs with AR support = { <none> }, SLs without AR support = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }
+[1740781923.184162] [s41n01:857959:0]     timer_wheel.c:40   UCX  DEBUG high res timer created log=23 resolution=2796.202667 usec wanted: 2500.000000 usec
+[1740781923.184173] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x2d7c770 [id=37 ref 1] ???() to hash
+[1740781923.184180] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 37 events 0x5 mode thread_spinlock
+[1740781923.184193] [s41n01:857959:0]      ucp_worker.c:1434 UCX  DEBUG created interface[4]=0x34f6180 using ud_mlx5/mlx5_0:1 on worker 0x2e0d050
+[1740781923.184199] [s41n01:857959:0]      ucp_worker.c:1151 UCX  DEBUG selected scalable tl bitmap: 0x1f 0x0 (5 tls)
+[1740781923.184216] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x2df28a0 [id=29 ref 1] ???() to hash
+[1740781923.184255] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 29 events 0x0 mode thread_spinlock
+[1740781923.184299] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x34f6f70 [id=33 ref 1] ???() to hash
+[1740781923.184303] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 33 events 0x0 mode thread_spinlock
+[1740781923.184317] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x2f9fef0 [id=36 ref 1] ???() to hash
+[1740781923.184320] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 36 events 0x0 mode thread_spinlock
+[1740781923.184364] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x2fbca00 [id=38 ref 1] ???() to hash
+[1740781923.184368] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 38 events 0x1 mode thread_spinlock
+[1740781923.184373] [s41n01:857959:0]       rdmacm_cm.c:981  UCX  DEBUG created rdmacm_cm 0x2fbc420 with event_channel 0x34f6fd0 (fd=38)
+[1740781923.184389] [s41n01:857959:0]      tcp_sockcm.c:225  UCX  DEBUG created tcp_sockcm 0x344d940
+[1740781923.184401] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool ucp_requests: align 64, maxelems 4294967295, elemsize 432
+[1740781923.184404] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool ucp_rkeys: align 64, maxelems 4294967295, elemsize 112
+[1740781923.184406] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool ucp_reg_bufs: align 64, maxelems 4294967295, elemsize 8216
+[1740781923.184410] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool ucp_am_bufs: align 64, maxelems 4294967295, elemsize 153
+[1740781923.184412] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool ucp_am_bufs: align 64, maxelems 4294967295, elemsize 1113
+[1740781923.184414] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool ucp_am_bufs: align 64, maxelems 4294967295, elemsize 8344
+[1740781923.184417] [s41n01:857959:0]       mpool_set.c:129  UCX  DEBUG mpool_set:ucp_am_bufs, sizes map 0x80000440, largest size 8255, mpools num 3
+[1740781923.184494] [s41n01:857959:0]          parser.c:2335 UCX  INFO  UCX_* env variables: UCX_TLS=rc_verbs,ud_verbs,rc_mlx5,dc_mlx5,ud_mlx5 UCX_WARN_UNUSED_ENV_VARS=n UCX_LOG_FILE=ucx_debug.log UCX_IB_GPU_DIRECT_RDMA=n UCX_LOG_LEVEL=debug UCX_NET_DEVICES=mlx5_0:1
+[1740781923.185067] [s41n01:857959:0]     ucp_context.c:2257 UCX  INFO  Version 1.18.0 (loaded from /home/maanson/ucx/ucx-1.18.0/lib/libucp.so.0)
+[1740781923.185073] [s41n01:857959:0]     ucp_context.c:2015 UCX  DEBUG estimated number of endpoints is 1
+[1740781923.185076] [s41n01:857959:0]     ucp_context.c:2022 UCX  DEBUG estimated number of endpoints per node is 1
+[1740781923.185080] [s41n01:857959:0]     ucp_context.c:2033 UCX  DEBUG estimated bcopy bandwidth is 7340032000.000000
+[1740781923.185083] [s41n01:857959:0]     ucp_context.c:2092 UCX  DEBUG allocation method[0] is md 'sysv'
+[1740781923.185085] [s41n01:857959:0]     ucp_context.c:2092 UCX  DEBUG allocation method[1] is md 'posix'
+[1740781923.185087] [s41n01:857959:0]     ucp_context.c:2104 UCX  DEBUG allocation method[2] is 'thp'
+[1740781923.185090] [s41n01:857959:0]     ucp_context.c:2092 UCX  DEBUG allocation method[3] is md '*'
+[1740781923.185092] [s41n01:857959:0]     ucp_context.c:2104 UCX  DEBUG allocation method[4] is 'mmap'
+[1740781923.185094] [s41n01:857959:0]     ucp_context.c:2104 UCX  DEBUG allocation method[5] is 'heap'
+[1740781923.185235] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md self because it has no selected transport resources
+[1740781923.185657] [s41n01:857959:0]            topo.c:898  UCX  DEBUG /sys/class/net/eno3: PF sysfs path is '/sys/devices/pci0000:17/0000:17:00.0/0000:18:00.0/0000:19:03.0/0000:1a:00.2'
+[1740781923.185662] [s41n01:857959:0]            topo.c:552  UCX  DEBUG eno3: bdf_name 0000:1a:00.2 sys_dev 0
+[1740781923.185856] [s41n01:857959:0]            topo.c:898  UCX  DEBUG /sys/class/net/ib0: PF sysfs path is '/sys/devices/pci0000:3a/0000:3a:00.0/0000:3b:00.0'
+[1740781923.185860] [s41n01:857959:0]            topo.c:552  UCX  DEBUG ib0: bdf_name 0000:3b:00.0 sys_dev 1
+[1740781923.185942] [s41n01:857959:0]            topo.c:895  UCX  DEBUG /sys/class/net/lo: sysfs path undetected
+[1740781923.185944] [s41n01:857959:0]            topo.c:556  UCX  DEBUG lo: system device unknown
+[1740781923.185959] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md tcp because it has no selected transport resources
+[1740781923.185984] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md sysv because it has no selected transport resources
+[1740781923.186014] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md posix because it has no selected transport resources
+[1740781923.189356] [s41n01:857959:0]            topo.c:898  UCX  DEBUG /sys/class/infiniband/mlx5_0: PF sysfs path is '/sys/devices/pci0000:3a/0000:3a:00.0/0000:3b:00.0'
+[1740781923.189363] [s41n01:857959:0]            topo.c:552  UCX  DEBUG mlx5_0: bdf_name 0000:3b:00.0 sys_dev 1
+[1740781923.189376] [s41n01:857959:0]       ib_device.c:497  UCX  DEBUG mlx5_0: vendor_id 0x15b3 device_id 4123
+[1740781923.189776] [s41n01:857959:0]    ib_mlx5dv_md.c:1877 UCX  DEBUG mlx5_0: crossing_vhca_mkey is not supported
+[1740781923.189778] [s41n01:857959:0]    ib_mlx5dv_md.c:1924 UCX  DEBUG mlx5_0: mkey_by_name_reserve is not supported
+[1740781923.189780] [s41n01:857959:0]    ib_mlx5dv_md.c:1907 UCX  DEBUG mlx5_0: dp_ordering support: force=1 ooo_rw_rc=1 ooo_rw_dc=1
+[1740781923.189897] [s41n01:857959:0]    ib_mlx5dv_md.c:1704 UCX  DEBUG mlx5_0: ODP is disabled because version 1 is not supported for DevX QP
+[1740781923.190027] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x2b919e0 [id=40 ref 1] ???() to hash
+[1740781923.190034] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 40 events 0x1 mode thread_spinlock
+[1740781923.190036] [s41n01:857959:0]       ib_device.c:595  UCX  DEBUG initialized device 'mlx5_0' (InfiniBand channel adapter) with 1 ports
+[1740781923.190039] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool devx dbrec: align 64, maxelems 4294967295, elemsize 40
+[1740781923.190286] [s41n01:857959:0]    ib_mlx5dv_md.c:2422 UCX  DEBUG mlx5_0: opened DEVX md log_max_qp=17
+[1740781923.190291] [s41n01:857959:0]    ib_mlx5dv_md.c:2006 UCX  DEBUG mlx5_0: ibv_alloc_dm(length=32) failed: Cannot allocate memory
+[1740781923.190294] [s41n01:857959:0]    ib_mlx5dv_md.c:2123 UCX  DEBUG Out of memory: KSM over device memory is not supported
+[1740781923.190297] [s41n01:857959:0]           ib_md.c:1160 UCX  DEBUG mlx5_0: relaxed order memory access is disabled
+[1740781923.190601] [s41n01:857959:0]    ib_mlx5dv_md.c:121  UCX  DEBUG mlx5_0: KSM flush-mr memory registration status "Success" range 0x3622000..0x3622008 iova 0x0 mkey_index 0x0
+[1740781923.190605] [s41n01:857959:0]           ib_md.c:1030 UCX  DEBUG mlx5_0: md open by 'uct_ib_mlx5_devx_md_ops' is successful
+[1740781923.195120] [s41n01:857959:0]            topo.c:898  UCX  DEBUG /sys/class/infiniband/mlx5_0: PF sysfs path is '/sys/devices/pci0000:3a/0000:3a:00.0/0000:3b:00.0'
+[1740781923.195127] [s41n01:857959:0]            topo.c:552  UCX  DEBUG mlx5_0: bdf_name 0000:3b:00.0 sys_dev 1
+[1740781923.195139] [s41n01:857959:0]       ib_device.c:497  UCX  DEBUG mlx5_0: vendor_id 0x15b3 device_id 4123
+[1740781923.195533] [s41n01:857959:0]    ib_mlx5dv_md.c:1877 UCX  DEBUG mlx5_0: crossing_vhca_mkey is not supported
+[1740781923.195536] [s41n01:857959:0]    ib_mlx5dv_md.c:1924 UCX  DEBUG mlx5_0: mkey_by_name_reserve is not supported
+[1740781923.195538] [s41n01:857959:0]    ib_mlx5dv_md.c:1907 UCX  DEBUG mlx5_0: dp_ordering support: force=1 ooo_rw_rc=1 ooo_rw_dc=1
+[1740781923.195654] [s41n01:857959:0]    ib_mlx5dv_md.c:1704 UCX  DEBUG mlx5_0: ODP is disabled because version 1 is not supported for DevX QP
+[1740781923.195785] [s41n01:857959:0]           async.c:247  UCX  DEBUG added async handler 0x366e010 [id=42 ref 1] ???() to hash
+[1740781923.195791] [s41n01:857959:0]           async.c:521  UCX  DEBUG listening to async event fd 42 events 0x1 mode thread_spinlock
+[1740781923.195821] [s41n01:857959:0]       ib_device.c:595  UCX  DEBUG initialized device 'mlx5_0' (InfiniBand channel adapter) with 1 ports
+[1740781923.195826] [s41n01:857959:0]           ib_md.c:1175 UCX  DEBUG mlx5_0: cuda GPUDirect RDMA is not detected by checking /sys/kernel/mm/memory_peers/nv_mem/version
+[1740781923.195830] [s41n01:857959:0]           ib_md.c:1175 UCX  DEBUG mlx5_0: cuda GPUDirect RDMA is not detected by checking /sys/module/nvidia_peermem/version
+[1740781923.195833] [s41n01:857959:0]           ib_md.c:1175 UCX  DEBUG mlx5_0: cuda GPUDirect RDMA is not detected by checking /sys/module/nv_peer_mem/version
+[1740781923.195837] [s41n01:857959:0]           ib_md.c:1175 UCX  DEBUG mlx5_0: rocm GPUDirect RDMA is not detected by checking /dev/kfd
+[1740781923.195843] [s41n01:857959:0]           ib_md.c:1202 UCX  DEBUG mlx5_0: dmabuf is supported
+[1740781923.195846] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool devx dbrec: align 64, maxelems 4294967295, elemsize 40
+[1740781923.196093] [s41n01:857959:0]    ib_mlx5dv_md.c:2422 UCX  DEBUG mlx5_0: opened DEVX md log_max_qp=17
+[1740781923.196098] [s41n01:857959:0]    ib_mlx5dv_md.c:2006 UCX  DEBUG mlx5_0: ibv_alloc_dm(length=32) failed: Cannot allocate memory
+[1740781923.196101] [s41n01:857959:0]    ib_mlx5dv_md.c:2123 UCX  DEBUG Out of memory: KSM over device memory is not supported
+[1740781923.196103] [s41n01:857959:0]           ib_md.c:1160 UCX  DEBUG mlx5_0: relaxed order memory access is disabled
+[1740781923.196409] [s41n01:857959:0]    ib_mlx5dv_md.c:121  UCX  DEBUG mlx5_0: KSM flush-mr memory registration status "Success" range 0x366b000..0x366b008 iova 0x0 mkey_index 0x0
+[1740781923.196429] [s41n01:857959:0]          uct_md.c:96   UCX  DEBUG failed to query gga_mlx5 resources: No such device
+[1740781923.196432] [s41n01:857959:0]     ucp_context.c:1188 UCX  DEBUG No tl resources found for md mlx5_0
+[1740781923.196434] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md mlx5_0 because it has no selected transport resources
+[1740781923.196438] [s41n01:857959:0]    ib_mlx5dv_md.c:2494 UCX  DEBUG mlx5_0: md=0x326f820 md->flags=0x3fa1d7f flush_rkey=0x290500
+[1740781923.196673] [s41n01:857959:0]           mpool.c:194  UCX  DEBUG mpool devx dbrec destroyed
+[1740781923.196675] [s41n01:857959:0]       ib_device.c:616  UCX  DEBUG destroying ib device mlx5_0
+[1740781923.196678] [s41n01:857959:0]           async.c:172  UCX  DEBUG removed async handler 0x366e010 [id=42 ref 1] ???() from hash
+[1740781923.196681] [s41n01:857959:0]           async.c:575  UCX  DEBUG removing async handler 0x366e010 [id=42 ref 1] ???()
+[1740781923.196684] [s41n01:857959:0]           async.c:187  UCX  DEBUG release async handler 0x366e010 [id=42 ref 0] ???()
+[1740781923.197083] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md cma because it has no selected transport resources
+[1740781923.197113] [s41n01:857959:0]     ucp_context.c:1647 UCX  DEBUG closing md knem because it has no selected transport resources
+[1740781923.197118] [s41n01:857959:0]     ucp_context.c:1712 UCX  DEBUG register host memory on: mlx5_0
+[1740781923.197120] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering cuda memory
+[1740781923.197122] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering cuda-managed memory
+[1740781923.197123] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering rocm memory
+[1740781923.197125] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering rocm-managed memory
+[1740781923.197127] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering rdma memory
+[1740781923.197128] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering ze-host memory
+[1740781923.197130] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering ze-device memory
+[1740781923.197131] [s41n01:857959:0]     ucp_context.c:1700 UCX  DEBUG no memory domain supports registering ze-managed memory
+[1740781923.197141] [s41n01:857959:0]           mpool.c:136  UCX  DEBUG mpool rcache_mp: align 8, maxelems 4294967295, elemsize 144
+[1740781923.197182] [s41n01:857959:0]     ucp_context.c:2329 UCX  DEBUG created ucp context ucp_context_1 0x35b3470 [1 mds 5 tls] features 0xe tl bitmap 0x1f 0x0
+[1740781923.197523] [s41n01:857959:0]          ucp_ep.c:405  UCX  DEBUG created ep 0x7f766e967000 to <no debug data> from api call
+[1740781923.197621] [s41n01:857959:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 self cfg#0 tag(rc_mlx5/mlx5_0:1)
+[1740781923.205103] [s41n01:857959:0]           mpool.c:281  UCX  DEBUG               mpool rc_recv_desc: allocated chunk 0x7f765ae00018 of 39845864 bytes with 4752 elements
+[1740781923.205877] [s41n01:857959:0]          wireup.c:1214 UCX  DEBUG   ep 0x7f766e967000: am_lane 0 wireup_msg_lane 0 cm_lane <none> keepalive_lane <none> reachable_mds 0x1
+[1740781923.205885] [s41n01:857959:0]          wireup.c:1237 UCX  DEBUG   ep 0x7f766e967000: lane[0]:  3:rc_mlx5/mlx5_0:1.0 md[0]      -> addr[3].md[0]/ib/sysdev[1] seg 4294967295 rma_bw#0 am am_bw#0 wireup
+[1740781923.205888] [s41n01:857959:0]          wireup.c:1240 UCX  DEBUG   ep 0x7f766e967000: err mode 0, flags 0x1
+[1740781923.206910] [s41n01:857959:0]           rc_ep.c:165  UCX  DEBUG   created rc ep 0x364a010
+[1740781923.206937] [s41n01:857959:0]       wireup_ep.c:508  UCX  DEBUG   ep 0x7f766e967000: wireup_ep 0x2661ea0 created next_ep 0x364a010 to <no debug data> using rc_mlx5/mlx5_0:1
+[1740781923.206965] [s41n01:857959:0]        ib_iface.c:936  UCX  DEBUG   iface 0x34f6180: ah_attr dlid=213 sl=0 port=1 src_path_bits=0
+[1740781923.206981] [s41n01:857959:0]        ib_iface.c:936  UCX  DEBUG   iface 0x34f6180: ah_attr dlid=213 sl=0 port=1 src_path_bits=0
+[1740781923.207001] [s41n01:857959:0]           ud_ep.c:405  UCX  DEBUG   created ep ep=0x326fdb0 iface=0x34f6180 id=0
+[1740781923.207009] [s41n01:857959:0]           ud_ep.c:508  UCX  DEBUG   mlx5_0:1/IB lid 213 qpn 0x140ec epid 0 ep 0x326fdb0 connected to IFACE lid 213 fe80::pkey 0xffff  qpn 0x140ec
+[1740781923.207013] [s41n01:857959:0]        ib_iface.c:936  UCX  DEBUG   iface 0x34f6180: ah_attr dlid=213 sl=0 port=1 src_path_bits=0
+[1740781923.207018] [s41n01:857959:0]        ib_iface.c:936  UCX  DEBUG   iface 0x34f6180: ah_attr dlid=213 sl=0 port=1 src_path_bits=0
+[1740781923.208194] [s41n01:857959:0]           mpool.c:281  UCX  DEBUG   mpool ud_tx_skb: allocated chunk 0x7f765a600018 of 6291432 bytes with 1489 elements
+[1740781923.208243] [s41n01:857959:0]           async.c:247  UCX  DEBUG   added async handler 0x36b3bd0 [id=1000013 ref 1] ???() to hash
+[1740781923.208256] [s41n01:857959:0]       wireup_ep.c:286  UCX  DEBUG   ep 0x7f766e967000: wireup_ep 0x2661ea0 created aux_ep 0x326fdb0 to <no debug data> using ud_mlx5/mlx5_0:1
+[1740781923.208272] [s41n01:857959:0]          wireup.c:1791 UCX  DEBUG ep 0x7f766e967000: send wireup request (flags=0x80)
+[1740781923.208306] [s41n01:857959:a]        ib_iface.c:936  UCX  DEBUG iface 0x34f6180: ah_attr dlid=213 sl=0 port=1 src_path_bits=0
+[1740781923.208315] [s41n01:857959:a]           ud_ep.c:819  UCX  DEBUG simultaneous CREQ ep=0x326fdb0(iface=0x34f6180 conn_sn=0 ep_id=0, dest_ep_id=0 rx_psn=1)
+[1740781923.212150] [s41n01:857959:a]           mpool.c:281  UCX  DEBUG mpool ud_recv_skb: allocated chunk 0x7f7659000018 of 20971496 bytes with 4964 elements
+[1740781923.212334] [s41n01:857959:0]        ib_iface.c:936  UCX  DEBUG   iface 0x33c30b0: ah_attr dlid=213 sl=0 port=1 src_path_bits=0
+[1740781923.212592] [s41n01:857959:0]    rc_mlx5_devx.c:506  UCX  DEBUG   connected rc devx qp 0x140ee on mlx5_0:1/IB to lid 213(+0) sl 0 remote_qp 0x140ee mtu 4096 timer 18x7 rnr 13x7 rd_atom 16
+[1740781923.215088] [s41n01:857959:0]          ucp_ep.c:405  UCX  DEBUG created ep 0x7f766e967040 to <no debug data> from api call
+[1740781923.215118] [s41n01:857959:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 intra-node cf+0) sl 0 remote_qp 0x13b0f mtu 4096 timer 18x7 rnr 13x7 rd_atom 16
+[1740781902.125436] [s41n02:3733069:0]          ucp_ep.c:405  UCX  DEBUG created ep 0x7f9ebd4ee040 to <no debug data> from api call
+[1740781902.125473] [s41n02:3733069:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 intra-node cfg#1 tag(rc_mlx5/mlx5_0:1)
+[1740781902.126184] [s41n02:3733069:0]          wireup.c:1214 UCX  DEBUG   ep 0x7f9ebd4ee040: am_lane 0 wireup_msg_lane 0 cm_lane <none> keepalive_lane <none> reachable_mds 0x1
+[1740781902.126190] [s41n02:3733069:0]          wireup.c:1237 UCX  DEBUG   ep 0x7f9ebd4ee040: lane[0]:  3:rc_mlx5/mlx5_0:1.0 md[0]      -> addr[3].md[0]/ib/sysdev[1] seg 4294967295 rma_bw#0 am am_bw#0 wireup
+[1740781902.126193] [s41n02:3733069:0]          wireup.c:1240 UCX  DEBUG   ep 0x7f9ebd4ee040: err mode 0, flags 0x2
+[1740781902.127107] [s41n02:3733069:0]           rc_ep.c:165  UCX  DEBUG   created rc ep 0x1206bb0
+[1740781902.127112] [s41n02:3733069:0]       wireup_ep.c:508  UCX  DEBUG   ep 0x7f9ebd4ee040: wireup_ep 0x93f960 created next_ep 0x1206bb0 to <no debug data> using rc_mlx5/mlx5_0:1
+[1740781902.127121] [s41n02:3733069:0]        ib_iface.c:936  UCX  DEBUG   iface 0x14930a0: ah_attr dlid=221 sl=0 port=1 src_path_bits=0
+[1740781902.127126] [s41n02:3733069:0]        ib_iface.c:936  UCX  DEBUG   iface 0x14930a0: ah_attr dlid=221 sl=0 port=1 src_path_bits=0
+[1740781902.127130] [s41n02:3733069:0]           ud_ep.c:405  UCX  DEBUG   created ep ep=0x153ed60 iface=0x14930a0 id=1
+[1740781902.127134] [s41n02:3733069:0]           ud_ep.c:508  UCX  DEBUG   mlx5_0:1/IB lid 221 qpn 0x13b0d epid 1 ep 0x153ed60 connected to IFACE lid 221 fe80::pkey 0xffff  qpn 0x136f8
+[1740781902.127136] [s41n02:3733069:0]        ib_iface.c:936  UCX  DEBUG   iface 0x14930a0: ah_attr dlid=221 sl=0 port=1 src_path_bits=0
+[1740781902.127139] [s41n02:3733069:0]        ib_iface.c:936  UCX  DEBUG   iface 0x14930a0: ah_attr dlid=221 sl=0 port=1 src_path_bits=0
+[1740781902.127143] [s41n02:3733069:0]       wireup_ep.c:286  UCX  DEBUG   ep 0x7f9ebd4ee040: wireup_ep 0x93f960 created aux_ep 0x153ed60 to <no debug data> using ud_mlx5/mlx5_0:1
+[1740781902.127157] [s41n02:3733069:0]          wireup.c:1791 UCX  DEBUG ep 0x7f9ebd4ee040: send wireup request (flags=0x40)
+[1740781902.127225] [s41n02:3733069:0]       wireup_ep.c:440  UCX  DEBUG ep 0x7f9ebd4ee000: destroy wireup ep 0xdeb4f0
+[1740781902.127239] [s41n02:3733069:0]           mpool.c:281  UCX  DEBUG mpool ucp_requests: allocated chunk 0x1ba3324 of 57428 bytes with 128 elements
+[1740781902.127286] [s41n02:3733069:0]           ud_ep.c:1783 UCX  DEBUG ep 0x1b3b790: disconnect
+[1740781902.277056] [s41n02:3733069:0]           ud_ep.c:93   UCX  DEBUG ep: 0x153ed60 ca drop@cwnd = 3 in flight: 1
+[1740781925.639687] [s41n02:3733069:0]         pgtable.c:618  UCX  DEBUG purge empty page table
+[1740781925.639804] [s41n02:3733069:0]           mpool.c:194  UCX  DEBUG mpool rcache_mp destroyed
+[1740781925.639832] [s41n02:3733069:0]    ib_mlx5dv_md.c:2494 UCX  DEBUG mlx5_0: md=0x153e870 md->flags=0x3fa1d7f flush_rkey=0x1c4000
+[1740781925.640126] [s41n02:3733069:0]           mpool.c:194  UCX  DEBUG mpool devx dbrec destroyed
+[1740781925.640130] [s41n02:3733069:0]       ib_device.c:616  UCX  DEBUG destroying ib device mlx5_0
+[1740781925.640136] [s41n02:3733069:0]           async.c:172  UCX  DEBUG removed async handler 0x124d2a0 [id=40 ref 1] ???() from hash
+[1740781925.640140] [s41n02:3733069:0]           async.c:575  UCX  DEBUG removing async handler 0x124d2a0 [id=40 ref 1] ???()
+[1740781925.640146] [s41n02:3733069:0]           async.c:187  UCX  DEBUG release async handler 0x124d2a0 [id=40 ref 0] ???()
+[1740781925.640796] [s41n02:3733069:0]          ucp_ep.c:1752 UCX  DEBUG ep 0x7f9ebd4ee000 flags 0x97 cfg_index 0: close_nbx(flags=0x0)
+[1740781925.640804] [s41n02:3733069:0]           flush.c:386  UCX  DEBUG close ep 0x7f9ebd4ee000
+[1740781925.641122] [s41n02:3733069:0]      ucp_worker.c:2886 UCX  DEBUG destroy worker 0x12bcea0
+[1740781925.641126] [s41n02:3733069:0]      ucp_worker.c:2872 UCX  DEBUG worker 0x12bcea0: destroy all endpoints
+[1740781925.641131] [s41n02:3733069:0]          ucp_ep.c:1279 UCX  DEBUG ep 0x7f9ebd4ee000: purge uct_ep[0]=0x19eef00
+[1740781925.641136] [s41n02:3733069:0]          ucp_ep.c:1286 UCX  DEBUG ep 0x7f9ebd4ee000: destroy
+[1740781925.641139] [s41n02:3733069:0]          ucp_ep.c:1604 UCX  DEBUG ep 0x7f9ebd4ee000: cleanup lanes
+[1740781925.641144] [s41n02:3733069:0]          ucp_ep.c:1615 UCX  DEBUG ep 0x7f9ebd4ee000: pending & destroy uct_ep[0]=0x19eef00
+[1740781925.641155] [s41n02:3733069:0]         ib_mlx5.c:973  UCX  DEBUG device uverbs0: modify QP 0x19eef48 num 0x13b0f to state 6
+[1740781925.641450] [s41n02:3733069:0]           rc_ep.c:185  UCX  DEBUG destroy rc ep 0x19eef00
+[1740781925.641476] [s41n02:3733069:0]          ucp_ep.c:1279 UCX  DEBUG ep 0x7f9ebd4ee040: purge uct_ep[0]=0x93f960
+[1740781925.641483] [s41n02:3733069:0]          ucp_ep.c:1286 UCX  DEBUG ep 0x7f9ebd4ee040: destroy
+[1740781925.641486] [s41n02:3733069:0]          ucp_ep.c:1604 UCX  DEBUG ep 0x7f9ebd4ee040: cleanup lanes
+[1740781925.641488] [s41n02:3733069:0]          ucp_ep.c:1615 UCX  DEBUG ep 0x7f9ebd4ee040: pending & destroy uct_ep[0]=0x93f960
+[1740781925.641497] [s41n02:3733069:0]       wireup_ep.c:440  UCX  DEBUG ep 0x7f9ebd4ee040: destroy wireup ep 0x93f960
+[1740781925.641502] [s41n02:3733069:0]           ud_ep.c:1783 UCX  DEBUG ep 0x153ed60: disconnect
+[1740781925.641507] [s41n02:3733069:0]           async.c:172  UCX  DEBUG removed async handler 0x1b8a870 [id=1000013 ref 1] ???() from hash
+[1740781925.641512] [s41n02:3733069:0]           async.c:575  UCX  DEBUG removing async handler 0x1b8a870 [id=1000013 ref 1] ???()
+[1740781925.641521] [s41n02:3733069:0]           async.c:187  UCX  DEBUG release async handler 0x1b8a870 [id=1000013 ref 0] ???()
+[1740781925.641531] [s41n02:3733069:0]         ib_mlx5.c:973  UCX  DEBUG device uverbs0: modify QP 0x1206bf8 num 0x13b10 to state 6
+[1740781925.641679] [s41n02:3733069:0]           rc_ep.c:185  UCX  DEBUG destroy rc ep 0x1206bb0
+[1740781925.641691] [s41n02:3733069:0]      ucp_worker.c:2872 UCX  DEBUG worker 0x12bcea0: destroy internal endpoints
+[1740781925.641694] [s41n02:3733069:0]      ucp_worker.c:244  UCX  DEBUG worker 0x12bcea0: remove active message handlers
+[1740781925.641752] [s41n02:3733069:0]           mpool.c:194  UCX  DEBUG mpool ucp_reg_bufs destroyed
+[1740781925.641748] [s41n02:3733069:a]       ib_device.c:479  UCX  DEBUG IB Async event on mlx5_0: SRQ-attached QP 0x13b0f was flushed
+[1740781925.641759] [s41n02:3733069:0]           mpool.c:194  UCX  DEBUG mpool ucp_am_bufs destroyed
+[1740781925.641769] [s41n02:3733069:0]           mpool.c:194  UCX  DEBUG mpool ucp_am_bufs destroyed
+[1740781925.641772] [s41n02:3733069:0]           mpool.c:194  UCX  DEBUG mpool ucp_am_bufs destroyed
+[1740781925.641775] [s41n02:3733069:0]           mpool.c:194  UCX  DEBUG mpool ucp_rkeys destroyed
+[1740781925.641763] [s41n02:3733069:a]       ib_device.c:479  UCX  DEBUG IB Async event on mlx5_0: SRQ-attached QP 0x13b10 was flushed
+[1740781925.641826] [s41n02:3733069:0]           mpool.c:194  UCX  DEBUG mpool ucp_requests destroyed
+[1740781925.641835] [s41n02:3733069:0]           async.c:172  UCX  DEBUG removed async handler 0x148b6e0 [id=38 ref 1] ???() from hash
+[1740781925.641839] [s41n02:3733069:0]           async.c:575  UCX  DEBUG removing async handler 0x148b6e0 [id=38 ref 1] ???()
+[1740781925.641844] [s41n02:3733069:0]           async.c:187  UCX  DEBUG release async handler 0x148b6e0 [id=38 ref 0] ???()
+[1740781925.641858] [s41n02:3733069:0]           async.c:172  UCX  DEBUG removed async handler 0x1493f90 [id=29 ref 1] ???() from hash
+[1740781925.641861] [s41n02:3733069:0]           async.c:575  UCX  DEBUG removing async handler 0x1493f90 [id=29 ref 1] ???()
+[1740781925.641864] [s41n02:3733069:0]           async.c:187  UCX  DEBUG release async handler 0x1493f90 [id=29 ref 0] ???()
+[1740781925.641873] [s41n02:3733069:0]           mpool.c:194  UCX  DEBUG mpool rc_verbs_short_desc destroyed
+[1740781925.642336] [s41n02:3733069:0]           mpool.c:194  UCX  DEBUG mpool send-ops-mpool destroy

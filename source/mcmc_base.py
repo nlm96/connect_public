@@ -5,7 +5,8 @@ import numpy as np
 
 from .tools import get_node_with_most_cpus
 
-class MCMC_base_class():
+
+class MCMC_base_class:
     # A new mcmc sampler class that inherits from this class must contain the following methods:
     #
     #    * get_Rminus1_of_chains(all_chains, iteration) returning (bool) kill_iteration, (str) Rm1_line
@@ -19,27 +20,30 @@ class MCMC_base_class():
     #    * backup_full_chains(iteration)
     #    * import_loglkl_from_chains(iteration) returning (ndarray) loglkl_values (-log(likelihood) values)
 
-
     def __init__(self, param, CONNECT_PATH):
         self.param = param
         self.CONNECT_PATH = CONNECT_PATH
-        slurm_bool = int(sp.run('if [ -z $SLURM_NPROCS ]; then echo 0; else echo 1; fi', shell=True, stdout=sp.PIPE).stdout.decode('utf-8'))
+        slurm_bool = int(
+            sp.run(
+                "if [ -z $SLURM_NPROCS ]; then echo 0; else echo 1; fi",
+                shell=True,
+                stdout=sp.PIPE,
+            ).stdout.decode("utf-8")
+        )
         self.mcmc_node = None
         self.temperature = 0.0
         if slurm_bool:
             self.mcmc_node = get_node_with_most_cpus()
         os.environ["OMPI_MCA_rmaps_base_oversubscribe"] = "1"
 
-
-
     def filter_steps(self, N_left, N_max_points):
-        N_to_use = [0]*len(N_left)
+        N_to_use = [0] * len(N_left)
         if np.sum(N_left) > N_max_points:
-            N_per_chain = int(np.floor(N_max_points/len(N_left)))
+            N_per_chain = int(np.floor(N_max_points / len(N_left)))
             if not N_per_chain == 0:
                 for i in range(len(N_left)):
                     if N_left[i] >= N_per_chain:
-                        N_left[i] = N_left[i]-N_per_chain
+                        N_left[i] = N_left[i] - N_per_chain
                         N_to_use[i] = N_per_chain
                     else:
                         N_to_use[i] = N_left[i]
@@ -63,20 +67,19 @@ class MCMC_base_class():
         else:
             return N_left
 
-
     def Rm1(self, chains):
         covs = []
         Ns = []
         means = []
         for c in chains:
             Np = c.shape[1]
-            N = int(len(c[:,0]))
+            N = int(len(c[:, 0]))
             Ns.append(N)
-            means.append(np.sum(c,axis=0)/N)
-            covs.append(np.cov(c,rowvar=False))
-        covs=np.array(covs)
-        means=np.array(means)
-        Ns=np.array(Ns)
+            means.append(np.sum(c, axis=0) / N)
+            covs.append(np.cov(c, rowvar=False))
+        covs = np.array(covs)
+        means = np.array(means)
+        Ns = np.array(Ns)
         mean_of_covs = np.average(covs, weights=Ns, axis=0)
         cov_of_means = np.atleast_2d(np.cov(means.T))
         d = np.sqrt(np.diag(cov_of_means))
@@ -91,31 +94,32 @@ class MCMC_base_class():
             means = means.T[0]
             total_N = np.sum(Ns)
             total_mean = 0
-            for m, n in zip(means,Ns):
-                total_mean += m*n
+            for m, n in zip(means, Ns):
+                total_mean += m * n
             total_mean /= total_N
             within = 0
             between = 0
             for n, v, m in zip(Ns, covs, means):
-                within += n*v
-                between += n*(m-total_mean)**2
+                within += n * v
+                between += n * (m - total_mean) ** 2
                 within /= total_N
-                between /= (total_N-1)
-            Rminus1 = between/within
+                between /= total_N - 1
+            Rminus1 = between / within
 
         return Rminus1
 
-
-    def discard_oversampled_points(self,
-                                   iteration         # Current iteration number
-                               ):
+    def discard_oversampled_points(self, iteration):  # Current iteration number
 
         if iteration > 1:
             # Use previous iteration's data for comparison
-            file_old_data = f"data/{self.param.jobname}/number_{iteration - 1}/model_params.txt"
+            file_old_data = (
+                f"data/{self.param.jobname}/number_{iteration - 1}/model_params.txt"
+            )
         else:
             # Use initial sampling folder for comparison
-            file_old_data = f"data/{self.param.jobname}/N-{self.param.N}/model_params.txt"
+            file_old_data = (
+                f"data/{self.param.jobname}/N-{self.param.N}/model_params.txt"
+            )
 
         points1, points2 = self.import_points_to_compare(file_old_data, iteration)
 
@@ -123,30 +127,31 @@ class MCMC_base_class():
 
         ranges = []
         for par1, par2 in zip(points1.T, points2.T):
-            ranges.append([min(min(par1),min(par2)),max(max(par1),max(par2))])
+            ranges.append([min(min(par1), min(par2)), max(max(par1), max(par2))])
         ranges = np.array(ranges)
         range_dim = np.diff(ranges).T[0]
 
-
         indices_accepted = []
-        for i,p in enumerate(points2):
-            distances1 = np.sqrt(np.sum(((points1-p)/range_dim)**2,axis=1))
+        for i, p in enumerate(points2):
+            distances1 = np.sqrt(np.sum(((points1 - p) / range_dim) ** 2, axis=1))
             min_dist = min(distances1)
-            points2_i = np.delete(points2,i,0)
-            distances2 = np.sqrt(np.sum(((points2_i-p)/range_dim)**2,axis=1))
+            points2_i = np.delete(points2, i, 0)
+            distances2 = np.sqrt(np.sum(((points2_i - p) / range_dim) ** 2, axis=1))
             j = np.argmin(distances1)
             p1_min = points1[j]
-            points1_i = np.delete(points1,np.argmin(distances1),0)
-            distances1_2 = np.sqrt(np.sum(((points1_i-p1_min)/range_dim)**2,axis=1))
+            points1_i = np.delete(points1, np.argmin(distances1), 0)
+            distances1_2 = np.sqrt(
+                np.sum(((points1_i - p1_min) / range_dim) ** 2, axis=1)
+            )
             cp_list1 = distances1_2[np.argsort(distances1_2)[:num_points_in_vicinity]]
-            av_dist1 = np.sum(cp_list1)/num_points_in_vicinity
+            av_dist1 = np.sum(cp_list1) / num_points_in_vicinity
             std_dist1 = np.std(cp_list1)
             cp_list2 = distances2[np.argsort(distances2)[:num_points_in_vicinity]]
-            av_dist2 = np.sum(cp_list2)/num_points_in_vicinity
+            av_dist2 = np.sum(cp_list2) / num_points_in_vicinity
             std_dist2 = np.std(cp_list2)
-            if min_dist > av_dist1 + 2*std_dist1:
+            if min_dist > av_dist1 + 2 * std_dist1:
                 indices_accepted.append(i)
-            elif av_dist2 + 0*std_dist2 < av_dist1 - 2*std_dist1:
+            elif av_dist2 + 0 * std_dist2 < av_dist1 - 2 * std_dist1:
                 indices_accepted.append(i)
 
         self.backup_full_chains(iteration)
@@ -155,57 +160,70 @@ class MCMC_base_class():
 
         return len(indices_accepted)
 
+    def import_points_to_compare(
+        self,
+        file_old_data,  # model_params.txt file with all the previous data
+        iteration,  # Current iteration number
+    ):
 
-    def import_points_to_compare(self,
-                                 file_old_data,    # model_params.txt file with all the previous data
-                                 iteration         # Current iteration number
-                             ):
-
-        with open(file_old_data, 'r') as f:
-            lines=list(f)
+        with open(file_old_data, "r") as f:
+            lines = list(f)
         points1 = []
         for line in lines[1:]:
-            points1.append(np.float32(line.replace('\n', '').split('\t')))
+            points1.append(np.float32(line.replace("\n", "").split("\t")))
         points1 = np.array(points1)
 
         points2 = self.import_points_from_chains(iteration)
 
         return points1, points2
 
-
     def Gelman_Rubin_log_ini(self):
 
-        with open(f'data/{self.param.jobname}/Gelman-Rubin.txt', 'w') as f:
-            f.write('# R-1 values for each parameter in every iteration\n')
-            header = '# iterations'
-            for par in self.param.parameters:
-                header += '\t'+par
-            header += '\tCombined\n'
+        with open(f"data/{self.param.jobname}/Gelman-Rubin.txt", "w") as f:
+            f.write("# R-1 values for each parameter in every iteration\n")
+            header = "# iterations"
+
+            native_params = list(self.param.parameters.keys())
+            custom_params = list(self.param.custom_parameters.keys())
+            params = native_params + custom_params
+
+            for par in params:
+                header += "\t" + par
+            header += "\tCombined\n"
             f.write(header)
 
+    def Gelman_Rubin_log(
+        self,
+        iteration,  # Iteration number
+        all_chains=None,  # chains object
+    ):
 
-    def Gelman_Rubin_log(self,
-                         iteration,       # Iteration number                     
-                         all_chains=None, # chains object 
-                     ):
-
-        Rm1_line = f'{iteration-1}-{iteration}'
+        Rm1_line = f"{iteration-1}-{iteration}"
         kill_iteration, Rm1_line_add = self.get_Rminus1_of_chains(all_chains, iteration)
         Rm1_line += Rm1_line_add
 
-        with open(f'data/{self.param.jobname}/Gelman-Rubin.txt', 'a') as f:
+        with open(f"data/{self.param.jobname}/Gelman-Rubin.txt", "a") as f:
             f.write(Rm1_line)
 
         return kill_iteration
 
-
-    def get_number_of_data_points(self,
-                                  iteration   # Iteration number
-                              ):   
+    def get_number_of_data_points(self, iteration):  # Iteration number
         if iteration > 0:
-            with open(os.path.join(self.CONNECT_PATH, f'data/{self.param.jobname}/number_{iteration}/model_params.txt'), 'r') as f:
+            with open(
+                os.path.join(
+                    self.CONNECT_PATH,
+                    f"data/{self.param.jobname}/number_{iteration}/model_params.txt",
+                ),
+                "r",
+            ) as f:
                 return len(list(f)) - 1
         else:
-            #If iteration is 0, use the initial sampling folder
-            with open(os.path.join(self.CONNECT_PATH, f'data/{self.param.jobname}/N-{self.param.N}/model_params.txt'), 'r') as f:
+            # If iteration is 0, use the initial sampling folder
+            with open(
+                os.path.join(
+                    self.CONNECT_PATH,
+                    f"data/{self.param.jobname}/N-{self.param.N}/model_params.txt",
+                ),
+                "r",
+            ) as f:
                 return len(list(f)) - 1

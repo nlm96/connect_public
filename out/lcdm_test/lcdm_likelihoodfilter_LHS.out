@@ -1,0 +1,326 @@
+========= Job started at Tue Feb  4 06:04:27 CET 2025 ==========
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014544110537943314, 'omega_cdm': 0.22216156668089804, 'H0': 97.63356571536646, 'ln10^{10}A_s': 2.576259110595874, 'n_s': 1.0483124022192936, 'tau_reio': 0.3974067029764412, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01400013158661167, 'omega_cdm': 0.20160386576073117, 'H0': 112.16872366936562, 'ln10^{10}A_s': 1.4999076329697871, 'n_s': 1.1989371669574669, 'tau_reio': 0.37763965677614775, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.015667474925827016, 'omega_cdm': 0.24561872987009262, 'H0': 98.03406132415691, 'ln10^{10}A_s': 2.5785193311756607, 'n_s': 0.7646191888024598, 'tau_reio': 0.38003277712658484, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014300476495847345, 'omega_cdm': 0.23097691371969048, 'H0': 67.08920767470619, 'ln10^{10}A_s': 1.2556304695733727, 'n_s': 0.8460691459320926, 'tau_reio': 0.382990826068258, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01453012622298866, 'omega_cdm': 0.2228567293356764, 'H0': 73.16803056351085, 'ln10^{10}A_s': 2.239550330191875, 'n_s': 0.7861061065208169, 'tau_reio': 0.39879270507301173, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.015197351614428155, 'omega_cdm': 0.24479962939647273, 'H0': 87.77484998553567, 'ln10^{10}A_s': 3.172073360635009, 'n_s': 0.7722999353710027, 'tau_reio': 0.399492725894429, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.015328844948996593, 'omega_cdm': 0.2405518608258392, 'H0': 48.48997425990651, 'ln10^{10}A_s': 1.0457849376185115, 'n_s': 1.034024930531093, 'tau_reio': 0.39245404252477367, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014255069624171108, 'omega_cdm': 0.2498999527598326, 'H0': 48.73568930412165, 'ln10^{10}A_s': 2.3891287125897023, 'n_s': 1.1132812330001904, 'tau_reio': 0.38437420223863206, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014063409837203035, 'omega_cdm': 0.20662117833023505, 'H0': 94.81586763738422, 'ln10^{10}A_s': 2.574488839755873, 'n_s': 1.1474959431362275, 'tau_reio': 0.3839151786554095, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014249690707925897, 'omega_cdm': 0.24477074665360093, 'H0': 56.25640755514727, 'ln10^{10}A_s': 3.18193505256789, 'n_s': 0.7930169132338016, 'tau_reio': 0.39227326418613206, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014064085443080378, 'omega_cdm': 0.24897726050180585, 'H0': 74.96926152063388, 'ln10^{10}A_s': 4.207272992823156, 'n_s': 1.2667691154230476, 'tau_reio': 0.3841950142945075, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014382683685164339, 'omega_cdm': 0.24245095611453377, 'H0': 70.73611182035631, 'ln10^{10}A_s': 2.449586204529723, 'n_s': 0.9727061611378527, 'tau_reio': 0.393707858854274, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014235117937457862, 'omega_cdm': 0.2448262609352611, 'H0': 55.024488946737804, 'ln10^{10}A_s': 4.381485628550328, 'n_s': 0.8530588134086963, 'tau_reio': 0.35670506016380227, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.03652396436039877, 'omega_cdm': 0.0272103346330949, 'H0': 43.0614330243761, 'ln10^{10}A_s': 3.520740384187668, 'n_s': 1.1018111536282564, 'tau_reio': 0.33811293894707306, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+perturbations_init(L:1006) :error in perturbations_solve(ppr, pba, pth, ppt, index_md, index_ic, index_k, pppw[thread]);
+=>perturbations_solve(L:3221) :error in perturbations_find_approximation_switches(ppr, pba, pth, ppt, index_md, k, ppw, tau, ppt->tau_sampling[tau_actual_size-1], ppr->tol_tau_approx, interval_number, interval_number_of, interval_limit, interval_approx);
+=>perturbations_find_approximation_switches(L:3689) :error in perturbations_approximations(ppr, pba, pth, ppt, index_md, k, mid, ppw);
+=>perturbations_approximations(L:6190) :condition (tau_c < 0.) is true; tau_c = 1/kappa' should always be positive unless there is something wrong in the thermodynamics module. However you have here tau_c=-6.805918e+08 at z=4.788492e-02, conformal time=2.077160e+04 x_e=-2.335054e-03. (This could come from the interpolation of a too poorly sampled reionisation history?).
+
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.015733873795176323, 'omega_cdm': 0.22666622323153846, 'H0': 34.14138338259462, 'ln10^{10}A_s': 4.518765988904727, 'n_s': 1.178928099480196, 'tau_reio': 0.3880842267671283, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014187078298219616, 'omega_cdm': 0.2437373665755707, 'H0': 38.7841134118529, 'ln10^{10}A_s': 1.4984737408230333, 'n_s': 1.1550920946397034, 'tau_reio': 0.3581094081968965, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01542326698296917, 'omega_cdm': 0.24914415554085648, 'H0': 30.266749227873042, 'ln10^{10}A_s': 1.2269702285647799, 'n_s': 0.7198039391755696, 'tau_reio': 0.3951602657941407, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014905403217574418, 'omega_cdm': 0.23097342010226438, 'H0': 79.80789832001383, 'ln10^{10}A_s': 1.7927459921626223, 'n_s': 0.8026327885984575, 'tau_reio': 0.36653576012642775, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014967710645293836, 'omega_cdm': 0.23912677330117718, 'H0': 45.862889298429536, 'ln10^{10}A_s': 2.140530104035564, 'n_s': 1.0687231003547082, 'tau_reio': 0.36972929100512153, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014620450334252388, 'omega_cdm': 0.22643354607735522, 'H0': 74.65603789675512, 'ln10^{10}A_s': 2.7842938587303507, 'n_s': 1.1284019660705988, 'tau_reio': 0.3700438102498022, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.0147651514722606, 'omega_cdm': 0.1887476604348851, 'H0': 55.82158298248977, 'ln10^{10}A_s': 2.671225175416657, 'n_s': 1.0409449421793842, 'tau_reio': 0.3963762146294641, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01485331880083771, 'omega_cdm': 0.21977412894559706, 'H0': 44.69423337413291, 'ln10^{10}A_s': 4.2496226073799, 'n_s': 1.0609270970470286, 'tau_reio': 0.3825372630820857, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014110260856889918, 'omega_cdm': 0.20247399485952614, 'H0': 47.22988764163024, 'ln10^{10}A_s': 1.51787986105044, 'n_s': 0.8363567136839997, 'tau_reio': 0.37255749137173755, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014110980788632316, 'omega_cdm': 0.23774118199077834, 'H0': 45.61180906704655, 'ln10^{10}A_s': 1.6290164149283262, 'n_s': 0.8077933650626069, 'tau_reio': 0.3924397297490918, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014385475589507958, 'omega_cdm': 0.2268212091314336, 'H0': 51.38528634550123, 'ln10^{10}A_s': 1.8118556776790524, 'n_s': 1.2037867677455893, 'tau_reio': 0.3620188722833098, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.020176708440734263, 'omega_cdm': 0.014494810328897881, 'H0': 88.19148035747902, 'ln10^{10}A_s': 3.069451272982595, 'n_s': 0.9447391746566537, 'tau_reio': 0.3370522780992718, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+perturbations_init(L:1006) :error in perturbations_solve(ppr, pba, pth, ppt, index_md, index_ic, index_k, pppw[thread]);
+=>perturbations_solve(L:3221) :error in perturbations_find_approximation_switches(ppr, pba, pth, ppt, index_md, k, ppw, tau, ppt->tau_sampling[tau_actual_size-1], ppr->tol_tau_approx, interval_number, interval_number_of, interval_limit, interval_approx);
+=>perturbations_find_approximation_switches(L:3689) :error in perturbations_approximations(ppr, pba, pth, ppt, index_md, k, mid, ppw);
+=>perturbations_approximations(L:6190) :condition (tau_c < 0.) is true; tau_c = 1/kappa' should always be positive unless there is something wrong in the thermodynamics module. However you have here tau_c=-9.889284e+08 at z=5.157126e-02, conformal time=2.225868e+04 x_e=-2.890760e-03. (This could come from the interpolation of a too poorly sampled reionisation history?).
+
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014083815780590545, 'omega_cdm': 0.22435345027079862, 'H0': 111.17519208221925, 'ln10^{10}A_s': 3.0165370543796626, 'n_s': 1.0595077104125725, 'tau_reio': 0.35795539970278845, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.015982352064307356, 'omega_cdm': 0.2457472582266861, 'H0': 30.094350705730253, 'ln10^{10}A_s': 4.201036705052753, 'n_s': 1.0996970282364182, 'tau_reio': 0.38566274710982495, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01476221849469312, 'omega_cdm': 0.24843840783965762, 'H0': 115.00166349406625, 'ln10^{10}A_s': 4.029281288160707, 'n_s': 1.2887235352961672, 'tau_reio': 0.3843661062928488, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01402270451443107, 'omega_cdm': 0.2259059538759887, 'H0': 66.98373026435362, 'ln10^{10}A_s': 2.5569372898111387, 'n_s': 1.160103008875877, 'tau_reio': 0.3707805267357352, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.015159809300508675, 'omega_cdm': 0.21944774989108018, 'H0': 109.51801794989498, 'ln10^{10}A_s': 1.7506129135856405, 'n_s': 1.0044714487300124, 'tau_reio': 0.3963485157985697, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01628777043012299, 'omega_cdm': 0.23680215273572947, 'H0': 113.97481187607116, 'ln10^{10}A_s': 4.7677285572131325, 'n_s': 0.8333614769123466, 'tau_reio': 0.3956441539657038, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014761510935432192, 'omega_cdm': 0.19421962859944852, 'H0': 92.72073782412778, 'ln10^{10}A_s': 2.913731181025763, 'n_s': 0.9612347005696189, 'tau_reio': 0.39984606710295234, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014025819394076062, 'omega_cdm': 0.2293048774187869, 'H0': 49.276889097667265, 'ln10^{10}A_s': 2.983304826624427, 'n_s': 1.0047783879273373, 'tau_reio': 0.3590437768934938, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01409610796273345, 'omega_cdm': 0.2448885062534802, 'H0': 86.21419323770766, 'ln10^{10}A_s': 4.01328203726696, 'n_s': 0.8930443633775389, 'tau_reio': 0.37441100649087367, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014370547902122775, 'omega_cdm': 0.2328001919420804, 'H0': 61.31113775733385, 'ln10^{10}A_s': 3.238673312863474, 'n_s': 1.1535943699470728, 'tau_reio': 0.391221790804499, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014507417432531186, 'omega_cdm': 0.23209057964283455, 'H0': 95.50811166407485, 'ln10^{10}A_s': 4.4602193169064535, 'n_s': 1.2175893614600386, 'tau_reio': 0.38618554961698387, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014597399499380428, 'omega_cdm': 0.20707980482604438, 'H0': 89.05284381664595, 'ln10^{10}A_s': 3.3574487986308315, 'n_s': 0.7049421855271557, 'tau_reio': 0.3811501243332975, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014113920477444062, 'omega_cdm': 0.19709062306125835, 'H0': 118.70596485085593, 'ln10^{10}A_s': 4.129912660943514, 'n_s': 0.779786585586392, 'tau_reio': 0.3935626673998959, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.016210913807730876, 'omega_cdm': 0.2430241861345659, 'H0': 54.07136866214931, 'ln10^{10}A_s': 2.4397952795155606, 'n_s': 0.8717498162363296, 'tau_reio': 0.39139853079782244, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01570245313201682, 'omega_cdm': 0.2490775301112954, 'H0': 50.548441077925105, 'ln10^{10}A_s': 2.860831578114535, 'n_s': 1.1928536826828449, 'tau_reio': 0.38314511385988964, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014373371585165043, 'omega_cdm': 0.23203722904095503, 'H0': 97.10901611283245, 'ln10^{10}A_s': 4.6421908221618535, 'n_s': 1.1119838396671373, 'tau_reio': 0.3955441792037744, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014653783606735329, 'omega_cdm': 0.23918666583148843, 'H0': 30.224385505839805, 'ln10^{10}A_s': 2.0334733450873284, 'n_s': 0.9711314910494308, 'tau_reio': 0.38560869907369877, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014453944244864677, 'omega_cdm': 0.21596232086317077, 'H0': 96.7693745272605, 'ln10^{10}A_s': 1.53067795655483, 'n_s': 1.0832089601445585, 'tau_reio': 0.38546090873287386, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01595896007167204, 'omega_cdm': 0.23880843059281232, 'H0': 68.85568082415742, 'ln10^{10}A_s': 2.796866272472134, 'n_s': 0.7102926205415072, 'tau_reio': 0.39900175026481965, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01409181635914002, 'omega_cdm': 0.2483891623898761, 'H0': 104.57097329629396, 'ln10^{10}A_s': 1.6171431102674663, 'n_s': 1.0530803500949155, 'tau_reio': 0.3363691482915604, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.0158887364354116, 'omega_cdm': 0.22967716391377999, 'H0': 116.92291753139, 'ln10^{10}A_s': 4.351192545435184, 'n_s': 1.1136210364210517, 'tau_reio': 0.3987738232540165, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014318759884474853, 'omega_cdm': 0.24282795060004864, 'H0': 66.88715055321995, 'ln10^{10}A_s': 4.374729687039093, 'n_s': 1.2391553492453338, 'tau_reio': 0.3652392547638221, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014038631972984144, 'omega_cdm': 0.1803096930616187, 'H0': 111.13782035964906, 'ln10^{10}A_s': 2.1490450658343923, 'n_s': 0.8644133847895841, 'tau_reio': 0.38904018191436135, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.015054520875086188, 'omega_cdm': 0.24624673492910082, 'H0': 112.97744016180813, 'ln10^{10}A_s': 1.1944768163871995, 'n_s': 1.2193984912697724, 'tau_reio': 0.36985505358151893, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014523776948859824, 'omega_cdm': 0.23585004022830114, 'H0': 67.76803022012413, 'ln10^{10}A_s': 1.6248610842053424, 'n_s': 1.1980946892276076, 'tau_reio': 0.3655018869066008, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01612351449120788, 'omega_cdm': 0.23626372507455726, 'H0': 113.90306489465904, 'ln10^{10}A_s': 4.535822188241023, 'n_s': 1.0601213904106257, 'tau_reio': 0.397083849386821, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01533277064105511, 'omega_cdm': 0.23921503667747374, 'H0': 99.55102632766696, 'ln10^{10}A_s': 4.23474341461001, 'n_s': 0.9684282791192709, 'tau_reio': 0.3684887028264455, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014942963646325871, 'omega_cdm': 0.2313651120107474, 'H0': 102.05968404828194, 'ln10^{10}A_s': 2.9648686693068766, 'n_s': 0.8125802273071866, 'tau_reio': 0.382698672240301, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014295641823830802, 'omega_cdm': 0.19849503053962816, 'H0': 77.86251218387767, 'ln10^{10}A_s': 1.8862924610332379, 'n_s': 1.108315071015319, 'tau_reio': 0.3889018962823771, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01493539007130877, 'omega_cdm': 0.2336793128422933, 'H0': 70.55800710897844, 'ln10^{10}A_s': 4.384257721731197, 'n_s': 1.039839003189408, 'tau_reio': 0.376044531179494, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014730363959863118, 'omega_cdm': 0.2327629353508392, 'H0': 73.83093430945716, 'ln10^{10}A_s': 4.3651403246551626, 'n_s': 0.9837345517893021, 'tau_reio': 0.3837303590108014, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01501254513647079, 'omega_cdm': 0.24517714842267838, 'H0': 98.9986286428326, 'ln10^{10}A_s': 1.5473449192660391, 'n_s': 0.8523673186838614, 'tau_reio': 0.37101184677918836, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014215630967015416, 'omega_cdm': 0.19407458636621036, 'H0': 70.98741526843091, 'ln10^{10}A_s': 1.978327068911558, 'n_s': 0.7817242974198563, 'tau_reio': 0.39528746276768306, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014165218670431329, 'omega_cdm': 0.2127559504417004, 'H0': 87.41566301756913, 'ln10^{10}A_s': 2.1470999896742797, 'n_s': 1.2879267306855193, 'tau_reio': 0.3607069673098502, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01562278596151642, 'omega_cdm': 0.2480704601598628, 'H0': 38.936800851786906, 'ln10^{10}A_s': 1.9118876600196257, 'n_s': 1.233189438714052, 'tau_reio': 0.3769641229852521, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014818198601617984, 'omega_cdm': 0.24959019676865915, 'H0': 112.36339608966762, 'ln10^{10}A_s': 4.650001167405209, 'n_s': 0.7022646651588318, 'tau_reio': 0.39696502793756844, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.014382118416182012, 'omega_cdm': 0.23974207206524142, 'H0': 93.02372130848862, 'ln10^{10}A_s': 3.13019368400872, 'n_s': 0.948643849561379, 'tau_reio': 0.3949515053732414, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+The following model failed in CLASS:
+{'output': 'tCl,lCl,pCl,mPk', 'lensing': 'yes', 'k_pivot': 0.05, 'N_ur': 2.0328, 'N_ncdm': 1, 'm_ncdm': 0.06, 'T_ncdm': 0.71611, 'omega_b': 0.01527468885094578, 'omega_cdm': 0.2205488799018589, 'H0': 44.06786989664898, 'ln10^{10}A_s': 4.451531112252162, 'n_s': 0.9664058431731769, 'tau_reio': 0.38854466042415775, 'P_k_max_1/Mpc': 8.444500000000003, 'z_max_pk': 13.65}
+thermodynamics_init(L:404) :error in thermodynamics_solve(ppr,pba,pth,ptw,pvecback);
+=>thermodynamics_solve(L:1602) :error in thermodynamics_reionization_evolve_with_tau(&tpaw, interval_limit[index_interval], interval_limit[index_interval+1], mz_output, pth->tt_size);
+=>thermodynamics_reionization_evolve_with_tau(L:2269) :condition (tau_sup < pth->tau_reio) is true; parameters are such that reionization cannot start after z_start_max
+========= Job finished at Tue Feb  4 07:07:20 CET 2025 ==========

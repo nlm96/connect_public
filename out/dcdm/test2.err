@@ -1,0 +1,177 @@
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_12.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 12] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_9.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 9] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_1.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 1] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_7.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 7] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_11.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 11] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_14.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 14] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_6.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 6] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_22.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 22] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_19.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 19] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_15.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 15] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_25.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_26.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_34.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_33.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_28.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_30.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_32.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_31.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 35] | ERROR: Timeout while waiting for message.
+Exiting safely.
+[CHILD][Parent Rank 25] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 28] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 31] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 32] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 34] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 30] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 33] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 26] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_24.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 45] | ERROR: Timeout while waiting for message.
+Exiting safely.
+[CHILD][Parent Rank 43] | ERROR: Timeout while waiting for message.
+Exiting safely.
+[CHILD][Parent Rank 24] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 41] | ERROR: Timeout while waiting for message.
+Exiting safely.
+[CHILD][Parent Rank 37] | ERROR: Timeout while waiting for message.
+Exiting safely.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_48.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_47.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_38.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_39.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_44.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_42.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 48] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 38] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 44] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 47] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 39] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 42] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_36.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 36] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/N-100/extra_rs_drag_data/rs_drag_data_8.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 8] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[PARENT][Rank 35] | WARNING: Timeout while waiting for child process to acknowledge 'PING' message.
+[PARENT][Rank 41] | WARNING: Timeout while waiting for child process to acknowledge 'PING' message.
+[PARENT][Rank 37] | WARNING: Timeout while waiting for child process to acknowledge 'PING' message.
+[PARENT][Rank 43] | WARNING: Timeout while waiting for child process to acknowledge 'PING' message.
+[PARENT][Rank 45] | WARNING: Timeout while waiting for child process to acknowledge 'PING' message.
+[Master] [WARNING] Received ABORT command from ranks: {35}.
+This is due to the parent failing closing down the child process properly.
+Or the child process crashed or was unresponsive at some point.
+Exiting through MPI.Abort() to prevent hanging/deadlock.
+[PARENT][Rank 35] | WARNING: Timeout while waiting for child process to acknowledge 'DONE' message.Most likely the child process has already terminated or is unresponsive or has crashed.The parent will shut down without waiting for the child to respond.
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+[PARENT][Rank 45] | WARNING: Timeout while waiting for child process to acknowledge 'DONE' message.Most likely the child process has already terminated or is unresponsive or has crashed.The parent will shut down without waiting for the child to respond.
+[PARENT][Rank 43] | WARNING: Timeout while waiting for child process to acknowledge 'DONE' message.Most likely the child process has already terminated or is unresponsive or has crashed.The parent will shut down without waiting for the child to respond.
+[PARENT][Rank 37] | WARNING: Timeout while waiting for child process to acknowledge 'DONE' message.Most likely the child process has already terminated or is unresponsive or has crashed.The parent will shut down without waiting for the child to respond.
+[PARENT][Rank 41] | WARNING: Timeout while waiting for child process to acknowledge 'DONE' message.Most likely the child process has already terminated or is unresponsive or has crashed.The parent will shut down without waiting for the child to respond.
+WARNING: mpirun failed with exit code 1, but calculations completed successfully. Checking for lingering MPI processes...
+No lingering MPI processes found.
+Check complete, continuing...
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+ps: /comm/swstack/core/anaconda3/2021.05/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_9.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_5.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 9] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 5] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_10.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 10] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_13.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 13] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_20.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 20] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_16.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 16] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_1.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 1] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_23.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 23] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_7.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 7] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_15.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 15] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_8.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 8] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_18.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 18] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_17.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 17] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_21.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 21] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 33] | ERROR: Timeout while waiting for message.
+Exiting safely.
+[CHILD][Parent Rank 39] | ERROR: Timeout while waiting for message.
+Exiting safely.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_47.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_48.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_29.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_28.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_34.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_37.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_26.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_27.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_41.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_36.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_32.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_45.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_42.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 48] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 47] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 37] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 26] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 45] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 36] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 27] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 32] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 41] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 42] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 29] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 28] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 34] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_25.txt does not exist. Skipping sync.
+File /home/maanson/Speciale/connectv2/data/dcdm/test2/number_1/extra_rs_drag_data/rs_drag_data_30.txt does not exist. Skipping sync.
+[CHILD][Parent Rank 25] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+[CHILD][Parent Rank 30] | WARNING: Failed to clean up CLASS. Error: UnboundLocalError("local variable 'cosmo' referenced before assignment")
+slurmstepd: error: *** JOB 20113773 ON s45n08 CANCELLED AT 2025-03-22T05:49:52 ***

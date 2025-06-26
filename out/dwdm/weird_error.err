@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 450 with PID 3570858 on node s42n11 exited on signal 9 (Killed).
+--------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/maanson/Speciale/connect/connect.py", line 72, in <module>
+    s.create_iterative_data()
+  File "/home/maanson/Speciale/connect/source/data_sampling.py", line 96, in create_iterative_data
+    self.call_calc_models(sampling=self.param.initial_sampling)
+  File "/home/maanson/Speciale/connect/source/data_sampling.py", line 239, in call_calc_models
+    sp.check_call(f"mpirun -np {self.N_tasks - 1} python {self.CONNECT_PATH}/source/calc_models_mpi.py {self.param.param_file} {self.CONNECT_PATH} {sampling}".split())
+  File "/home/maanson/.conda/envs/ConnectDWDM/lib/python3.10/subprocess.py", line 369, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['mpirun', '-np', '1007', 'python', '/home/maanson/Speciale/connect/source/calc_models_mpi.py', '/home/maanson/Speciale/connect/data/dwdm/dwdm_baseline_filter_thres1000/log_connect.param', '/home/maanson/Speciale/connect', 'hypersphere']' returned non-zero exit status 137.

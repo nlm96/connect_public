@@ -1,0 +1,159 @@
+========= Job started at Tue Mar 11 00:03:15 CET 2025 ==========
+[1m-----------------------------LOADING TRAINING DATA FROM FILES -----------------------------[0m
+[run] Starting data loading process...
+[run] Processing iterations in order: [('N-10000', 0), ('number_1', 1), ('number_2', 2), ('number_3', 3), ('number_4', 4), ('number_5', 5), ('number_6', 6), ('number_7', 7)]
+
+--------------------------------------------------------------------------------
+[run] Processing Iteration 0 from Folder 'N-10000'
+--------------------------------------------------------------------------------
+[compare_dataframes] df2 is empty; returning trivial result.
+
+--------------------------------------------------------------------------------
+[run] Processing Iteration 1 from Folder 'number_1'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+[run] Processing Iteration 2 from Folder 'number_2'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+[run] Processing Iteration 3 from Folder 'number_3'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+[run] Processing Iteration 4 from Folder 'number_4'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+[run] Processing Iteration 5 from Folder 'number_5'
+--------------------------------------------------------------------------------
+[compare_dataframes] df1 is empty; returning trivial result.
+
+--------------------------------------------------------------------------------
+[run] Processing Iteration 6 from Folder 'number_6'
+--------------------------------------------------------------------------------
+[compare_dataframes] df2 is empty; returning trivial result.
+
+--------------------------------------------------------------------------------
+[run] Processing Iteration 7 from Folder 'number_7'
+--------------------------------------------------------------------------------
+[compare_dataframes] df2 is empty; returning trivial result.
+
+================================================================================
+[run] Data Loading Complete.
+[run] Summary:
+[run] Total Iterations Processed: 8
+
+[run] Data Dictionary Overview:
+  - Iteration 0:
+    * accepted_accumulated: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_old: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_iteration: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_oversampling: {'parameters': 'None'}
+    * discarded_likelihood: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_old: {'parameters': 'None', 'likelihood_data': 'None'}
+    * failed_class: {'parameters': 'None'}
+    * best_fit: {'parameters': 'Filled', 'likelihood': 'Filled'}
+  - Iteration 1:
+    * accepted_accumulated: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_old: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_iteration: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_oversampling: {'parameters': 'None'}
+    * discarded_likelihood: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_old: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * failed_class: {'parameters': 'None'}
+    * best_fit: {'parameters': 'Filled', 'likelihood': 'Filled'}
+  - Iteration 2:
+    * accepted_accumulated: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_old: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_iteration: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_oversampling: {'parameters': 'None'}
+    * discarded_likelihood: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_old: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * failed_class: {'parameters': 'None'}
+    * best_fit: {'parameters': 'Filled', 'likelihood': 'Filled'}
+  - Iteration 3:
+    * accepted_accumulated: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_old: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_iteration: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_oversampling: {'parameters': 'Filled'}
+    * discarded_likelihood: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_old: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * failed_class: {'parameters': 'Filled'}
+    * best_fit: {'parameters': 'Filled', 'likelihood': 'Filled'}
+  - Iteration 4:
+    * accepted_accumulated: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_old: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_iteration: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_oversampling: {'parameters': 'Filled'}
+    * discarded_likelihood: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_old: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * failed_class: {'parameters': 'Filled'}
+    * best_fit: {'parameters': 'Filled', 'likelihood': 'Filled'}
+  - Iteration 5:
+    * accepted_accumulated: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_old: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_iteration: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_oversampling: {'parameters': 'Filled'}
+    * discarded_likelihood: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_new: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_likelihood_old: {'parameters': 'None', 'likelihood_data': 'None'}
+    * failed_class: {'parameters': 'Filled'}
+    * best_fit: {'parameters': 'Filled', 'likelihood': 'Filled'}
+  - Iteration 6:
+    * accepted_accumulated: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_old: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_iteration: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_oversampling: {'parameters': 'Filled'}
+    * discarded_likelihood: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_old: {'parameters': 'None', 'likelihood_data': 'None'}
+    * failed_class: {'parameters': 'Filled'}
+    * best_fit: {'parameters': 'Filled', 'likelihood': 'Filled'}
+  - Iteration 7:
+    * accepted_accumulated: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * accepted_old: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_iteration: {'parameters': 'None', 'likelihood_data': 'None'}
+    * discarded_oversampling: {'parameters': 'Filled'}
+    * discarded_likelihood: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_new: {'parameters': 'Filled', 'likelihood_data': 'Filled'}
+    * discarded_likelihood_old: {'parameters': 'None', 'likelihood_data': 'None'}
+    * failed_class: {'parameters': 'None'}
+    * best_fit: {'parameters': 'Filled', 'likelihood': 'Filled'}
+================================================================================
+[1m-----------------------------LOADED TRAINING DATA SUCCESSFULLY -----------------------------[0m
+
+[1m-----------------------------ANALYZING LIKELIHOOD DATA -----------------------------[0m
+
+[run_analysis] Starting likelihood analysis.
+[_save_iteration_summaries] Saved summaries to /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_filter_thres1000/iteration_analysis/analysis_reports/summary_table/per_iteration_likelihood_summary.csv
+[_save_iteration_summaries] Saved Markdown table to /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_filter_thres1000/iteration_analysis/analysis_reports/summary_table/per_iteration_summary.md
+[_plot_per_iteration_boxplot] Saved delta_chi_sq boxplots to /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_filter_thres1000/iteration_analysis/analysis_reports/per_iteration_delta_chi_sq_boxplots.png
+[_plot_per_iteration_boxplot] Saved loglkl boxplots to /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_filter_thres1000/iteration_analysis/analysis_reports/per_iteration_loglkl_boxplots.png
+[_plot_per_iteration_hist] Saved histograms (loglkl, count) to /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_filter_thres1000/iteration_analysis/analysis_reports/per_iteration_loglkl_hist_count.png
+[_plot_per_iteration_hist] Saved histograms (delta_chi_sq, count) to /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_filter_thres1000/iteration_analysis/analysis_reports/per_iteration_delta_chi_sq_hist_count.png
+[run_analysis] Likelihood analysis complete. Check 'analysis_reports' directory for outputs.
+[1m-----------------------------ANALYZED LIKELIHOOD DATA SUCCESSFULLY -----------------------------[0m
+
+run_plot_iterations set to False. Skipping iteration plotting.
+
+[1m-----------------------------SKIPPING PLOTTING ITERATIONS -----------------------------[0m
+
+[1m-----------------------------PLOTTING TRIANGLE PLOT -----------------------------[0m
+
+Saved plot to /home/maanson/Speciale/connectv2/data/dwdm/dwdm_baseline_filter_thres1000/iteration_analysis/triangle_plots/triangle_plot.png
+[1m-----------------------------PLOTTED TRIANGLE PLOT SUCCESSFULLY -----------------------------[0m
+========= Job finished at Tue Mar 11 00:26:04 CET 2025 ==========

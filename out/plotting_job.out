@@ -1,17 +1,24 @@
-========= Job started at Mon Sep 30 19:54:31 CEST 2024 ==========
+========= Job started at Fri Mar 21 02:45:42 CET 2025 ==========
+CMB power spectra plot saved to: /home/maanson/Speciale/connectv2/trained_models/dcdm_models/dcdm_baseline_filter_thres400_new_13/plots/tt_spectra.pdf
+CMB power spectra plot saved to: /home/maanson/Speciale/connectv2/trained_models/dcdm_models/dcdm_baseline_filter_thres400_new_13/plots/te_spectra.pdf
+CMB power spectra plot saved to: /home/maanson/Speciale/connectv2/trained_models/dcdm_models/dcdm_baseline_filter_thres400_new_13/plots/ee_spectra.pdf
+CMB power spectra plot saved to: /home/maanson/Speciale/connectv2/trained_models/dcdm_models/dcdm_baseline_filter_thres400_new_13/plots/pp_spectra.pdf
 z_reio
-CLASS: 18.049469
-CONNECT: 18.141132
+CLASS: 11.030426
+CONNECT: 11.05888
 Omega_Lambda
-CLASS: 0.728398
-CONNECT: 0.7282662
+CLASS: 0.6751428
+CONNECT: 0.67330503
 YHe
-CLASS: 0.24583076
-CONNECT: 0.24582718
+CLASS: 0.24537043
+CONNECT: 0.24535479
 A_s
-CLASS: 2.7673963e-09
-CONNECT: 2.7691052e-09
+CLASS: 2.3192803e-09
+CONNECT: 2.3235291e-09
 sigma8
-CLASS: 0.89799315
-CONNECT: 0.89786464
-========= Job finished at Mon Sep 30 19:55:03 CEST 2024 ==========
+CLASS: 0.8693622
+CONNECT: 0.8696672
+Error plot saved to: /home/maanson/Speciale/connectv2/trained_models/dcdm_models/dcdm_baseline_filter_thres400_new_13/plots/error.pdf
+Combined spectra and errors plot saved to: /home/maanson/Speciale/connectv2/trained_models/dcdm_models/dcdm_baseline_filter_thres400_new_13/plots/combined_spectra_and_errors.pdf
+Validation loss plot saved to: /home/maanson/Speciale/connectv2/trained_models/dcdm_models/dcdm_baseline_filter_thres400_new_13/plots/val_loss.pdf
+========= Job finished at Fri Mar 21 02:48:50 CET 2025 ==========

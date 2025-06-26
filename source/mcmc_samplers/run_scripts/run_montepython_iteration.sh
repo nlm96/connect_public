@@ -4,15 +4,23 @@ output_file="${1}/montepython.log"
 MPARGS=" -p ${2}"
 MPARGS+=" -o $output_dir"
 MPARGS+=" -c covmat/base2018TTTEEE_lite.covmat"
-MPARGS+=" -N 1000000"
-MPARGS+=" --conf ${3}"
+MPARGS+=" -N ${3}"
+MPARGS+=" --conf ${4}"
 MPARGS+=" -j fast -f 2.1 --silent"
 MPARGS+=" --update 1000"
-MPARGS+=" -T ${4}"
+MPARGS+=" --superupdate ${5}"
+MPARGS+=" -T ${6}"
 mkdir -p $output_dir
 
-mcmc_tol=$5
-node=$6
+mcmc_tol=$7
+node=$8
+
+restart=${9:-}  # Take restart flag from Python script
+
+# Append restart flag **only if it is valid**
+if [[ -n "$restart" && "$restart" != "-r ''" ]]; then
+    MPARGS+=" -r $restart"
+fi
 
 if ! [ $node == "None" ]
 then

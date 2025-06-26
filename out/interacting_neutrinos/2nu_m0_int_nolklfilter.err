@@ -1,0 +1,17 @@
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) openmpi/4.0.3
+
+The following have been reloaded with a version change:
+  1) gcc/12.2.0 => gcc/14.2.0
+
+Traceback (most recent call last):
+  File "/home/maanson/Speciale/connect/connect.py", line 72, in <module>
+    s.create_iterative_data()
+  File "/home/maanson/Speciale/connect/source/data_sampling.py", line 103, in create_iterative_data
+    model = self.train_neural_network(sampling=self.param.initial_sampling,
+  File "/home/maanson/Speciale/connect/source/data_sampling.py", line 252, in train_neural_network
+    CSDF = CreateSingleDataFile(self.param, self.CONNECT_PATH)
+  File "/home/maanson/Speciale/connect/source/join_output.py", line 31, in __init__
+    self.Cl_len = max(set(counts), key = counts.count) + 1
+ValueError: max() arg is an empty sequence
