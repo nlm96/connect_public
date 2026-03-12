@@ -18,7 +18,8 @@ from .tools import (
     create_output_folders,
     join_data_files,
     combine_iterations_data,
-    compare_dataframes,
+    compare_dataframes, 
+    load_data_file
 )
 from .lkl_filter_module.likelihood_filter import LikelihoodFilter
 
@@ -253,7 +254,7 @@ class Sampling:
             N_acc = mcmc.get_number_of_accepted_steps(i)
             print(f"Number of accepted steps: {N_acc}", flush=True)
             if i == 1 and not self.param.keep_first_iteration:
-                N_keep = 5000
+                N_keep = self.param.N_first_iteration  # default is 5000
             elif (
                 i == 1
                 and self.param.use_likelihood_filter
@@ -275,11 +276,11 @@ class Sampling:
             if i > int(not self.param.keep_first_iteration) + 1 and i <= i_converged:
                 N_accepted = mcmc.discard_oversampled_points(i)
                 N_in_data_set = mcmc.get_number_of_data_points(i - 1) + N_accepted
-                print(f"Accepted {N_accepted} points out of {N_keep}", flush=True)
+                print(f"Oversampling-filter: Accepted {N_accepted} points out of {N_keep}", flush=True)
             elif i == 1 and self.param.keep_initial_data:
                 N_accepted = mcmc.discard_oversampled_points(i)
                 N_in_data_set = mcmc.get_number_of_data_points(i - 1) + N_accepted
-                print(f"Accepted {N_accepted} points out of {N_keep}", flush=True)
+                print(f"Oversampling-filter: Accepted {N_accepted} points out of {N_keep}", flush=True)
             else:
                 N_accepted = N_keep
                 N_in_data_set = 0
@@ -603,7 +604,10 @@ class Sampling:
                             strict_filtering=strict_filtering,
                         )
                         Likelihood_Filter.run()
-
+        print(
+            f"{datetime.datetime.now()}",
+            flush=True,
+        )
         print("Training neural network", flush=True)
         tr = Training(self.param, self.CONNECT_PATH)
         tr.train_model(output_file=output_file)
@@ -934,47 +938,6 @@ class Sampling:
                 file=sys.stderr,
             )
 
-    def load_data_file(self, file_path, verbose=1):
-        """
-        Load a data file that has a header line starting with '#' and returns a DataFrame.
-        """
-        if not os.path.isfile(file_path):
-            if verbose >= 1:
-                print(f"[load_data_file] File {file_path} does not exist.", flush=True)
-            return None
-
-        header_line = None
-        with open(file_path, "r") as f:
-            for line in f:
-                if line.startswith("#"):
-                    header_line = line.lstrip("#").strip()
-                    break
-
-        if header_line is None:
-            raise ValueError(f"No header line starting with '#' found in {file_path}")
-
-        columns = header_line.split()
-        if verbose >= 3:
-            print(f"[load_data_file] Columns for {file_path}: {columns}", flush=True)
-
-        df = pd.read_csv(
-            file_path,
-            sep=r"\s+",
-            comment="#",
-            names=columns,
-            index_col=False,
-            dtype=np.float32,
-        )
-
-        # Optional sanity checks
-        if df.empty and verbose >= 2:
-            print(
-                f"[load_data_file] Warning: Loaded DataFrame from {file_path} is empty.",
-                flush=True,
-            )
-
-        return df
-
     def check_likelihood_filter_health(
         self,
         i,
@@ -983,7 +946,7 @@ class Sampling:
 
         # ---------------- 2nd CONVERGENCE CHECK ----------------
         # Import model_params from current iteration. The accepted points after the likelihood filter
-        all_accepted_after_lklfilter_df = self.load_data_file(
+        all_accepted_after_lklfilter_df = load_data_file(
             os.path.join(
                 self.CONNECT_PATH,
                 self.data_path,
@@ -992,7 +955,7 @@ class Sampling:
             ),
             verbose=2,
         )
-        all_accepted_after_lklfilter_likelihood_df = self.load_data_file(
+        all_accepted_after_lklfilter_likelihood_df = load_data_file(
             os.path.join(
                 self.CONNECT_PATH,
                 self.data_path,
@@ -1117,7 +1080,7 @@ class Sampling:
 
                     # Update the threshold for the filter to be less agressive, above the lowest 10% delta_chi2 value of the accepted points by the oversampling-filter.
                     # Load discarded data from the likelihood filter
-                    discarded_by_lklfilter_df = self.load_data_file(
+                    discarded_by_lklfilter_df = load_data_file(
                         os.path.join(
                             self.CONNECT_PATH,
                             self.data_path,
@@ -1127,7 +1090,7 @@ class Sampling:
                         ),
                         verbose=2,
                     )
-                    discarded_by_lklfilter_likelihood_df = self.load_data_file(
+                    discarded_by_lklfilter_likelihood_df = load_data_file(
                         os.path.join(
                             self.CONNECT_PATH,
                             self.data_path,
@@ -1236,3 +1199,86 @@ class Sampling:
             return int(match.group(1))
         else:
             return 0
+
+    def replicate_iteration(self, target_iteration):
+        """
+        Starting from an existing `number_{target_i}` folder (with
+        chains already in place), rerun exactly
+        the CLASS (and likelihood) computations + likelihood-filter and neural‐net training, then stop.
+        """
+
+        i= target_iteration
+        self.copy_param_file()
+        
+        print(f"{datetime.datetime.now()}", flush=True)
+        exec(
+            f"from source.mcmc_samplers.{self.param.mcmc_sampler} import {self.param.mcmc_sampler}"
+        )
+        _locals = {}
+        exec(
+            f"mcmc = {self.param.mcmc_sampler}(self.param, self.CONNECT_PATH)",
+            locals(),
+            _locals,
+        )
+        mcmc = _locals["mcmc"]
+        
+        # check if the subfolder lkl_calc/montepython exists and delete it and its content if it does
+        path_lkl_calc = os.path.join("data", self.param.jobname, "lkl_calc")
+        if os.path.isdir(os.path.join(path_lkl_calc, "montepython")):
+            shutil.rmtree(os.path.join(path_lkl_calc, "montepython"))
+        
+        
+        create_output_folders(self.param, iter_num=i, reset=False)
+
+        self.call_calc_models(sampling="iterative")
+        if self.param.mcmc_sampler == "montepython":
+            path_lkl_calc = os.path.join("data", self.param.jobname, "lkl_calc")
+            self.cleanup_montepython_folders()
+            if os.path.isdir(os.path.join(path_lkl_calc, "montepython")):
+                shutil.move(
+                    os.path.join(path_lkl_calc, "montepython"),
+                    os.path.join(path_lkl_calc, f"montepython_{i}"),
+                )
+        join_data_files(self.param)
+
+        if self.param.use_likelihood_filter:
+            # Logic for combining data with likelihood filtering
+            if i == 1:
+                if self.param.keep_initial_data:
+                    combine_iterations_data(self.param, i)
+                    print(
+                        f"Copied initial data from data/{self.param.jobname}/N-{self.param.N} into data/{self.param.jobname}/number_{i}",
+                        flush=True,
+                    )
+                else:
+                    # print(f"Skipping combining initial data and iteration {i} as keep_initial_data=False.", flush=True)
+                    pass
+            elif i > 1:
+                if self.param.keep_first_iteration or i > 2:
+                    combine_iterations_data(self.param, i)
+                    print(
+                        f"Copied data from data/{self.param.jobname}/number_{i-1} into data/{self.param.jobname}/number_{i}",
+                        flush=True,
+                    )
+                else:
+                    # print(f"Skipping combining data for iteration {i} as keep_first_iteration=False and keep_initial_data=False.", flush=True)
+                    pass
+        else:
+            # Logic for standard iterative sampling without likelihood filtering
+            if (
+                i > int(not self.param.keep_first_iteration) + 1
+            ):
+                combine_iterations_data(self.param, i)
+                print(
+                    f"Copied data from data/{self.param.jobname}/number_{i-1} into data/{self.param.jobname}/number_{i}",
+                    flush=True,
+                )
+
+        model = self.train_neural_network(
+            sampling="iterative",
+            output_file=os.path.join(self.data_path, f"number_{i}/training.log"),
+            mcmc=mcmc,
+        )
+
+        print(f"New model is {model}", flush=True)
+

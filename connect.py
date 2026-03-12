@@ -21,7 +21,7 @@ sys.path.insert(1, CONNECT_PATH)
 from source.default_module import Parameters
 
 keyword = sys.argv[1]
-if keyword in ["create", "train"]:
+if keyword in ["create", "train", "replicate"]:
     param_file = sys.argv[2]
     param = Parameters(param_file)
     parameters = param.parameters
@@ -180,3 +180,54 @@ if keyword == "procrastinate":
     with open("source/assets/surprise.txt", "r") as f:
         obfuscated_code = f.readlines()[0]
     exec(base64.b85decode(obfuscated_code.encode("utf-8")))
+    
+
+#####################################
+# ____________ replicate ___________ #
+#####################################
+
+if keyword == "replicate":
+    
+    iteration  = int(sys.argv[3])
+    
+    resume_iterations = True
+    
+    from source.tools import create_output_folders
+
+    create_output_folders(param, resume=resume_iterations)
+
+    if (
+        param.use_likelihood_filter
+        and resume_iterations is False
+        and param.sampling == "iterative"
+    ):
+        from source.lkl_filter_module.likelihood_calc_base import (
+            create_likelihood_calc_input_files,
+        )
+
+        create_likelihood_calc_input_files(param)
+    
+    
+    from source.data_sampling import Sampling
+    s = Sampling(param_file, CONNECT_PATH)
+    
+    log_string = (
+        "-" * 62
+        + "\n\n\n"
+        + "Running CONNECT\n"
+        + f"Parameter file     :  {param_file}\n"
+        + f"Iteration          :  {iteration}\n"
+        + "Mode               :  Replicate"
+    )
+    
+    mode = resume_iterations * "a+" + (not resume_iterations) * "w"
+
+    if param.sampling == "iterative":
+        with open(path + "output.log", mode) as sys.stdout:
+            print(log_string, flush=True)
+            print("Sampling method    :  Iterative", flush=True)
+            print("\n" + "-" * 62 + "\n", flush=True)
+            s.replicate_iteration(iteration)
+
+
+#python connect.py replicate input/your.param 5 - for iteration 5

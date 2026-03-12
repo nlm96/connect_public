@@ -1,5 +1,9 @@
 import os
 import numpy as np
+from ..tools import (
+    compare_dataframes, 
+    load_data_file
+)
 
 
 class LikelihoodFilter:
@@ -98,7 +102,11 @@ class LikelihoodFilter:
         """
 
         best_fit_loglkl, best_fit_index = self.find_best_fit_loglkl()
+        self.best_fit_loglkl = best_fit_loglkl
         self.create_best_fit_file(best_fit_loglkl, best_fit_index)
+
+        if self.delta_chi2_threshold in ("auto", "auto2", "auto3"):
+            self.auto_threshold()
 
         # Find the indices of points that do not meet the threshold
         discard_indices, total_potential_discard = self.find_discard_indices(
@@ -180,6 +188,8 @@ class LikelihoodFilter:
             note = f"({v*100:.0f}th percentile)"
         elif kind == "std deviations":
             note = f"(μ + {v:.1f}σ)"
+        elif kind == "auto":
+            note = "(auto threshold)"
         else:
             note = ""
 
@@ -650,3 +660,380 @@ class LikelihoodFilter:
         summary += format_row("All", stats_all) + "\n"
 
         return summary
+        
+    def auto_threshold(self):
+        """
+        Compute Δχ² threshold at runtime for modes: "auto", "auto2", "auto3".
+
+        Pools (runtime interpretation to mirror post-run):
+        - auto  : simple percentile rule on NEW-only pool for iter>1 (if available);
+                    else use FULL pool (iter 0 and 1, or when NEW is empty).
+        - auto2 : robust bulk-end (A→B→C) on FULL-like pool
+                    (i.e., the current iteration's likelihood_data.txt values).
+        - auto3 : robust bulk-end (A→B→C) on NEW-only pool
+                    (points new relative to previous iteration).
+        Guardrails, persistence, and caps match plot_iterations.py:
+        - Detection hard drop: x > 1e28 ignored for detection
+        - cap_detect = min(p99.5(x), 1e20)
+        - Right-end ≤ p99.5
+        - Anchor floor at p_min = auto_bulk_anchor_percentile (fallback: auto_threshold_percentile)
+        - Persistence runs (R) where applicable
+        - Runtime safety cap: Δχ² ≤ 1e8 for iter_num > 0
+        """
+        import pandas as pd
+
+        # ---------------- helpers local to this function ----------------
+        def _like_col(df):
+            if df is None or len(df) == 0:
+                return np.array([], dtype=float)
+            if "true_loglkl" in df.columns:
+                return df["true_loglkl"].to_numpy(dtype=float)
+            if "loglkl" in df.columns:
+                return df["loglkl"].to_numpy(dtype=float)
+            return np.array([], dtype=float)
+
+        def _dc2_from_loglkl(arr_loglkl, bf):
+            if arr_loglkl is None or arr_loglkl.size == 0:
+                return np.array([], dtype=float)
+            dc2 = 2.0 * (arr_loglkl - bf)
+            dc2[dc2 < 0] = 0.0
+            dc2 = dc2[np.isfinite(dc2)]
+            return dc2
+
+        def _rolling_median(arr, win):
+            s = pd.Series(arr)
+            return s.rolling(win, center=True, min_periods=1).median().to_numpy()
+
+        def _first_run(mask, R):
+            if mask.size == 0:
+                return None
+            run = 0
+            for i, v in enumerate(mask):
+                run = (run + 1) if v else 0
+                if run >= R:
+                    return i - R + 1
+            return None
+
+        # ---------- Stage A: multi-scale m-spacings gap detector ----------
+        def _bulk_end_mspacings_multiscale(
+            dc2_raw,
+            *,
+            p_min_percent,
+            z_thresh=3.5,
+            ratio_thresh=6.0,
+            R=3,
+            eps=1e-12,
+            m_min=10,
+            m_max=5000,
+            diag=False,
+        ):
+            x_all = np.asarray(dc2_raw, float)
+            x_all = x_all[np.isfinite(x_all) & (x_all >= 0)]
+            n_all = x_all.size
+            if n_all < 5:
+                return None
+
+            p995_val = float(np.percentile(x_all, 99.5))
+            cap_detect = float(min(p995_val, 1e20))
+            hard_cap = 1e28
+
+            x = x_all[(x_all <= hard_cap) & (x_all <= cap_detect)]
+            if x.size < 5:
+                return None
+
+            eps = 1e-12
+            y = np.log10(x + eps)
+            y.sort()
+            n = y.size
+            right_cap_idx = int(np.searchsorted(y, np.log10(p995_val + eps), side="right") - 1)
+            right_cap_idx = max(0, min(right_cap_idx, n - 1))
+            floor_idx = max(1, int(np.ceil((p_min_percent / 100.0) * n)))
+
+            # choose scales ~ {sqrt(n)/2, sqrt(n), 2*sqrt(n)}
+            rt = max(1.0, np.sqrt(n))
+            m_candidates = sorted(set(int(round(v)) for v in (rt / 2.0, rt, 2.0 * rt)))
+            m_values = []
+            for m in m_candidates:
+                m = max(1, min(m, n - 1))
+                if m < m_min and (n - 1) >= m_min:
+                    m = m_min
+                m = min(m, m_max, n - 1)
+                if m >= 1 and (len(m_values) == 0 or m != m_values[-1]):
+                    m_values.append(m)
+
+            cand_positions, picks = [], []
+            for m in m_values:
+                g = y[m:] - y[:-m]
+                if g.size == 0:
+                    continue
+                win = int(max(5 * m, 25))
+                win = min(win, max(3, g.size))
+                med_loc = _rolling_median(g, win)
+                mad_loc = _rolling_median(np.abs(g - med_loc), win)
+                mad_loc = np.where(mad_loc <= 1e-15, 1e-15, mad_loc)
+                med_safe = np.where(med_loc <= 1e-15, 1e-15, med_loc)
+
+                z = 0.6745 * (g - med_loc) / mad_loc
+                ratio = g / med_safe
+
+                right_end = np.arange(g.size) + m
+                ok = (
+                    (right_end >= floor_idx)
+                    & (right_end <= right_cap_idx)
+                    & (z >= z_thresh)
+                    & (ratio >= ratio_thresh)
+                )
+
+                i0 = _first_run(ok, R)
+                if i0 is not None:
+                    picks.append((int(i0), m))
+                    cand_positions.append(int(i0 + m))
+                cand_positions.extend(list(right_end[ok]))
+
+            # cross-scale confirmation cluster (optional)
+            cand_positions = np.array(sorted(cand_positions), dtype=int)
+            cross_pick = None
+            if cand_positions.size:
+                tol = max(1, max(m_values) // 4)
+                start = 0
+                while start < cand_positions.size:
+                    end = start + 1
+                    while end < cand_positions.size and cand_positions[end] - cand_positions[start] <= tol:
+                        end += 1
+                    if (end - start) >= 2:
+                        cross_pick = int(cand_positions[start])
+                        break
+                    start = end
+
+            best_thr, best_right = None, None
+            if picks:
+                rr = [i + m for (i, m) in picks]
+                k = int(np.argmin(rr))
+                i_sel, m_sel = picks[k]
+                thr_y = 0.5 * (y[i_sel] + y[i_sel + m_sel])
+                best_thr = float(10.0 ** thr_y)
+                best_right = rr[k]
+            if best_thr is None and cross_pick is not None:
+                j = cross_pick
+                for m in m_values:
+                    i = j - m
+                    if 0 <= i < (n - m):
+                        thr_y = 0.5 * (y[i] + y[i + m])
+                        best_thr = float(10.0 ** thr_y)
+                        best_right = j
+                        break
+
+            if best_thr is None:
+                return None
+
+            floor = float(np.percentile(x_all, p_min_percent))
+            return max(best_thr, floor)
+
+        # ---------- Stage B: spacing inflation (no explicit gap needed) ----------
+        def _bulk_end_inflation(
+            dc2_raw,
+            *,
+            p_min_percent,
+            right_cap_percent=99.5,
+            r_factor=4.0,
+            R=5,
+        ):
+            x = np.asarray(dc2_raw, float)
+            x = x[np.isfinite(x) & (x >= 0)]
+            if x.size < 20:
+                return None
+
+            hard_cap = 1e28
+            cap_detect = min(np.percentile(x, right_cap_percent), 1e20)
+            x = x[(x <= hard_cap) & (x <= cap_detect)]
+            if x.size < 20:
+                return None
+
+            y = np.log10(x + 1e-12)
+            y.sort()
+            n = y.size
+            floor_idx = max(1, int(np.ceil((p_min_percent / 100.0) * n)))
+            right_cap_idx = int(np.searchsorted(y, np.log10(cap_detect + 1e-12), side="right") - 1)
+            right_cap_idx = max(0, min(right_cap_idx, n - 1))
+
+            m = max(5, int(round(np.sqrt(n) / 3)))
+            m = min(m, n - 1)
+            g = y[m:] - y[:-m]
+
+            W = max(50, 5 * m)
+            W = min(W, max(5, g.size))
+            med = _rolling_median(g, W)
+            med = np.where(med <= 1e-15, 1e-15, med)
+
+            right_end = np.arange(g.size) + m
+            ref_zone = (right_end >= max(1, floor_idx - 5 * m)) & (right_end <= min(g.size - 1, floor_idx + 5 * m))
+            ref_med = np.median(med[ref_zone]) if np.any(ref_zone) else np.median(med)
+
+            grow = med / max(ref_med, 1e-15)
+            ok = (right_end >= floor_idx) & (right_end <= right_cap_idx) & (grow >= r_factor)
+
+            i0 = _first_run(ok, R)
+            if i0 is None:
+                return None
+
+            thr_y = 0.5 * (y[i0] + y[i0 + m])
+            thr = float(10.0 ** thr_y)
+
+            floor = float(np.percentile(np.asarray(dc2_raw, float), p_min_percent))
+            return max(thr, floor)
+
+        # ---------- Stage C: histogram/knee fallback ----------
+        def _bulk_end_hist_knee(
+            dc2_raw,
+            *,
+            p_min_percent,
+            right_cap_percent=99.5,
+        ):
+            x = np.asarray(dc2_raw, float)
+            x = x[np.isfinite(x) & (x >= 0)]
+            if x.size < 20:
+                return None
+
+            hard_cap = 1e28
+            cap_detect = min(np.percentile(x, right_cap_percent), 1e20)
+            x = x[(x <= hard_cap) & (x <= cap_detect)]
+            if x.size < 20:
+                return None
+
+            y = np.log10(x + 1e-12)
+            y.sort()
+            n = y.size
+            floor_val = np.percentile(np.asarray(dc2_raw, float), p_min_percent)
+            floor_log = np.log10(floor_val + 1e-12)
+            right_cap_log = np.log10(cap_detect + 1e-12)
+
+            nb = int(min(128, max(32, 2 * np.sqrt(n))))
+            hist, edges = np.histogram(y, bins=nb)
+
+            k = np.array([1, 2, 1], float)
+            k = k / k.sum()
+            smooth = np.convolve(hist, k, mode="same")
+            grad = np.diff(smooth)
+
+            start_bin = int(np.searchsorted(edges, floor_log, side="left"))
+            end_bin = int(np.searchsorted(edges, right_cap_log, side="right")) - 2
+            start_bin = max(1, min(start_bin, len(grad) - 1))
+            end_bin = max(start_bin, min(end_bin, len(grad) - 1))
+            if end_bin <= start_bin:
+                return None
+
+            idx = start_bin + int(np.argmin(grad[start_bin : end_bin + 1]))
+            thr_log = 0.5 * (edges[idx] + edges[idx + 1])
+            thr = float(10.0 ** thr_log)
+
+            return max(thr, floor_val)
+
+        def _robust_bulk_end(dc2, anchor_pct, auto_pct_for_fallback):
+            """
+            A -> B -> C -> percentile fallback (all guardrails included).
+            Returns a single scalar threshold.
+            """
+            # A) m-spacings
+            thr = _bulk_end_mspacings_multiscale(dc2, p_min_percent=anchor_pct)
+            if thr is not None:
+                return thr
+            # B) inflation
+            thr = _bulk_end_inflation(dc2, p_min_percent=anchor_pct)
+            if thr is not None:
+                return thr
+            # C) knee
+            thr = _bulk_end_hist_knee(dc2, p_min_percent=anchor_pct)
+            if thr is not None:
+                return thr
+            # Fallback: percentile on uncapped dc2
+            return float(np.percentile(np.asarray(dc2, float), auto_pct_for_fallback))
+
+        # ---------------- gather data ----------------
+        # Previous iteration (to identify NEW samples)
+        if self.iter_num == 0:
+            self.prev_iteration_path = None
+            prev_accepted_df = prev_likelihood_df = None
+        else:
+            self.prev_iteration_path = os.path.join(self.path, f"number_{self.iter_num - 1}")
+
+        prev_accepted_df = None
+        prev_likelihood_df = None
+        if self.prev_iteration_path is not None and os.path.exists(self.prev_iteration_path):
+            prev_accepted_df = load_data_file(os.path.join(self.prev_iteration_path, "model_params.txt"), verbose=0)
+            prev_likelihood_df = load_data_file(os.path.join(self.prev_iteration_path, "likelihood_data.txt"), verbose=0)
+
+        # Current iteration
+        current_accepted_df = load_data_file(os.path.join(self.iteration_path, "model_params.txt"), verbose=0)
+        current_likelihood_df = load_data_file(os.path.join(self.iteration_path, "likelihood_data.txt"), verbose=0)
+
+        # NEW vs PREV (we reuse your existing comparison)
+        new_samples_df, new_likelihood_df = compare_dataframes(
+            df1=current_accepted_df,
+            df2=prev_accepted_df,
+            df_likelihood=current_likelihood_df,
+            df_likelihood2=prev_likelihood_df,
+            comparison_type="new",
+            compare_context={
+                "context": "Finding new samples in current iteration compared to previous, inside likelihood filter",
+                "df1": "current_accepted_df",
+                "df2": "prev_accepted_df",
+                "df_likelihood": "current_likelihood_df",
+                "df_likelihood2": "prev_likelihood_df",
+                "msg1": "current_accepted_df is empty",
+                "msg2": "prev_accepted_df is empty",
+            },
+            verbose=0,
+        )
+
+        # Pools in Δχ² units (non-negative, finite)
+        dc2_full = _dc2_from_loglkl(_like_col(current_likelihood_df), self.best_fit_loglkl)
+        dc2_new  = _dc2_from_loglkl(_like_col(new_likelihood_df),     self.best_fit_loglkl)
+
+        # Parameters
+        auto_pct = float(getattr(self.param, "auto_threshold_percentile", 95.0))
+        anchor_pct = float(getattr(self.param, "auto_bulk_anchor_percentile", auto_pct))
+
+        # Decide mode
+        mode = self.delta_chi2_threshold  # "auto" | "auto2" | "auto3"
+
+        # ---------------- compute threshold by mode ----------------
+        if mode == "auto":
+            # Match post-run resolver: use FULL for iter 0 and 1 (or if NEW empty), else NEW.
+            if (self.iter_num in (0, 1)) or (dc2_new.size == 0):
+                pool = dc2_full
+            else:
+                pool = dc2_new
+            if pool.size == 0:  # extreme edge case
+                self.delta_chi2_threshold = float("inf")
+                self.filtering_strategy = ("auto", self.delta_chi2_threshold)
+                return
+            thr = float(np.percentile(pool, auto_pct))
+
+        elif mode == "auto2":
+            # Robust bulk-end on FULL-like pool
+            if dc2_full.size == 0:
+                self.delta_chi2_threshold = float("inf")
+                self.filtering_strategy = ("auto", self.delta_chi2_threshold)
+                return
+            thr = _robust_bulk_end(dc2_full, anchor_pct, auto_pct)
+
+        elif mode == "auto3":
+            # Robust bulk-end on NEW-only pool; if empty, fall back to FULL-like (keeps runtime going)
+            pool = dc2_new if dc2_new.size > 0 else dc2_full
+            if pool.size == 0:
+                self.delta_chi2_threshold = float("inf")
+                self.filtering_strategy = ("auto", self.delta_chi2_threshold)
+                return
+            thr = _robust_bulk_end(pool, anchor_pct, auto_pct)
+
+        else:
+            # If someone passed an unexpected string, leave unchanged.
+            return
+
+        # Runtime safety cap (only AFTER we compute the statistical threshold)
+        if self.iter_num > 0 and thr > 1e8:
+            thr = 1e8
+
+        self.delta_chi2_threshold = float(thr)
+        # Keep printing consistent with your summary (shows "(auto threshold)")
+        self.filtering_strategy = ("auto", self.delta_chi2_threshold)

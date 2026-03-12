@@ -702,13 +702,12 @@ triangleplot_args:
           Specify which data types to include in the triangle plot.
           Set the value to False to exclude a data type.
             The dictionary should be structured as follows:
-              { 'accepted_new': True, 'discarded_likelihood_new': True, 
-                'discarded_likelihood_old': True, 'discarded_iteration': True }
+              { 'accepted': True, 'discarded_likelihood': True, 
+                'discarded_likelihood': True, 'discarded_iteration': True }
             The data types are as follows:
-                'accepted_new'            # New points that were accepted in the iteration.
-                'discarded_likelihood_new'# New points from the MCMC chains that were discarded by the likelihood filter.
-                'discarded_likelihood_old'# Points from the previous iteration that were discarded by the likelihood filter.
-                'discarded_iteration'     # Discards if the entire iteration was discarded.
+                'accepted'              # Points that remained accepted at final iteration
+                'discarded_likelihood'  # Points from the MCMC chains that were discarded by the likelihood filter.
+                'discarded_iteration'   # Discards if the entire iteration was discarded.
 
     Marker & Styling Options:
       'marker_size' (int):
@@ -794,11 +793,16 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import matplotlib.ticker as ticker
+import matplotlib.ticker as mticker
 import matplotlib.text as mtext
 import matplotlib.colors as mcolors
 from matplotlib import colors
 from matplotlib.colors import PowerNorm, TwoSlopeNorm, Normalize, ListedColormap
 from matplotlib.ticker import FuncFormatter, MaxNLocator
+from matplotlib.ticker import (
+        AutoLocator, LogLocator, SymmetricalLogLocator,
+        MaxNLocator, FixedLocator
+    )
 from matplotlib.lines import Line2D
 import matplotlib.lines as mlines
 from matplotlib.legend_handler import HandlerBase
@@ -806,6 +810,7 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch
 from matplotlib.font_manager import FontProperties
 from matplotlib.transforms import Bbox
+from matplotlib.scale import scale_factory
 
 # Seaborn Imports (Grouped)
 import seaborn as sns
@@ -1059,6 +1064,34 @@ class Main:
                 "Example: --dataloader_args \"{'save_pickle_data': True, 'pickle_path': '/path/to/pickle_file'}\""
             ),
         )
+        
+                
+        parser.add_argument(
+            "--class_posterior_path",
+            type=str,
+            default=None,
+            required=False,
+            help=(
+                "**OPTIONAL**: Path to the root directory of a pre-run CLASS MCMC chain "
+                "(e.g., '.../my_class_run/'). This folder must have been analyzed "
+                "by MontePython's 'info' command and contain a 'plots' subdirectory."
+            ),
+        )
+        parser.add_argument(
+            "--class_posterior_basename",
+            type=str,
+            default=None,
+            required=False,
+            help=(
+                "**OPTIONAL**: The jobname (basename) of the CLASS run. This is used "
+                "to find the .dat files (e.g., 'my_basename_2d_p1-p2.dat')."
+            ),
+        )
+        
+        
+        
+        
+        
 
         parser.add_argument(
             "--analyze_lkl_args",
@@ -1070,6 +1103,12 @@ class Main:
                 "This can be used to customize the plots for the univariate analysis by overriding default settings.\n"
                 "Examples could be to override the axis ranges, what data categories to plot, or to exclude the inset plot.\n\n"
                 "Supported keys for the analyze_lkl_args dict include:\n"
+                "  'fig_width' (str): Figure width in format 'width unit' (default: '440 pts').\n"
+                "       possible units: 'pts', 'cm', 'in'. i.e. '440 pts', '10 cm', '5 in'.\n"
+                "   'suffix' (str): Suffix for the output files (default: '').\n"
+                "       can be used to add a suffix to the output files to avoid overwriting existing files.\n"
+                "  'iterations_to_plot' (list or 'all'): \n"
+                "       Specific iterations to plot (default: 'all').\n"
                 "  'create_these_outputs' (dict): Specify which outputs to create (default: all).\n"
                 "       Example: {'histograms': True, 'boxplots': True, 'summary_tables': True, 'evolution_plot': True} \n"
                 "  'max_delta_chi2_in_dataset' (float): Maximum Δχ² value to include in the dataset for the plots. (default: None)\n"
@@ -1087,6 +1126,7 @@ class Main:
                 "       This argument can be used to specify which data categories to plot in the\n"
                 "       main panel of the histogram plot. Refer to the full docstring guide for the required keys.\n"
                 "  'hist_inset' (list): List of dicts defining histogram settings for the inset panel.\n"
+                "  'plot_chain_data' (bool): Whether to plot the chain data (default: True).\n"
                 "  'category_labels' (dict): Custom labels for the data categories (if None, default labels are used).\n"
                 "  'data_colors' (dict): Custom colors for the data categories.\n\n"
                 "See the end of the docstring guide for a complete description of the supported keys and how to use them.\n\n"
@@ -1107,6 +1147,8 @@ class Main:
                 "   'params_plot_iter' (list or 'all'): Parameter pairs to plot (default: ('H0','omega_n')).\n"
                 "       Example: [('H0', 'omega_b'), ('H0', 'tau_reio')].\n"
                 "       (The same as 'plot_iter_cosmoparams'. You can use either)\n"
+                "   'suffix' (str): Suffix for the output files (default: '').\n"
+                "       can be used to add a suffix to the output files to avoid overwriting existing files.\n"
                 "   'iterations_to_plot' (list or 'all'): Specific iterations to plot (default: 'all').\n"
                 "   'max_subplots' (int): Maximum number of subplot columns (default: 5); extra iterations are grouped.\n"
                 "   'fig_width' (str): Figure width in format 'width unit' (default: '440 pts').\n"
@@ -1118,6 +1160,9 @@ class Main:
                 "   'x_range' (list): Override the shared x-axis range, e.g., [0, 10].\n"
                 "   'y_range' (list): Override the shared y-axis range, e.g., [0, 10].\n"
                 "       (If omitted, ranges are calculated automatically.)\n"
+                "   'smart_ticks' (bool): If True, override Matplotlib's auto ticks using the displayed axis range.\n"
+                "       (Note: This is ignored if 'x_range' or 'y_range' are set, or if log scale is used).\n"
+                "   'num_ticks_per_axis' (int): Target number of ticks per axis when 'smart_ticks' is True.\n"
                 "   'log_x' (bool): Use logarithmic scale for x-axis (default: False).\n"
                 "   'log_y' (bool): Use logarithmic scale for y-axis (default: False).\n"
                 "   'ignore_iteration_0_for_axis' (bool): Exclude iteration 0 when computing axis ranges (default: True).\n"
@@ -1182,6 +1227,12 @@ class Main:
                 "   'grid_vars' (dict): Dictionary specifying grid parameters for the grid plot.\n"
                 "       Example: {'rows': ['H0', 'omega_b'], 'columns': ['tau_reio', 'omega_cdm']}\n"
                 "       (This is the same as 'grid_plot_cosmoparams'. You can use either)\n"
+                "  'fig_width' (str): Figure width in format 'width unit' (default: '440 pts').\n"
+                "       possible units: 'pts', 'cm', 'in'. i.e. '440 pts', '10 cm', '5 in'.\n"
+                "   'suffix' (str): Suffix for the output files (default: '').\n"
+                "       can be used to add a suffix to the output files to avoid overwriting existing files.\n"
+                "  'save_formats' (list): Output file formats (e.g., ['png', 'pdf']).\n"
+                "       possible units: 'pts', 'cm', 'in'. i.e. '440 pts', '10 cm', '5 in'.\n"
                 "  'colormap' (str): Name of the colormap for iteration colors in the scatter plot (default: 'tab10').\n\n"
                 "Axis & Data Filtering Options:\n"
                 "  'only_accepted' (bool): Whether to only plot accepted points (default: False).\n"
@@ -1189,13 +1240,15 @@ class Main:
                 "  'include_lkldiscard_new_for_axis_range' (bool): Include 'discarded_likelihood_new' points\n when determining axis ranges (default: True).\n"
                 "  'data_types_to_plot' (dict): Specify which data types to include in the triangle plot.\n"
                 "      Example:\n"
-                "      { 'accepted_new': True, 'discarded_likelihood_new': True, 'discarded_likelihood_old': True, \n"
+                "      { 'accepted': True, 'discarded_likelihood': True, 'discarded_oversampling': True,\n"
                 "        'discarded_iteration': True }\n"
                 "       See full docstring guide for descriptions of the data types.\n"
                 "  'custom_axis_ranges' (dict): Override axis ranges for specified parameters in the triangle plot.\n"
                 "       Example: {'H0': (60, 80), 'omega_b': (0.02, 0.05)}\n"
                 "  'custom_ticks' (dict): Custom ticks for specified parameters in the triangle plot.\n"
                 "       Example: {'H0': [60, 70, 80], 'omega_b': [0.02, 0.04]}\n"
+                "  'smart_ticks' (bool): If True, override Matplotlib's auto ticks using the displayed axis range.\n"
+                "  'num_ticks_per_axis' (int): Target number of ticks per axis when 'smart_ticks' is True.\n"
                 "  'log_scale_params' (list): List of parameters to apply logarithmic scaling to.\n"
                 "       Example: ['H0', 'omega_b']\n\n"
                 "Marker & Styling Options:\n"
@@ -1321,8 +1374,12 @@ class Main:
             "100theta_s": r"$100\theta_{\mathrm{s}}$",
             "omega_ini_dcdm": r"$\omega_{\mathrm{ini,cdm}}$",
             "Gamma_dcdm": r"$\Gamma_{\mathrm{dcdm}}$",
+            "m_ncdm_degenerate": r"$m_{\mathrm{ncdm,deg}}$",
+            "G_eff_ncdm_interacting": r"$G_{\mathrm{eff,ncdm,int}}$",
+            "m_ncdm": r"$m_{\mathrm{ncdm}}$",
+            
         }
-
+        
         # Update LaTeX labels with any user-provided overrides
         if self.args.latex_labels:
             self.latex_labels = {**self.default_latex_labels, **self.args.latex_labels}
@@ -1369,6 +1426,11 @@ class Main:
             print(
                 "\033[1m-----------------------------LOADED TRAINING DATA SUCCESSFULLY -----------------------------\033[0m\n"
             )
+            
+        # Resolve and update delta chi2 thresholds based on specialized threshold settings
+        #self.verbose
+        self.resolve_and_update_delta_chi2_thresholds(self.param_connect, data, verbose=self.verbose)
+
 
         matplotlib.use("Agg")
         # Analyze likelihood data with Analyze_likelihoods
@@ -1419,6 +1481,14 @@ class Main:
                     create_these_outputs=self.args.analyze_lkl_args.get(
                         "create_these_outputs", "all"
                     ),
+                    fig_width=self.args.analyze_lkl_args.get("fig_width", "440 pts"),
+                    iterations_to_plot=self.args.analyze_lkl_args.get(
+                        "iterations_to_plot", "all"
+                    ),
+                    suffix=self.args.analyze_lkl_args.get(
+                        "suffix", ""
+                    ),
+                    plot_chain_data=self.args.analyze_lkl_args.get("plot_chain_data", True),
                 )
                 likelihood_analyzer_instance.run_analysis()
             except Exception as e:
@@ -1519,8 +1589,8 @@ class Main:
                         ),
                         marker_size=self.args.plot_iter_args.get("marker_size", 3),
                         marker_edge_width=self.args.plot_iter_args.get(
-                            "marker_edge_width", 0.03
-                        ),
+                            "marker_edge_width", 0.1  #0.03 is good for dense plots in digital versions.
+                         ),
                         combine_iteration_0_and_1=self.args.plot_iter_args.get(
                             "combine_iteration_0_and_1", False
                         ),
@@ -1613,6 +1683,12 @@ class Main:
                         exclude_iter0_discard_clutter_lower_panels=self.args.plot_iter_args.get(
                             "exclude_iter0_discard_clutter_lower_panels", True
                         ),
+                        
+                        smart_ticks=self.args.plot_iter_args.get("smart_ticks", False),
+                        num_ticks_per_axis=self.args.plot_iter_args.get(
+                            "num_ticks_per_axis", None
+                        ),
+                        
                         use_bold_subplot_legend=self.args.plot_iter_args.get(
                             "use_bold_subplot_legend", "auto"
                         ),
@@ -1626,6 +1702,11 @@ class Main:
                             "tall_subplots", True
                         ),
                         fig_width=self.args.plot_iter_args.get("fig_width", "440 pts"),
+                        suffix=self.args.plot_iter_args.get("suffix", ""),
+                        
+                        class_posterior_path=self.args.class_posterior_path,
+                        class_posterior_basename=self.args.class_posterior_basename,
+                        
                     )
                     plotter_instance.plot()
                 except Exception as e:
@@ -1773,6 +1854,21 @@ class Main:
                         "log_scale_params", None
                     ),
                     custom_ticks=self.args.triangleplot_args.get("custom_ticks", None),
+                    
+                    smart_ticks=self.args.triangleplot_args.get("smart_ticks", False),
+                    num_ticks_per_axis=self.args.triangleplot_args.get(
+                        "num_ticks_per_axis", None
+                    ),
+                    
+                    
+                    
+                    fig_width=self.args.triangleplot_args.get(
+                        "fig_width", "440 pts"
+                    ),
+                    suffix=self.args.triangleplot_args.get("suffix", ""),
+                    
+                    class_posterior_path=self.args.class_posterior_path,
+                    class_posterior_basename=self.args.class_posterior_basename,
                 )
 
                 if self.args.run_triangle_plot:
@@ -1853,6 +1949,635 @@ class Main:
             return ast.literal_eval(arg)
         except (ValueError, SyntaxError):
             raise argparse.ArgumentTypeError(f"Invalid Python literal: {arg}")
+
+
+    def resolve_and_update_delta_chi2_thresholds(
+        self,
+        param_connect,
+        data,
+        verbose=1,
+        apply_runtime_cap=False,
+        force_full_pool_iters=None,
+        carry_forward_if_missing=True,
+    ):
+        """
+        Post-run reconstruction of per-iteration Δχ² thresholds with robust fallbacks.
+
+        Supported modes in param_connect.delta_chi2_threshold:
+        - absolute (>1)          : direct value
+        - percentile (<=1)       : percentile over FULL pre-lkl pool
+        - "N sigma"              : μ + N·σ over FULL pre-lkl pool
+        - "auto"                 : runtime-compatible percentile rule
+        - "auto2" (NEW)          : robust 'bulk-end' on FULL-like pool:
+                                    POOL = accepted_accumulated ∪ discarded_likelihood_new
+        - "auto3" (NEW)          : robust 'bulk-end' on NEW-only pool:
+                                    POOL = accepted_new ∪ discarded_likelihood_new
+
+        auto2/auto3 bruger en 3-trins detektor i log(Δχ²):
+
+        A) Multi-scale m-spacings (huldetektor) med guardrails
+            - Hard drop (kun til detektion): Δχ² > 1e28.
+            - cap_detect = min(p99.5(Δχ²_raw), 1e20) -> vi ignorerer højere værdier i detektionen.
+            - Right-end ≤ p99.5 (mod ekstreme ceiling spikes).
+            - Anchor p_min%: vi cutter aldrig før denne percentil.
+            - Persistens (R sammenhængende indeks) eller krydsskala-bekræftelse.
+
+        B) Spacing-inflation (ingen hul nødvendigt)
+            - Finder første område (efter anker), hvor rullende median af m-spacings
+            er vokset med en faktor r ift. reference ved ankeret, og er persistent.
+
+        C) Histogram/CDF-knee (billigt fallback)
+            - I log-rum, glattes let; vælger største negative gradient (“knæ”) efter anker
+            og før p99.5.
+
+        Hvis intet passer, falder vi tilbage til percentil: auto_threshold_percentile.
+        Anchor er en **nedre grænse**, ikke et mål.
+        """
+        import numpy as np
+        import pandas as pd
+
+        # ---------------- small helpers ----------------
+        def _get(iter_entry, key):
+            return iter_entry.get(key, {}) if isinstance(iter_entry, dict) else {}
+
+        def _like_series(df_dict):
+            """Return np.array of true_loglkl (preferred) or loglkl."""
+            ldf = _get(df_dict, "likelihood_data")
+            if isinstance(ldf, pd.DataFrame) and not ldf.empty:
+                if "true_loglkl" in ldf.columns:
+                    return ldf["true_loglkl"].to_numpy(dtype=float)
+                if "loglkl" in ldf.columns:
+                    return ldf["loglkl"].to_numpy(dtype=float)
+            return np.array([], dtype=float)
+
+        # ---------------- pools ----------------
+        def _pool_full_loglkl(iter_entry):
+            acc = _like_series(_get(iter_entry, "accepted_accumulated"))
+            dis = _like_series(_get(iter_entry, "discarded_likelihood"))
+            if acc.size and dis.size:
+                return np.concatenate([acc, dis])
+            return acc if acc.size else dis
+
+        def _pool_auto_new_loglkl(iter_entry):
+            new_acc = _like_series(_get(iter_entry, "accepted_new"))
+            new_dis = _like_series(_get(iter_entry, "discarded_likelihood_new"))
+            if new_acc.size and new_dis.size:
+                return np.concatenate([new_acc, new_dis])
+            return new_acc if new_acc.size else new_dis
+
+        def _pool_auto2_loglkl(iter_entry):
+            # FULL-like for auto2: accepted_accumulated ∪ discarded_likelihood_new
+            acc_all = _like_series(_get(iter_entry, "accepted_accumulated"))
+            new_dis = _like_series(_get(iter_entry, "discarded_likelihood_new"))
+            if acc_all.size and new_dis.size:
+                return np.concatenate([acc_all, new_dis])
+            return acc_all if acc_all.size else new_dis
+
+        def _pool_auto3_loglkl(iter_entry):
+            # NEW-only for auto3: accepted_new ∪ discarded_likelihood_new
+            new_acc = _like_series(_get(iter_entry, "accepted_new"))
+            new_dis = _like_series(_get(iter_entry, "discarded_likelihood_new"))
+            if new_acc.size and new_dis.size:
+                return np.concatenate([new_acc, new_dis])
+            return new_acc if new_acc.size else new_dis
+
+        ANY_KEYS_IN_ORDER = [
+            "accepted_accumulated",
+            "accepted_new",
+            "accepted_old",
+            "discarded_likelihood",
+            "discarded_likelihood_new",
+            "discarded_likelihood_old",
+            "discarded_iteration",
+        ]
+        def _pool_any_loglkl(iter_entry):
+            parts = []
+            for k in ANY_KEYS_IN_ORDER:
+                arr = _like_series(_get(iter_entry, k))
+                if arr.size:
+                    parts.append(arr)
+            if parts:
+                return np.concatenate(parts)
+            return np.array([], dtype=float)
+
+        def _best_fit_loglkl(iter_entry):
+            bf = _get(iter_entry, "best_fit").get("likelihood")
+            if isinstance(bf, pd.DataFrame) and not bf.empty:
+                if "true_loglkl" in bf.columns:
+                    return float(bf["true_loglkl"].iloc[0])
+                if "loglkl" in bf.columns:
+                    return float(bf["loglkl"].iloc[0])
+            pool = _pool_any_loglkl(iter_entry)
+            if pool.size:
+                return float(np.min(pool))
+            raise RuntimeError("Missing best_fit and empty pools; cannot reconstruct this iteration.")
+
+        def _delta_chi2(arr_loglkl, bf):
+            if arr_loglkl is None or arr_loglkl.size == 0:
+                return np.array([], dtype=float)
+            dc2 = 2.0 * (arr_loglkl - bf)
+            dc2[dc2 < 0] = 0.0
+            return dc2
+
+        # ---------- small utilities ----------
+        def _rolling_median(arr, win):
+            s = pd.Series(arr)
+            return s.rolling(win, center=True, min_periods=1).median().to_numpy()
+
+        def _first_run(mask, R):
+            if mask.size == 0:
+                return None
+            run = 0
+            for i, v in enumerate(mask):
+                run = (run + 1) if v else 0
+                if run >= R:
+                    return i - R + 1
+            return None
+
+        # ---------- A) multi-scale m-spacings w/ guardrails ----------
+        def _bulk_end_mspacings_multiscale(
+            dc2_raw,
+            *,
+            p_min_percent,          # e.g. 30.0
+            z_thresh=3.5,
+            ratio_thresh=6.0,
+            R=3,
+            log_base="10",
+            eps=1e-12,
+            m_min=10,
+            m_max=5000,
+            verbose_local=False,
+        ):
+            x_all = np.asarray(dc2_raw, float)
+            x_all = x_all[np.isfinite(x_all)]
+            x_all = x_all[x_all >= 0.0]
+            n_all = x_all.size
+            if n_all < 5:
+                if verbose_local:
+                    print("[mspacings-diag] too few points; abort detector.")
+                return None
+
+            q_full = np.percentile(np.log10(x_all + eps), [0, 25, 50, 75, 90, 95, 99])
+            p995_val = float(np.percentile(x_all, 99.5))
+            cap_detect = float(min(p995_val, 1e20))
+            hard_cap = 1e28
+
+            detect_mask = (x_all <= hard_cap) & (x_all <= cap_detect)
+            x = x_all[detect_mask]
+            if x.size < 5:
+                if verbose_local:
+                    print(f"[mspacings-diag] after cleaning n={x.size} — abort detector.")
+                return None
+
+            if log_base == "10":
+                y_all_log995 = np.log10(p995_val + eps)
+                y = np.log10(x + eps)
+                inv = lambda t: 10.0**t
+            else:
+                y_all_log995 = np.log(p995_val + eps)
+                y = np.log(x + eps)
+                inv = np.exp
+
+            y.sort()
+            n = y.size
+            right_cap_idx = int(np.searchsorted(y, y_all_log995, side="right") - 1)
+            right_cap_idx = max(0, min(right_cap_idx, n - 1))
+            floor_idx = max(1, int(np.ceil((p_min_percent / 100.0) * n)))
+
+            if verbose_local:
+                print(f"\n[mspacings-diag] CLEANED n={n}/{n_all} (drop>1e28 & >cap_detect={cap_detect:.3g}), "
+                    f"anchor_idx≈{floor_idx}, right_cap_idx≈{right_cap_idx}")
+                print(f"[mspacings-diag] log10(Δχ²) quantiles (raw): "
+                    f"0%={q_full[0]:.2f} 25%={q_full[1]:.2f} 50%={q_full[2]:.2f} "
+                    f"75%={q_full[3]:.2f} 90%={q_full[4]:.2f} 95%={q_full[5]:.2f} 99%={q_full[6]:.2f}")
+
+            rt = max(1.0, np.sqrt(n))
+            m_candidates = sorted(set(int(round(v)) for v in (rt/2.0, rt, 2.0*rt)))
+            m_values = []
+            for m in m_candidates:
+                m = max(1, min(m, n - 1))
+                if m < m_min and (n - 1) >= m_min:
+                    m = m_min
+                m = min(m, m_max, n - 1)
+                if m >= 1 and (len(m_values) == 0 or m != m_values[-1]):
+                    m_values.append(m)
+
+            cand_positions, picks = [], []
+            for m in m_values:
+                if verbose_local:
+                    print(f"\n[mspacings-diag] --- scale m={m} (≈{m/n*100:.1f}% of cleaned n) ---")
+                g = y[m:] - y[:-m]
+                if g.size == 0:
+                    continue
+                win = int(max(5*m, 25))
+                win = min(win, max(3, g.size))
+                med_loc = _rolling_median(g, win)
+                mad_loc = _rolling_median(np.abs(g - med_loc), win)
+                mad_loc = np.where(mad_loc <= 1e-15, 1e-15, mad_loc)
+                med_safe = np.where(med_loc <= 1e-15, 1e-15, med_loc)
+
+                z = 0.6745 * (g - med_loc) / mad_loc
+                ratio = g / med_safe
+
+                right_end = np.arange(g.size) + m
+                ok = (right_end >= floor_idx) & (right_end <= right_cap_idx) & (z >= z_thresh) & (ratio >= ratio_thresh)
+
+                if verbose_local:
+                    zmax = float(np.max(z)); i_zmax = int(np.argmax(z))
+                    ratio_max = float(np.max(ratio)); med_med = float(np.median(med_loc))
+                    print(f"[mspacings-diag] m={m:>5} med_gap={med_med:.3g} "
+                        f"zmax={zmax:>8.2f}@{i_zmax:>6} ratio_max={ratio_max:>8.2f} "
+                        f"first_ok@{_first_run(ok, R)} ok_count={ok.sum()}")
+
+                i0 = _first_run(ok, R)
+                if i0 is not None:
+                    picks.append((int(i0), m))
+                    cand_positions.append(int(i0 + m))
+                cand_positions.extend(list(right_end[ok]))
+
+            if verbose_local:
+                print(f"[mspacings-diag] per-scale picks: {[(i+m) for (i,m) in picks]}  cand_positions={len(cand_positions)}")
+
+            cand_positions = np.array(sorted(cand_positions), dtype=int)
+            cross_pick = None
+            if cand_positions.size:
+                tol = max(1, max(m_values)//4)
+                start = 0
+                while start < cand_positions.size:
+                    end = start + 1
+                    while end < cand_positions.size and cand_positions[end] - cand_positions[start] <= tol:
+                        end += 1
+                    if (end - start) >= 2:
+                        cross_pick = int(cand_positions[start])
+                        break
+                    start = end
+
+            best_thr, best_right = None, None
+            if picks:
+                rr = [i+m for (i,m) in picks]
+                k = int(np.argmin(rr))
+                i_sel, m_sel = picks[k]
+                thr_y = 0.5*(y[i_sel] + y[i_sel+m_sel])
+                best_thr = float(inv(thr_y)); best_right = rr[k]
+            if best_thr is None and cross_pick is not None:
+                j = cross_pick
+                for m in m_values:
+                    i = j - m
+                    if 0 <= i < (n - m):
+                        thr_y = 0.5*(y[i] + y[i+m])
+                        best_thr = float(inv(thr_y)); best_right = j
+                        break
+
+            if best_thr is None:
+                if verbose_local:
+                    print("[mspacings-diag] No pick found (will trigger next stage).")
+                return None
+
+            floor = float(np.percentile(dc2_raw, p_min_percent))
+            best_thr = max(best_thr, floor)
+            if verbose_local:
+                frac_right = (best_right or n)/n
+                print(f"[mspacings-diag] FINAL m-spacings pick: right_end={best_right} (pos {frac_right:.3f}), "
+                    f"thr≈{best_thr:.3g}, floor={floor:.3g}, right_cap≈p99.5.")
+            return best_thr
+
+        # ---------- B) spacing-inflation detector (no gap required) ----------
+        def _bulk_end_inflation(
+            dc2_raw,
+            *,
+            p_min_percent,
+            right_cap_percent=99.5,
+            r_factor=4.0,      # hvor meget median spacing skal være vokset
+            R=5,               # persistens
+            eps=1e-12,
+            verbose_local=False,
+        ):
+            x = np.asarray(dc2_raw, float)
+            x = x[np.isfinite(x) & (x >= 0)]
+            if x.size < 20:
+                return None
+            # drop ekstreme ceiling for analysen (samme filosofi)
+            hard_cap = 1e28
+            cap_detect = min(np.percentile(x, right_cap_percent), 1e20)
+            x = x[(x <= hard_cap) & (x <= cap_detect)]
+            if x.size < 20:
+                return None
+
+            y = np.log10(x + eps)
+            y.sort()
+            n = y.size
+            floor_idx = max(1, int(np.ceil((p_min_percent/100.0)*n)))
+            right_cap_idx = int(np.searchsorted(y, np.log10(cap_detect+eps), side="right")-1)
+            right_cap_idx = max(0, min(right_cap_idx, n-1))
+
+            # relativt lille m for at være følsom, men ikke støjende
+            m = max(5, int(round(np.sqrt(n)/3)))
+            m = min(m, n-1)
+            g = y[m:] - y[:-m]                   # længde n-m
+
+            # rullende median af g (glat baseline)
+            W = max(50, 5*m)                     # vindue til median
+            W = min(W, max(5, g.size))
+            med = _rolling_median(g, W)
+            med = np.where(med <= 1e-15, 1e-15, med)
+
+            right_end = np.arange(g.size) + m
+
+            # reference = median i nærheden af anchor (brug første segment som “bulk” baseline)
+            ref_zone = (right_end >= max(1, floor_idx-5*m)) & (right_end <= min(g.size-1, floor_idx+5*m))
+            ref_med = np.median(med[ref_zone]) if np.any(ref_zone) else np.median(med)
+
+            # vækstforhold
+            grow = med / max(ref_med, 1e-15)
+            ok = (right_end >= floor_idx) & (right_end <= right_cap_idx) & (grow >= r_factor)
+
+            i0 = _first_run(ok, R)
+            if verbose_local:
+                print(f"[inflation-diag] n={n}, m={m}, W={W}, ref_med={ref_med:.3g}, "
+                    f"first_ok={i0}, ok_count={ok.sum()}, floor_idx={floor_idx}, right_cap_idx={right_cap_idx}")
+
+            if i0 is None:
+                return None
+
+            # threshold ved midtpunktet af springet
+            i_sel = int(i0)
+            left, right = y[i_sel], y[i_sel + m]
+            thr_y = 0.5*(left + right)
+            thr = float(10.0**thr_y)
+
+            floor = float(np.percentile(x, p_min_percent))
+            return max(thr, floor)
+
+        # ---------- C) histogram/CDF-knee fallback ----------
+        def _bulk_end_hist_knee(
+            dc2_raw,
+            *,
+            p_min_percent,
+            right_cap_percent=99.5,
+            eps=1e-12,
+            verbose_local=False,
+        ):
+            x = np.asarray(dc2_raw, float)
+            x = x[np.isfinite(x) & (x >= 0)]
+            if x.size < 20:
+                return None
+
+            hard_cap = 1e28
+            cap_detect = min(np.percentile(x, right_cap_percent), 1e20)
+            x = x[(x <= hard_cap) & (x <= cap_detect)]
+            if x.size < 20:
+                return None
+
+            y = np.log10(x + eps)
+            y.sort()
+            n = y.size
+            floor_val = np.percentile(x, p_min_percent)
+            floor_log = np.log10(floor_val + eps)
+
+            # binning i log-rum
+            nb = int(min(128, max(32, 2*np.sqrt(n))))
+            hist, edges = np.histogram(y, bins=nb)
+            # glat let
+            k = np.array([1, 2, 1], float)
+            k = k / k.sum()
+            smooth = np.convolve(hist, k, mode="same")
+
+            # gradient (fald fra venstre mod højre)
+            grad = np.diff(smooth)
+            # find bins efter anchor og før right_cap (≈ sidste bin p99.5)
+            right_cap_log = np.log10(cap_detect + eps)
+            start_bin = int(np.searchsorted(edges, floor_log, side="left"))
+            end_bin = int(np.searchsorted(edges, right_cap_log, side="right")) - 2  # -2 fordi grad har len-1
+            start_bin = max(1, min(start_bin, len(grad)-1))
+            end_bin = max(start_bin, min(end_bin, len(grad)-1))
+
+            if end_bin <= start_bin:
+                return None
+
+            # stærkeste negative gradient (største fald) i [start_bin, end_bin]
+            idx = start_bin + int(np.argmin(grad[start_bin:end_bin+1]))
+            # threshold = center mellem edges[idx], edges[idx+1]
+            thr_log = 0.5*(edges[idx] + edges[idx+1])
+            thr = float(10.0**thr_log)
+
+            floor = float(np.percentile(x, p_min_percent))
+            if verbose_local:
+                print(f"[knee-diag] nb={nb}, start_bin={start_bin}, end_bin={end_bin}, "
+                    f"min_grad_idx={idx}, thr≈{thr:.3g}, floor={floor:.3g}")
+            return max(thr, floor)
+
+        # -------------- setup --------------
+        spec = getattr(param_connect, "delta_chi2_threshold", None)
+        if spec is None:
+            if verbose > 1:
+                print("[threshold-resolver] No delta_chi2_threshold; skip.")
+            return None
+
+        auto_pct = float(getattr(param_connect, "auto_threshold_percentile", 95.0))
+        bulk_anchor_pct = float(getattr(param_connect, "auto_bulk_anchor_percentile", auto_pct))
+
+        itdata = data.get("iteration_data", {})
+        iters = sorted(itdata.keys())
+        if not iters:
+            if verbose > 1:
+                print("[threshold-resolver] No iterations; nothing to do.")
+            return None
+
+        force_full_pool_iters = set(force_full_pool_iters or set())
+        force_full_pool_iters.add(1)
+
+        # -------------- classify specs --------------
+        def _classify(entry):
+            if isinstance(entry, (int, float)):
+                x = float(entry)
+                return ("percentile", x) if x <= 1.0 else ("absolute", x)
+            if isinstance(entry, str):
+                s = entry.strip().lower()
+                if s in ("auto", "auto2", "auto3"):
+                    return (s, None)
+                if s.endswith("sigma"):
+                    try:
+                        n = float(s.split()[0])
+                    except Exception as e:
+                        raise ValueError(f"Bad 'N sigma' spec: {entry}") from e
+                    return ("n_sigma", n)
+                raise ValueError(f"Unknown delta_chi2_threshold spec: {entry}")
+            raise TypeError(f"Unsupported threshold type: {type(entry)}")
+
+        def _spec_for_iter(i):
+            if isinstance(spec, list):
+                return spec[i] if i < len(spec) else spec[-1]
+            return spec
+
+        # -------------- resolvers --------------
+        def _resolve_absolute(val, iter_entry, bf, i):
+            return float(val)
+
+        def _resolve_percentile(p, iter_entry, bf, i):
+            pool = _pool_full_loglkl(iter_entry)
+            if pool.size == 0:
+                pool = _pool_any_loglkl(iter_entry)
+            dc2 = _delta_chi2(pool, bf)
+            if dc2.size == 0:
+                return None
+            return float(np.percentile(dc2, float(p) * 100.0))
+
+        def _resolve_n_sigma(n, iter_entry, bf, i):
+            pool = _pool_full_loglkl(iter_entry)
+            if pool.size == 0:
+                pool = _pool_any_loglkl(iter_entry)
+            dc2 = _delta_chi2(pool, bf)
+            if dc2.size == 0:
+                return None
+            return float(dc2.mean()) + float(n) * float(dc2.std())
+
+        def _resolve_auto(_, iter_entry, bf, i):
+            if i in force_full_pool_iters:
+                pool = _pool_full_loglkl(iter_entry)
+            else:
+                pool = _pool_auto_new_loglkl(iter_entry)
+                if pool.size == 0:
+                    pool = _pool_full_loglkl(iter_entry)
+            dc2 = _delta_chi2(pool, bf)
+            if dc2.size == 0:
+                return None
+            thr = float(np.percentile(dc2, auto_pct))
+            if apply_runtime_cap and i > 0 and thr > 1e8:
+                thr = 1e8
+            if verbose >= 3:
+                print(f"[threshold-resolver:auto] iter={i} pct={auto_pct} thr={thr:.6g} N={dc2.size}")
+            return thr
+
+        # --- NEW: auto2/auto3 with (A)->(B)->(C)->percentile ---
+        def _robust_bulk_end(dc2, label, i):
+            # A) m-spacings
+            thr = _bulk_end_mspacings_multiscale(
+                dc2,
+                p_min_percent=bulk_anchor_pct,
+                z_thresh=3.5,
+                ratio_thresh=6.0,
+                R=3,
+                log_base="10",
+                verbose_local=(verbose >= 4),
+            )
+            if thr is not None:
+                if verbose >= 3:
+                    print(f"[{label}] iter={i}: m-spacings pick ⇒ {thr:.6g}")
+                return thr
+
+            # B) inflation
+            thr = _bulk_end_inflation(
+                dc2,
+                p_min_percent=bulk_anchor_pct,
+                right_cap_percent=99.5,
+                r_factor=4.0,
+                R=5,
+                verbose_local=(verbose >= 4),
+            )
+            if thr is not None:
+                if verbose >= 3:
+                    print(f"[{label}] iter={i}: inflation pick ⇒ {thr:.6g}")
+                return thr
+
+            # C) knee
+            thr = _bulk_end_hist_knee(
+                dc2,
+                p_min_percent=bulk_anchor_pct,
+                right_cap_percent=99.5,
+                verbose_local=(verbose >= 4),
+            )
+            if thr is not None:
+                if verbose >= 3:
+                    print(f"[{label}] iter={i}: knee pick ⇒ {thr:.6g}")
+                return thr
+
+            # fallback
+            thr = float(np.percentile(dc2, auto_pct))
+            if verbose >= 2:
+                print(f"[{label}] iter={i}: no detector pick → fallback percentile {auto_pct} ⇒ {thr:.6g}")
+            return thr
+
+        def _resolve_auto2(_, iter_entry, bf, i):
+            pool = _pool_auto2_loglkl(iter_entry)
+            if pool.size == 0:
+                pool = _pool_any_loglkl(iter_entry)
+            dc2 = _delta_chi2(pool, bf)
+            if dc2.size == 0:
+                return None
+            thr = _robust_bulk_end(dc2, "threshold-resolver:auto2", i)
+            if apply_runtime_cap and i > 0 and thr > 1e8:
+                thr = 1e8
+            if verbose >= 3:
+                print(f"[threshold-resolver:auto2] iter={i} thr={thr:.6g} N={dc2.size}")
+            return thr
+
+        def _resolve_auto3(_, iter_entry, bf, i):
+            pool = _pool_auto3_loglkl(iter_entry)
+            if pool.size == 0:
+                pool = _pool_auto_new_loglkl(iter_entry)
+                if pool.size == 0:
+                    pool = _pool_any_loglkl(iter_entry)
+            dc2 = _delta_chi2(pool, bf)
+            if dc2.size == 0:
+                return None
+            thr = _robust_bulk_end(dc2, "threshold-resolver:auto3", i)
+            if apply_runtime_cap and i > 0 and thr > 1e8:
+                thr = 1e8
+            if verbose >= 3:
+                print(f"[threshold-resolver:auto3] iter={i} thr={thr:.6g} N={dc2.size}")
+            return thr
+
+        MODE = {
+            "absolute":   _resolve_absolute,
+            "percentile": _resolve_percentile,
+            "n_sigma":    _resolve_n_sigma,
+            "auto":       _resolve_auto,
+            "auto2":      _resolve_auto2,
+            "auto3":      _resolve_auto3,
+        }
+
+        # -------------- main loop --------------
+        thresholds = []
+        last_thr = None
+        for i in iters:
+            iter_entry = itdata[i]
+            try:
+                bf = _best_fit_loglkl(iter_entry)
+            except RuntimeError as e:
+                if verbose > 1:
+                    print(f"[threshold-resolver] iter={i}: {e}")
+                bf = None
+
+            entry = _spec_for_iter(i)
+            mode, val = _classify(entry)
+            thr = None
+            if bf is not None:
+                thr = MODE[mode](val, iter_entry, bf, i)
+
+            if thr is None:
+                if carry_forward_if_missing and last_thr is not None:
+                    if verbose >= 1:
+                        print(f"[threshold-resolver] iter={i}: no usable data; carry forward thr={last_thr:.6g}.")
+                    thr = float(last_thr)
+                else:
+                    if verbose >= 1:
+                        print(f"[threshold-resolver] iter={i}: no usable data; threshold=inf.")
+                    thr = float("inf")
+
+            thresholds.append(float(thr))
+            if np.isfinite(thr):
+                last_thr = thr
+
+            if verbose >= 2:
+                print(f"[threshold-resolver] iter={i:>2} mode={mode:<6} thr={thr:.6g}")
+
+        param_connect.delta_chi2_threshold = thresholds
+        if verbose > 1:
+            pretty = ", ".join(("inf" if not np.isfinite(t) else f"{t:.6g}") for t in thresholds)
+            print("[threshold-resolver] Δχ² thresholds per iteration:", pretty)
+        return thresholds
+
+
 
 
 # ---------------------------------CLASS FOR LOADING DATA---------------------------------
@@ -4536,6 +5261,7 @@ class Analyze_likelihoods:
         param_connect,
         data,
         data_categories=None,
+        iterations_to_plot="all",
         category_labels=None,
         verbose=1,
         data_colors=None,
@@ -4550,9 +5276,16 @@ class Analyze_likelihoods:
         save_formats=["pdf", "png"],
         max_delta_chi2_in_display=None,
         max_loglkl_in_display=None,
-        # What would be a good parameter for choosing what to analyze, i.e. what plots to generate?
-        # E.g. a list of booleans for each type of plot? choose a good parameter name:
         create_these_outputs="all",
+        bin_scale= "auto",
+        axis_scale= "auto",
+        bin_scale_args= None,
+        axis_scale_args=None,
+        bins_numpy = "auto", #command passed to numpy.histogram_bin_edges
+        fig_width="440 pts",
+        suffix="",
+        plot_chain_data=True,
+        
     ):
         """
         Parameters
@@ -4642,6 +5375,7 @@ class Analyze_likelihoods:
             raise TypeError("data_colors must be a dictionary if provided.")
 
         self.project_path = project_path
+        self.suffix = suffix
         self.output_path = output_path
         self.param_connect = param_connect
         self.data = data
@@ -4655,6 +5389,29 @@ class Analyze_likelihoods:
         self.max_delta_chi2_in_display = max_delta_chi2_in_display
         self.max_loglkl_in_display = max_loglkl_in_display
         self.create_these_outputs = create_these_outputs
+        self.fig_width = fig_width
+        self.plot_chain_data = plot_chain_data
+        self.iterations_to_plot = iterations_to_plot
+        if self.iterations_to_plot != "all":
+            if isinstance(self.iterations_to_plot, list):
+                self.iterations_to_plot = sorted(self.iterations_to_plot)
+        # How should we compute bin-edges?
+        #   "linear", "log", "symlog", or "auto" (pick symlog if any data ≤ 0)
+        self.bin_scale = bin_scale
+        # How should we _display_ the x-axis?
+        #   same options as bin_scale
+        self.axis_scale = axis_scale
+        # Extra args for non-linear scales
+        self.axis_scale_args = axis_scale_args or {}
+        self.bin_scale_args = bin_scale_args or {}
+        
+        if self.bin_scale == "symlog" and (self.bin_scale_args is None or "linthresh" not in self.bin_scale_args):
+            self.bin_scale_args.setdefault("linthresh", 1e-3)
+        
+        if self.axis_scale == "symlog" and (self.axis_scale_args is None or "linthresh" not in self.axis_scale_args):
+            self.axis_scale_args.setdefault("linthresh", 1e-3)
+
+        self.bins_numpy = bins_numpy
 
         # Create a directory to store analysis reports
         self.analysis_dir = os.path.join(self.output_path, "likelihood_analysis")
@@ -4680,16 +5437,36 @@ class Analyze_likelihoods:
 
         if category_labels is None:
 
-            self.category_labels = {
-                "accepted_accumulated": "Cumulative Accepted",  # All points accepted across all iterations.
-                "cumulative_discarded_likelihood": "Cumulative Discarded",  # All points discarded by the likelihood filter across all iterations.
-                "accepted_new": "Newly Accepted",  # Points accepted in the current iteration.
-                "accepted_old": "Previously Accepted",  # Points accepted in earlier iterations.
-                "discarded_likelihood_new": "Newly generated & Discarded",  # Points generated this iteration and discarded immediately by the likelihood filter.
-                "discarded_likelihood_old": "Previously accepted, now discarded",  # Points previously accepted but discarded this iteration by the likelihood filter.
-                "discarded_likelihood": "Total Discarded (current iter)",  # All points discarded this iteration by the likelihood filter.
-                "discarded_iteration": "Discarded (Iteration)",  # Points discarded for non-likelihood-related reasons in the current iteration.
+            # self.category_labels = {
+            #     "accepted_accumulated": "Cumulative Accepted",  # All points accepted across all iterations.
+            #     "cumulative_discarded_likelihood": "Cumulative Discarded",  # All points discarded by the likelihood filter across all iterations.
+            #     "accepted_new": "Newly Accepted",  # Points accepted in the current iteration.
+            #     "accepted_old": "Previously Accepted",  # Points accepted in earlier iterations.
+            #     "discarded_likelihood_new": "Newly generated & Discarded",  # Points generated this iteration and discarded immediately by the likelihood filter.
+            #     "discarded_likelihood_old": "Previously accepted, now discarded",  # Points previously accepted but discarded this iteration by the likelihood filter.
+            #     "discarded_likelihood": "Total Discarded (current iter)",  # All points discarded this iteration by the likelihood filter.
+            #     "discarded_iteration": "Discarded (Iteration)",  # Points discarded for non-likelihood-related reasons in the current iteration.
+            # }
+            
+            
+            self.category_labels= {
+                "accepted_accumulated":          "Cumulative accepted",
+                "cumulative_discarded_likelihood": "Cumulative discarded",
+
+                "accepted_new":                  "Newly accepted",
+                "accepted_old":                  "Previously accepted",
+
+                "discarded_likelihood_new":      "Newly generated & discarded",
+                "discarded_likelihood_old":      "Previously accepted, now discarded",
+
+                "discarded_likelihood":          "Total discarded (this iteration)",
+                "discarded_iteration":           "Discarded (full iteration)",
             }
+
+            
+                        
+            
+            
 
             """
             Cumulative Categories:
@@ -4717,7 +5494,7 @@ class Analyze_likelihoods:
             self.category_labels = category_labels
 
         # Define quantiles for extended statistics
-        self.quantiles = [0.05, 0.25, 0.5, 0.75, 0.95]
+        self.quantiles = [0.01, 0.05, 0.25, 0.5, 0.75, 0.80, 0.85, 0.90, 0.95, 0.97, 0.98, 0.99, 0.995, 0.999]
 
         # Define colors for each data category (tweak to your taste):
         # - Greens for accepted, Reds/Oranges for discards, Blue for total, etc.
@@ -4729,12 +5506,12 @@ class Analyze_likelihoods:
         else:
             self.DATA_COLORS = {
                 "accepted_accumulated": "tab:green",  # Cumulative Accepted Points (base green)
-                "cumulative_discarded_likelihood": "tab:red",  # Cumulative Discarded by Likelihood-filter (base red)
+                "cumulative_discarded_likelihood": "darkred",  # Cumulative Discarded by Likelihood-filter (base red)
                 "accepted_new": "lightgreen",  # Lighter green for newly accepted
                 "accepted_old": "darkgreen",  # Darker green for previously accepted
                 "discarded_likelihood_new": lightred,  # Lighter red for newly generated and discarded
-                "discarded_likelihood_old": "crimson",  # Darker red for previously accepted but discarded
-                "discarded_likelihood": "darkred",  # Strong red for total discards in this iteration
+                "discarded_likelihood_old": "tab:red",  # Darker red for previously accepted but discarded
+                "discarded_likelihood": "crimson",  # Strong red for total discards in this iteration
                 "discarded_iteration": "tab:blue",  # Blue for iteration-based discards
             }
 
@@ -4747,7 +5524,7 @@ class Analyze_likelihoods:
             "fill": True,
             "element": "bars",
             "multiple": "stack",
-            "log_scale": True,
+            "log_scale": None,
             "common_bins": True,
             "common_norm": True,
         }
@@ -4769,7 +5546,7 @@ class Analyze_likelihoods:
                             "fill": True,
                             "element": "bars",
                             "multiple": "stack",
-                            "log_scale": True,
+                            "log_scale": None,
                             "common_bins": True,
                             "common_norm": True,
                         }
@@ -4788,7 +5565,7 @@ class Analyze_likelihoods:
                             "fill": True,
                             "element": "bars",
                             "multiple": "stack",
-                            "log_scale": True,
+                            "log_scale": None,
                             "common_bins": True,
                             "common_norm": True,
                         }
@@ -4807,7 +5584,7 @@ class Analyze_likelihoods:
                             "fill": True,
                             "element": "bars",
                             "multiple": "stack",
-                            "log_scale": True,
+                            "log_scale": None,
                             "common_bins": True,
                             "common_norm": True,
                         }
@@ -4826,7 +5603,7 @@ class Analyze_likelihoods:
                             "fill": True,
                             "element": "bars",
                             "multiple": "stack",
-                            "log_scale": True,
+                            "log_scale": None,
                             "common_bins": True,
                             "common_norm": True,
                         }
@@ -4845,7 +5622,7 @@ class Analyze_likelihoods:
                             "fill": True,
                             "element": "bars",
                             "multiple": "stack",
-                            "log_scale": True,
+                            "log_scale": None,
                             "common_bins": True,
                             "common_norm": True,
                         }
@@ -4871,7 +5648,7 @@ class Analyze_likelihoods:
                             "fill": True,
                             "element": "bars",
                             "multiple": "stack",
-                            "log_scale": True,
+                            "log_scale": None,
                             "common_bins": True,
                             "common_norm": True,
                         }
@@ -4890,7 +5667,7 @@ class Analyze_likelihoods:
                             "fill": True,
                             "element": "bars",
                             "multiple": "stack",
-                            "log_scale": True,
+                            "log_scale": None,
                             "common_bins": True,
                         }
                     ),
@@ -4912,6 +5689,24 @@ class Analyze_likelihoods:
         iteration_data = self._gather_iteration_data()
         iteration_data_chain = self._gather_iteration_data_chain()
 
+        # ——— only keep the subset the user wants to *plot* ———
+        if self.iterations_to_plot != "all":
+            plot_data = {
+                i: iteration_data[i]
+                for i in self.iterations_to_plot
+                if i in iteration_data
+            }
+            plot_chain = {
+                i: iteration_data_chain[i]
+                for i in self.iterations_to_plot
+                if i in iteration_data_chain
+            }
+        else:
+            plot_data = iteration_data
+            plot_chain = iteration_data_chain
+
+
+
         # Check if create_these_outputs is set to 'all' or if the 'summary' key is True in create_these_outputs
         if (
             self.create_these_outputs == "all"
@@ -4926,8 +5721,8 @@ class Analyze_likelihoods:
             self.create_these_outputs == "all"
             or self.create_these_outputs["boxplots"] == True
         ):
-            self._plot_per_iteration_boxplot(iteration_data, metric="delta_chi_sq")
-            self._plot_per_iteration_boxplot(iteration_data, metric="loglkl")
+            self._plot_per_iteration_boxplot(plot_data, metric="delta_chi_sq")
+            self._plot_per_iteration_boxplot(plot_data, metric="loglkl")
 
         matplotlib.use("Agg")
         # Histograms
@@ -4938,15 +5733,15 @@ class Analyze_likelihoods:
             for stat_type in ["count"]:  # , 'density']: not supported anymore
 
                 self._plot_per_iteration_hist(
-                    iteration_data,
-                    iteration_data_chain=iteration_data_chain,
+                    iteration_data=plot_data,
+                    iteration_data_chain=plot_chain if self.plot_chain_data else None,
                     metric="delta_chi_sq",
                     stat=stat_type,
                 )
 
                 self._plot_per_iteration_hist(
-                    iteration_data,
-                    iteration_data_chain=iteration_data_chain,
+                    iteration_data=plot_data,
+                    iteration_data_chain=plot_chain if self.plot_chain_data else None,
                     metric="loglkl",
                     stat=stat_type,
                 )
@@ -4957,7 +5752,7 @@ class Analyze_likelihoods:
             self.create_these_outputs == "all"
             or self.create_these_outputs["evolution_plot"] == True
         ):
-            self._plot_likelihood_evolution(iteration_data)
+            self._plot_likelihood_evolution(plot_data)
 
         if self.verbose >= 1:
             print(
@@ -4995,10 +5790,16 @@ class Analyze_likelihoods:
             for cat in self.data_categories:
                 self.count_points[iteration][cat] = {}
                 self.count_points[iteration][cat]["original"] = 0
-                self.count_points[iteration][cat]["display"] = None
+                self.count_points[iteration][cat]["display"] = 0
+                self.count_points[iteration][cat]["NaN"] = 0
+                self.count_points[iteration][cat]["inf"] = 0
+                self.count_points[iteration][cat]["finite"] = 0
                 self.count_points[iteration][f"delta_chi_sq_{cat}"] = {}
                 self.count_points[iteration][f"delta_chi_sq_{cat}"]["original"] = 0
-                self.count_points[iteration][f"delta_chi_sq_{cat}"]["display"] = None
+                self.count_points[iteration][f"delta_chi_sq_{cat}"]["display"] = 0
+                self.count_points[iteration][f"delta_chi_sq_{cat}"]["NaN"] = 0
+                self.count_points[iteration][f"delta_chi_sq_{cat}"]["inf"] = 0
+                self.count_points[iteration][f"delta_chi_sq_{cat}"]["finite"] = 0
             self.count_points[iteration]["cumulative_discarded_likelihood"] = {}
             self.count_points[iteration]["cumulative_discarded_likelihood"][
                 "original"
@@ -5006,6 +5807,15 @@ class Analyze_likelihoods:
             self.count_points[iteration]["cumulative_discarded_likelihood"][
                 "display"
             ] = None
+            self.count_points[iteration]["cumulative_discarded_likelihood"][
+                "NaN"
+            ] = 0
+            self.count_points[iteration]["cumulative_discarded_likelihood"][
+                "inf"
+            ] = 0
+            self.count_points[iteration]["cumulative_discarded_likelihood"]["finite"] = 0
+
+            # Initialize delta_chi_sq_cumulative_discarded_likelihood
             self.count_points[iteration][
                 "delta_chi_sq_cumulative_discarded_likelihood"
             ] = {}
@@ -5014,7 +5824,14 @@ class Analyze_likelihoods:
             ]["original"] = 0
             self.count_points[iteration][
                 "delta_chi_sq_cumulative_discarded_likelihood"
-            ]["display"] = None
+            ]["display"] = 0
+            self.count_points[iteration][
+                "delta_chi_sq_cumulative_discarded_likelihood"
+            ]["NaN"] = 0
+            self.count_points[iteration][
+                "delta_chi_sq_cumulative_discarded_likelihood"
+            ]["inf"] = 0
+            self.count_points[iteration]["delta_chi_sq_cumulative_discarded_likelihood"]["finite"] = 0
 
         iteration_data = {}
         non_empty_categories = {
@@ -5022,7 +5839,7 @@ class Analyze_likelihoods:
         }  # Track whether each category is non-empty
 
         # Initialize cumulative containers
-        cumulative_discarded_likelihood = np.array([], dtype=np.float32)
+        cumulative_discarded_likelihood_raw = np.array([], dtype=np.float32)
 
         # Loop over each iteration in sorted order
         for iteration, content in sorted(self.data["iteration_data"].items()):
@@ -5083,31 +5900,44 @@ class Analyze_likelihoods:
                     and not lkl_df.empty
                     and "true_loglkl" in lkl_df.columns
                 ):
-                    arr = lkl_df["true_loglkl"].values.astype(np.float32)
+                    arr_raw = lkl_df["true_loglkl"].values.astype(np.float32)
                     # Apply filtering if max_loglkl_in_display is set
-                    self.count_points[iteration][cat]["original"] = len(arr)
+                    self.count_points[iteration][cat]["original"] = len(arr_raw)
+                    self.count_points[iteration][cat]["NaN"] = np.isnan(arr_raw).sum()
+                    self.count_points[iteration][cat]["inf"] = np.isinf(arr_raw).sum()
+                    self.count_points[iteration][cat]["finite"] = np.isfinite(arr_raw).sum()
+
+                    arr_used = arr_raw[np.isfinite(arr_raw)]
+                    self.count_points[iteration][cat]["display"] = len(arr_used)
+                
                     if self.max_loglkl_in_display is not None:
-                        arr = arr[arr <= self.max_loglkl_in_display]
-                        self.count_points[iteration][cat]["display"] = len(arr)
+                        arr_used = arr_used[arr_used <= self.max_loglkl_in_display]
+                        self.count_points[iteration][cat]["display"] = len(arr_used)
                     non_empty_categories[cat] = True  # Mark the category as non-empty
 
                     if self.x_range is not None:
                         self.count_points[iteration][cat]["display"] = len(
-                            arr[(arr >= self.x_range[0]) & (arr <= self.x_range[1])]
+                            arr_used[(arr_used >= self.x_range[0]) & (arr_used <= self.x_range[1])]
                         )
 
                 else:
-                    arr = np.array([], dtype=np.float32)
-                iteration_data[iteration][cat] = arr
+                    arr_raw = np.array([], dtype=np.float32)
+                    arr_used = arr_raw  # No data, use empty array
+                iteration_data[iteration][cat] = arr_used
 
                 # 3) Compute delta_chi^2 if best_fit_loglkl is defined
                 delta_key = f"delta_chi_sq_{cat}"
-                if best_fit_loglkl is not None and len(arr) > 0:
-                    delta_chi_sq = 2.0 * (arr - best_fit_loglkl)
-
+                if best_fit_loglkl is not None and len(arr_raw) > 0:
+                    delta_chi_sq_raw = 2.0 * (arr_raw - best_fit_loglkl)
                     self.count_points[iteration][delta_key]["original"] = len(
-                        delta_chi_sq
+                        delta_chi_sq_raw
                     )
+                    self.count_points[iteration][delta_key]["NaN"] = np.isnan(delta_chi_sq_raw).sum()
+                    self.count_points[iteration][delta_key]["inf"] = np.isinf(delta_chi_sq_raw).sum()
+                    self.count_points[iteration][delta_key]["finite"] = np.isfinite(delta_chi_sq_raw).sum()
+                    
+                    delta_chi_sq = delta_chi_sq_raw[np.isfinite(delta_chi_sq_raw)]
+                    self.count_points[iteration][delta_key]["display"] = len(delta_chi_sq)
 
                     # Apply filtering if max_delta_chi2_in_display is set
                     if self.max_delta_chi2_in_display is not None:
@@ -5134,91 +5964,118 @@ class Analyze_likelihoods:
                         [], dtype=np.float32
                     )
 
-            # 4) Handle cumulative discarded likelihood
-            discarded_new = iteration_data[iteration].get(
-                "discarded_likelihood_new", np.array([], dtype=np.float32)
-            )
-            discarded_old = iteration_data[iteration].get(
-                "discarded_likelihood_old", np.array([], dtype=np.float32)
-            )
 
-            # Combine current discarded likelihoods
-            current_discarded_likelihoods = np.concatenate(
-                [discarded_new, discarded_old]
-            )
+            if "cumulative_discarded_likelihood" in self.data_categories:
+                
+                discarded_new_df = content.get("discarded_likelihood_new", {}).get("likelihood_data", None)
+                discarded_old_df = content.get("discarded_likelihood_old", {}).get("likelihood_data", None)
+                
+                discarded_new_raw = np.array([], dtype=np.float32)
+                if discarded_new_df is not None and not discarded_new_df.empty and "true_loglkl" in discarded_new_df.columns:
+                    discarded_new_raw = discarded_new_df["true_loglkl"].values.astype(np.float32)
 
-            # Update cumulative discarded likelihood
-            cumulative_discarded_likelihood = np.concatenate(
-                [cumulative_discarded_likelihood, current_discarded_likelihoods]
-            )
+                discarded_old_raw = np.array([], dtype=np.float32)
+                if discarded_old_df is not None and not discarded_old_df.empty and "true_loglkl" in discarded_old_df.columns:
+                    discarded_old_raw = discarded_old_df["true_loglkl"].values.astype(np.float32)
 
-            # Store cumulative discarded likelihood in the same format as other categories
-            iteration_data[iteration][
-                "cumulative_discarded_likelihood"
-            ] = cumulative_discarded_likelihood.copy()
+                # Combine current discarded likelihoods
+                current_discarded_likelihoods = np.concatenate(
+                    [discarded_new_raw, discarded_old_raw]
+                )
 
-            self.count_points[iteration]["cumulative_discarded_likelihood"][
-                "original"
-            ] = len(cumulative_discarded_likelihood)
+                # Update cumulative discarded likelihood
+                cumulative_discarded_likelihood_raw = np.concatenate(
+                    [cumulative_discarded_likelihood_raw, current_discarded_likelihoods]
+                )
+                
 
-            # Apply filtering if max_loglkl_in_display is set
-            if self.max_loglkl_in_display is not None:
-                cumulative_discarded_likelihood = cumulative_discarded_likelihood[
-                    cumulative_discarded_likelihood <= self.max_loglkl_in_display
-                ]
+                self.count_points[iteration]["cumulative_discarded_likelihood"]["original"] = len(
+                    cumulative_discarded_likelihood_raw
+                )
+                self.count_points[iteration]["cumulative_discarded_likelihood"]["NaN"] = np.isnan(cumulative_discarded_likelihood_raw).sum()
+                self.count_points[iteration]["cumulative_discarded_likelihood"]["inf"] = np.isinf(cumulative_discarded_likelihood_raw).sum()
+                self.count_points[iteration]["cumulative_discarded_likelihood"]["finite"] = np.isfinite(cumulative_discarded_likelihood_raw).sum()
 
-                self.count_points[iteration]["cumulative_discarded_likelihood"][
-                    "display"
-                ] = len(cumulative_discarded_likelihood)
+                
+                cumulative_discarded_likelihood_used = cumulative_discarded_likelihood_raw[np.isfinite(cumulative_discarded_likelihood_raw)]
+                self.count_points[iteration]["cumulative_discarded_likelihood"]["display"] = len(
+                    cumulative_discarded_likelihood_used
+                )
 
-            if self.x_range is not None:
-                self.count_points[iteration]["cumulative_discarded_likelihood"][
-                    "display"
-                ] = len(
-                    cumulative_discarded_likelihood[
-                        (cumulative_discarded_likelihood >= self.x_range[0])
-                        & (cumulative_discarded_likelihood <= self.x_range[1])
+                # Apply filtering if max_loglkl_in_display is set
+                if self.max_loglkl_in_display is not None:
+                    cumulative_discarded_likelihood_used = cumulative_discarded_likelihood_used[
+                        cumulative_discarded_likelihood_used <= self.max_loglkl_in_display
                     ]
-                )
 
-            # Add to non-empty categories if cumulative discarded likelihood is non-empty
-            if len(cumulative_discarded_likelihood) > 0:
-                non_empty_categories["cumulative_discarded_likelihood"] = True
+                    self.count_points[iteration]["cumulative_discarded_likelihood"][
+                        "display"
+                    ] = len(cumulative_discarded_likelihood_used)
+                
+                # Store cumulative discarded likelihood in the same format as other categories
+                iteration_data[iteration][
+                    "cumulative_discarded_likelihood"
+                ] = cumulative_discarded_likelihood_used.copy()
 
-            # 5) Compute delta_chi^2 for cumulative discarded likelihood
-            delta_key = "delta_chi_sq_cumulative_discarded_likelihood"
-            if best_fit_loglkl is not None and len(cumulative_discarded_likelihood) > 0:
+                if self.x_range is not None:
+                    self.count_points[iteration]["cumulative_discarded_likelihood"][
+                        "display"
+                    ] = len(
+                        cumulative_discarded_likelihood_used[
+                            (cumulative_discarded_likelihood_used >= self.x_range[0])
+                            & (cumulative_discarded_likelihood_used <= self.x_range[1])
+                        ]
+                    )
 
-                delta_chi_sq_cumulative = 2.0 * (
-                    cumulative_discarded_likelihood - best_fit_loglkl
-                )
+                # Add to non-empty categories if cumulative discarded likelihood is non-empty
+                if len(cumulative_discarded_likelihood_raw) > 0:
+                    non_empty_categories["cumulative_discarded_likelihood"] = True
 
-                self.count_points[iteration][delta_key]["original"] = len(
-                    delta_chi_sq_cumulative
-                )
-                # Apply filtering if max_delta_chi2_in_display is set
-                if self.max_delta_chi2_in_display is not None:
-                    delta_chi_sq_cumulative = delta_chi_sq_cumulative[
-                        delta_chi_sq_cumulative <= self.max_delta_chi2_in_display
-                    ]
+                # 5) Compute delta_chi^2 for cumulative discarded likelihood
+                delta_key = "delta_chi_sq_cumulative_discarded_likelihood"
+                if best_fit_loglkl is not None and len(cumulative_discarded_likelihood_raw) > 0:
+                     # Use a copy to avoid modifying the original array
+
+                    delta_chi_sq_cumulative_raw = 2.0 * (
+                        cumulative_discarded_likelihood_raw - best_fit_loglkl
+                    )
+                    
+                    self.count_points[iteration][delta_key]["original"] = len(
+                        delta_chi_sq_cumulative_raw
+                    )
+                    self.count_points[iteration][delta_key]["NaN"] = np.isnan(delta_chi_sq_cumulative_raw).sum()
+                    self.count_points[iteration][delta_key]["inf"] = np.isinf(delta_chi_sq_cumulative_raw).sum()
+                    self.count_points[iteration][delta_key]["finite"] = np.isfinite(delta_chi_sq_cumulative_raw).sum()
+
+                    delta_chi_sq_cumulative = delta_chi_sq_cumulative_raw[np.isfinite(delta_chi_sq_cumulative_raw)]
                     self.count_points[iteration][delta_key]["display"] = len(
                         delta_chi_sq_cumulative
                     )
 
-                iteration_data[iteration][delta_key] = delta_chi_sq_cumulative
 
-                if self.x_range is not None:
-                    self.count_points[iteration][delta_key]["display"] = len(
-                        delta_chi_sq_cumulative[
-                            (delta_chi_sq_cumulative >= self.x_range[0])
-                            & (delta_chi_sq_cumulative <= self.x_range[1])
+                    # Apply filtering if max_delta_chi2_in_display is set
+                    if self.max_delta_chi2_in_display is not None:
+                        delta_chi_sq_cumulative = delta_chi_sq_cumulative[
+                            delta_chi_sq_cumulative <= self.max_delta_chi2_in_display
                         ]
-                    )
-            else:
-                iteration_data[iteration][delta_key] = np.array([], dtype=np.float32)
+                        self.count_points[iteration][delta_key]["display"] = len(
+                            delta_chi_sq_cumulative
+                        )
+
+                    iteration_data[iteration][delta_key] = delta_chi_sq_cumulative
+
+                    if self.x_range is not None:
+                        self.count_points[iteration][delta_key]["display"] = len(
+                            delta_chi_sq_cumulative[
+                                (delta_chi_sq_cumulative >= self.x_range[0])
+                                & (delta_chi_sq_cumulative <= self.x_range[1])
+                            ]
+                        )
+                else:
+                    iteration_data[iteration][delta_key] = np.array([], dtype=np.float32)
 
         # Retain only non-empty categories
-        self.data_categories = [
+        self.data_categories_class = [
             cat for cat, is_non_empty in non_empty_categories.items() if is_non_empty
         ]
 
@@ -5260,7 +6117,10 @@ class Analyze_likelihoods:
                 for key in (cat, f"delta_chi_sq_{cat}"):
                     self.count_points_chain[iteration][key] = {
                         "original": 0,
-                        "display": None,
+                        "display": 0,
+                        "NaN": 0,
+                        "inf": 0,
+                        "finite": 0,
                     }
             # cumulative bucket
             for key in (
@@ -5269,12 +6129,15 @@ class Analyze_likelihoods:
             ):
                 self.count_points_chain[iteration][key] = {
                     "original": 0,
-                    "display": None,
+                    "display": 0,
+                    "NaN": 0,
+                    "inf": 0,
+                    "finite": 0,
                 }
 
         iteration_data = {}
         non_empty_categories = {cat: False for cat in self.data_categories}
-        cumulative_discarded_lkl = np.array([], dtype=np.float32)
+        cumulative_discarded_lkl_raw = np.array([], dtype=np.float32)
 
         # global running best (only used if anchor_on_true_bestfit=False)
         running_min_chain = np.inf  # <<< NEW
@@ -5330,6 +6193,16 @@ class Analyze_likelihoods:
                 if lkl_df is not None and not lkl_df.empty and "chain_loglkl" in lkl_df:
                     arr = lkl_df["chain_loglkl"].values.astype(np.float32)
 
+                    # normal display / clipping logic (identical to original)
+                    self.count_points_chain[it][cat]["original"] = len(arr)
+                    self.count_points_chain[it][cat]["NaN"] = np.isnan(arr).sum()
+                    self.count_points_chain[it][cat]["inf"] = np.isinf(arr).sum()
+                    self.count_points_chain[it][cat]["finite"] = np.isfinite(arr).sum()
+                    
+                    arr_used = arr[np.isfinite(arr)]  # <<< NEW: use finite values only
+
+                    self.count_points_chain[it][cat]["display"] = len(arr_used)
+
                     # running global min for option 2
                     if not anchor_on_true_bestfit:
                         running_min_chain = min(running_min_chain, arr.min())
@@ -5337,27 +6210,34 @@ class Analyze_likelihoods:
                             "best_fit_loglkl"
                         ] = running_min_chain  # <<< NEW
 
-                    # normal display / clipping logic (identical to original)
-                    self.count_points_chain[it][cat]["original"] = len(arr)
                     if self.max_loglkl_in_display is not None:
-                        arr = arr[arr <= self.max_loglkl_in_display]
-                        self.count_points_chain[it][cat]["display"] = len(arr)
+                        arr_used = arr_used[arr_used <= self.max_loglkl_in_display]
+                        self.count_points_chain[it][cat]["display"] = len(arr_used)
                     if self.x_range is not None:
                         self.count_points_chain[it][cat]["display"] = len(
-                            arr[(arr >= self.x_range[0]) & (arr <= self.x_range[1])]
+                            arr_used[(arr_used >= self.x_range[0]) & (arr_used <= self.x_range[1])]
                         )
                     non_empty_categories[cat] = True
                 else:
                     arr = np.array([], dtype=np.float32)
+                    arr_used = arr.copy()  # No data, use empty array
 
-                iteration_data[it][cat] = arr
+                iteration_data[it][cat] = arr_used
 
                 # ---------- 2c) Δχ² with chain reference ----------
                 delta_key = f"delta_chi_sq_{cat}"
                 ref = iteration_data[it]["best_fit_loglkl"]
                 if ref is not None and len(arr) > 0:
-                    delta = 2.0 * (arr - ref)
-                    self.count_points_chain[it][delta_key]["original"] = len(delta)
+                    delta_raw = 2.0 * (arr - ref)
+                    
+                    self.count_points_chain[it][delta_key]["original"] = len(delta_raw)
+                    self.count_points_chain[it][delta_key]["NaN"] = np.isnan(delta_raw).sum()
+                    self.count_points_chain[it][delta_key]["inf"] = np.isinf(delta_raw).sum()
+                    self.count_points_chain[it][delta_key]["finite"] = np.isfinite(delta_raw).sum()
+                    
+                    delta = delta_raw[np.isfinite(delta_raw)]  # <<< NEW: use finite values only
+                    self.count_points_chain[it][delta_key]["display"] = len(delta)
+                    
                     if self.max_delta_chi2_in_display is not None:
                         delta = delta[delta <= self.max_delta_chi2_in_display]
                         self.count_points_chain[it][delta_key]["display"] = len(delta)
@@ -5371,70 +6251,105 @@ class Analyze_likelihoods:
                 else:
                     iteration_data[it][delta_key] = np.array([], dtype=np.float32)
 
-            # ---------- 2d) cumulative discarded ----------
-            disc_new = iteration_data[it].get(
-                "discarded_likelihood_new", np.array([], dtype=np.float32)
-            )
-            disc_old = iteration_data[it].get(
-                "discarded_likelihood_old", np.array([], dtype=np.float32)
-            )
-            current_disc = np.concatenate([disc_new, disc_old])
-            cumulative_discarded_lkl = np.concatenate(
-                [cumulative_discarded_lkl, current_disc]
-            )
 
-            iteration_data[it][
-                "cumulative_discarded_likelihood"
-            ] = cumulative_discarded_lkl.copy()
-            self.count_points_chain[it]["cumulative_discarded_likelihood"][
-                "original"
-            ] = len(cumulative_discarded_lkl)
+            if "cumulative_discarded_likelihood" in self.data_categories:
+                # ---------- 2d) cumulative discarded ----------
+                # --- FIX: Get RAW, UNFILTERED data using the 'chain_loglkl' column ---
+                discarded_new_df = content.get("discarded_likelihood_new", {}).get("likelihood_data", None)
+                discarded_old_df = content.get("discarded_likelihood_old", {}).get("likelihood_data", None)
 
-            if self.max_loglkl_in_display is not None:
-                cumulative_discarded_lkl = cumulative_discarded_lkl[
-                    cumulative_discarded_lkl <= self.max_loglkl_in_display
-                ]
+                discarded_new_raw = np.array([], dtype=np.float32)
+                if discarded_new_df is not None and not discarded_new_df.empty and "chain_loglkl" in discarded_new_df.columns:
+                    discarded_new_raw = discarded_new_df["chain_loglkl"].values.astype(np.float32)
+
+                discarded_old_raw = np.array([], dtype=np.float32)
+                if discarded_old_df is not None and not discarded_old_df.empty and "chain_loglkl" in discarded_old_df.columns:
+                    discarded_old_raw = discarded_old_df["chain_loglkl"].values.astype(np.float32)
+                
+                current_disc = np.concatenate(
+                    [discarded_new_raw, discarded_old_raw]
+                )
+                # --- END OF FIX ---
+
+
+                cumulative_discarded_lkl_raw = np.concatenate(
+                    [cumulative_discarded_lkl_raw, current_disc]
+                )
+                
                 self.count_points_chain[it]["cumulative_discarded_likelihood"][
-                    "display"
-                ] = len(cumulative_discarded_lkl)
-            if self.x_range is not None:
-                self.count_points_chain[it]["cumulative_discarded_likelihood"][
-                    "display"
-                ] = len(
-                    cumulative_discarded_lkl[
-                        (cumulative_discarded_lkl >= self.x_range[0])
-                        & (cumulative_discarded_lkl <= self.x_range[1])
-                    ]
+                    "original"
+                ] = len(cumulative_discarded_lkl_raw)
+                self.count_points_chain[it]["cumulative_discarded_likelihood"]["NaN"] = np.isnan(cumulative_discarded_lkl_raw).sum()
+                self.count_points_chain[it]["cumulative_discarded_likelihood"]["inf"] = np.isinf(cumulative_discarded_lkl_raw).sum()
+                self.count_points_chain[it]["cumulative_discarded_likelihood"]["finite"] = np.isfinite(cumulative_discarded_lkl_raw).sum()
+                
+                cumulative_discarded_lkl_used = cumulative_discarded_lkl_raw[np.isfinite(cumulative_discarded_lkl_raw)]  # <<< NEW: use finite values only
+                self.count_points_chain[it]["cumulative_discarded_likelihood"]["display"] = len(
+                    cumulative_discarded_lkl_used
                 )
 
-            if len(cumulative_discarded_lkl) > 0:
-                non_empty_categories["cumulative_discarded_likelihood"] = True
-            # Δχ² for cumulative discarded
-            delta_key = "delta_chi_sq_cumulative_discarded_likelihood"
-            ref = iteration_data[it]["best_fit_loglkl"]
-            if ref is not None and len(cumulative_discarded_lkl) > 0:
-                delta_cum = 2.0 * (cumulative_discarded_lkl - ref)
-                self.count_points_chain[it][delta_key]["original"] = len(delta_cum)
-                if self.max_delta_chi2_in_display is not None:
-                    delta_cum = delta_cum[delta_cum <= self.max_delta_chi2_in_display]
-                    self.count_points_chain[it][delta_key]["display"] = len(delta_cum)
-                iteration_data[it][delta_key] = delta_cum
-
+                if self.max_loglkl_in_display is not None:
+                    cumulative_discarded_lkl_used = cumulative_discarded_lkl_used[
+                        cumulative_discarded_lkl_used <= self.max_loglkl_in_display
+                    ]
+                    self.count_points_chain[it]["cumulative_discarded_likelihood"][
+                        "display"
+                    ] = len(cumulative_discarded_lkl_used)
+                iteration_data[it][
+                    "cumulative_discarded_likelihood"
+                ] = cumulative_discarded_lkl_used.copy()
+                    
+                    
                 if self.x_range is not None:
-                    self.count_points_chain[it][delta_key]["display"] = len(
-                        delta_cum[
-                            (delta_cum >= self.x_range[0])
-                            & (delta_cum <= self.x_range[1])
+                    self.count_points_chain[it]["cumulative_discarded_likelihood"][
+                        "display"
+                    ] = len(
+                        cumulative_discarded_lkl_used[
+                            (cumulative_discarded_lkl_used >= self.x_range[0])
+                            & (cumulative_discarded_lkl_used <= self.x_range[1])
                         ]
                     )
-            else:
-                iteration_data[it][delta_key] = np.array([], dtype=np.float32)
+
+                if len(cumulative_discarded_lkl_raw) > 0:
+                    non_empty_categories["cumulative_discarded_likelihood"] = True
+                # Δχ² for cumulative discarded
+                delta_key = "delta_chi_sq_cumulative_discarded_likelihood"
+                ref = iteration_data[it]["best_fit_loglkl"]
+                if ref is not None and len(cumulative_discarded_lkl_raw) > 0:
+                    delta_cum_raw = 2.0 * (cumulative_discarded_lkl_raw - ref)
+                    
+                    
+                    self.count_points_chain[it][delta_key]["original"] = len(delta_cum_raw)
+                    self.count_points_chain[it][delta_key]["NaN"] = np.isnan(delta_cum_raw).sum()
+                    self.count_points_chain[it][delta_key]["inf"] = np.isinf(delta_cum_raw).sum()
+                    self.count_points_chain[it][delta_key]["finite"] = np.isfinite(delta_cum_raw).sum()
+                    
+                    delta_cum = delta_cum_raw[np.isfinite(delta_cum_raw)]  # <<< NEW: use finite values only
+
+                    self.count_points_chain[it][delta_key]["display"] = len(delta_cum)
+                    
+                    if self.max_delta_chi2_in_display is not None:
+                        delta_cum = delta_cum[delta_cum <= self.max_delta_chi2_in_display]
+                        self.count_points_chain[it][delta_key]["display"] = len(delta_cum)
+                    iteration_data[it][delta_key] = delta_cum
+
+                    if self.x_range is not None:
+                        self.count_points_chain[it][delta_key]["display"] = len(
+                            delta_cum[
+                                (delta_cum >= self.x_range[0])
+                                & (delta_cum <= self.x_range[1])
+                            ]
+                        )
+                else:
+                    iteration_data[it][delta_key] = np.array([], dtype=np.float32)
 
         # drop empty categories (mirrors original)
         self.data_categories_chain = [
             c for c, non_empty in non_empty_categories.items() if non_empty
         ]  # <<< NEW
         return iteration_data
+
+
 
     def _plot_per_iteration_boxplot(self, iteration_data, metric="delta_chi_sq"):
         """
@@ -5486,7 +6401,7 @@ class Analyze_likelihoods:
                 raise ValueError("Invalid metric. Use 'delta_chi_sq' or 'loglkl'.")
 
             best_fit_loglkl = i_data.get("best_fit_loglkl", None)
-            for cat in self.data_categories:
+            for cat in self.data_categories_class:
                 if metric == "delta_chi_sq":
                     arr = i_data.get(
                         f"delta_chi_sq_{cat}", np.array([], dtype=np.float32)
@@ -5508,7 +6423,7 @@ class Analyze_likelihoods:
             plot_rows, columns=["iteration", "category", metric, "best_fit_loglkl"]
         )
         df["category"] = pd.Categorical(
-            df["category"], categories=self.data_categories, ordered=True
+            df["category"], categories=self.data_categories_class, ordered=True
         )
         df["category_label"] = df["category"].map(self.category_labels)
 
@@ -5544,7 +6459,7 @@ class Analyze_likelihoods:
         # Create a palette dictionary for Seaborn
         palette_box = {
             self.category_labels[cat]: self.DATA_COLORS[cat]
-            for cat in self.data_categories
+            for cat in self.data_categories_class
             if cat in self.DATA_COLORS
         }
 
@@ -5674,9 +6589,10 @@ class Analyze_likelihoods:
         fig.supylabel(y_label, x=0.06, fontsize=12)
         plt.subplots_adjust(wspace=0, hspace=0)
 
+        suffix_part = f"_{self.suffix}" if self.suffix else ""
         # Save
         for fmt in self.save_formats:
-            plot_filename = f"per_iteration_{metric}_boxplots.{fmt}"
+            plot_filename = f"per_iteration_{metric}_boxplots{suffix_part}.{fmt}"
             plot_path = os.path.join(self.analysis_dir, plot_filename)
             plt.savefig(plot_path, dpi=1000, bbox_inches="tight")
 
@@ -5684,606 +6600,6 @@ class Analyze_likelihoods:
         if self.verbose >= 1:
             print(
                 f"[_plot_per_iteration_boxplot] Saved {metric} boxplots to {plot_path}"
-            )
-
-    def _plot_per_iteration_hist_original(
-        self, iteration_data, metric="delta_chi_sq", stat="count"
-    ):
-        """
-        Plot histograms per iteration for each data category in self.data_categories.
-        Maintains log-scale on the x-axis for both 'delta_chi_sq' and 'loglkl'.
-        """
-
-        matplotlib.rcParams.update(matplotlib.rcParamsDefault)
-        if self.verbose >= 2:
-            print(
-                f"[_plot_per_iteration_hist] Plotting histograms with stat={stat} for {metric}."
-            )
-
-        matplotlib.use("Agg")
-        dummy_df = self._create_dummy_df(iteration_data, metric=metric)
-        if dummy_df is None:  # Handle cases where no data is available
-            if self.verbose >= 2:
-                print(f"[_plot_per_iteration_hist] No data available for {metric}.")
-            return
-
-        global_bin_edges = self.compute_global_bin_edges_seaborn_internal(
-            data=dummy_df,
-            x="value",
-            hue="category_iteration",
-            stat="count",
-            bins="auto",
-            log_scale=(True, False),  # Logarithmic x-axis
-            palette=sns.color_palette("tab20", n_colors=80),  # Use a large palette
-            alpha=1,
-            fill=True,
-            element="bars",
-            common_norm=True,
-            common_bins=True,
-            multiple="layer",
-        )
-
-        # ------------------------------
-        # 1) Gather data for main/inset
-        # ------------------------------
-        plot_data = []
-        for iteration, i_data in iteration_data.items():
-            best_fit_loglkl = i_data.get("best_fit_loglkl", None)
-            inset_arrays = []
-            main_arrays = []
-
-            # Loop over hist_main_panel
-            for item in self.hist_main_panel:
-                cat = item["category"]
-                if metric == "delta_chi_sq":
-                    arr = i_data.get(
-                        f"delta_chi_sq_{cat}", np.array([], dtype=np.float32)
-                    )
-                else:
-                    arr = i_data.get(cat, np.array([], dtype=np.float32))
-
-                if len(arr) > 0:
-                    main_arrays.append((cat, arr, item))
-
-            # Loop over hist_inset if self.include_inset
-            if self.include_inset:
-                for item in self.hist_inset:
-                    cat = item["category"]
-                    if metric == "delta_chi_sq":
-                        arr = i_data.get(
-                            f"delta_chi_sq_{cat}", np.array([], dtype=np.float32)
-                        )
-                    else:
-                        arr = i_data.get(cat, np.array([], dtype=np.float32))
-
-                    if len(arr) > 0:
-                        inset_arrays.append((cat, arr, item))
-
-            # If both are empty, skip
-            if not main_arrays and not inset_arrays:
-                continue
-
-            plot_data.append(
-                {
-                    "iteration": iteration,
-                    "best_fit_loglkl": best_fit_loglkl,
-                    "main_arrays": main_arrays,
-                    "inset_arrays": inset_arrays,
-                }
-            )
-
-        if not plot_data:
-            if self.verbose >= 2:
-                print("[_plot_per_iteration_hist] No data to plot for histograms.")
-            return
-
-        # -------------------------------------------------------------------
-        # 2) *Collect all* the inset data from all iterations in "plot_data"
-        #    so we can compute the global x & y axis range for the insets.
-        # -------------------------------------------------------------------
-        all_inset_plots = []  # Will store (arr, item_cfg) from each iteration
-        if self.include_inset:
-            for entry in plot_data:
-                for cat, arr, item_cfg in entry["inset_arrays"]:
-                    all_inset_plots.append((arr, item_cfg))
-
-        # -------------------------------------------------------------------
-        # 3) Compute global inset ranges *once*, if insets are used
-        # -------------------------------------------------------------------
-        x_min_inset, x_max_inset, y_min_inset, y_max_inset = None, None, None, None
-        if self.include_inset and len(all_inset_plots) > 0:
-            (x_min_inset, x_max_inset, y_min_inset, y_max_inset) = (
-                self._compute_global_inset_ranges(
-                    all_inset_plots, metric=metric, stat=stat, bins=global_bin_edges
-                )
-            )
-
-        # -------------------------------------------------------------------
-        # 4) Create subplots and do the real plotting
-        # -------------------------------------------------------------------
-        cols = max(3, int(round(math.sqrt(len(plot_data)))))
-        rows = int(math.ceil(len(plot_data) / cols))
-        fig, axes = plt.subplots(
-            rows, cols, figsize=(6 * cols, 3 * rows), sharex=True, sharey=True
-        )
-
-        axes = axes.T.flatten() if rows * cols > 1 else [axes]
-
-        # Identify the bottom row and rightmost column axes based on actual number of plots
-        used_axes_indices = list(range(len(plot_data)))
-
-        # Bottom row: the last 'cols' or fewer axes
-        bottom_row_indices = used_axes_indices[-cols:]
-
-        # Rightmost column: every axis where (index + 1) % cols == 0
-        rightmost_col_indices = [
-            i
-            for i in used_axes_indices
-            if (i + 1) % cols == 0
-            or (i == len(used_axes_indices) - 1 and len(used_axes_indices) % cols != 0)
-        ]
-
-        all_handles_labels = {}
-        all_handles_labels_inset = {}
-        first_inset_ax = None  # Initialize
-
-        all_legends_info_main = {}
-        all_legends_info_inset = {}
-        threshold_label_added = False
-        threshold_label_added_inset = False
-
-        lowest_iteration = min([entry["iteration"] for entry in plot_data])
-        lowest_iteration_inset = min(
-            [entry["iteration"] for entry in plot_data if entry["inset_arrays"]]
-        )
-        # Now fill each subplot
-        for i, entry in enumerate(plot_data):
-            iteration = entry["iteration"]
-            delta_threshold = getattr(self.param_connect, "delta_chi2_threshold", None)
-            if isinstance(delta_threshold, list):
-                if iteration < len(delta_threshold):
-                    delta_threshold = delta_threshold[iteration]
-                else:
-                    delta_threshold = delta_threshold[-1]
-
-            best_fit = entry["best_fit_loglkl"]
-            main_arrays = entry["main_arrays"]
-            inset_arrays = entry["inset_arrays"]
-            all_legends_info_main[iteration] = {}
-
-            ax = axes[i]
-            ax.set_axisbelow(True)
-            ax.grid(True, which="major", linestyle="-", linewidth=0.5, alpha=0.5)
-
-            # --- Plot main panel categories ---
-            for cat, arr, item_cfg in main_arrays:
-                color = item_cfg.get("color", None)
-                label = item_cfg.get("label", None)
-                plot_kws = item_cfg.get("plot_kws", {}).copy()
-                plot_kws["bins"] = global_bin_edges
-
-                # fallback
-                if color is None:
-                    color = self.DATA_COLORS.get(cat, "gray")
-                if label is None:
-                    label = self.category_labels.get(cat, cat)
-
-                # add the label to the legend
-                display = self.count_points[iteration][cat]["display"]
-                original = self.count_points[iteration][cat]["original"]
-                if display is None or display == original:
-                    counts_str = f"{original} points"
-                else:
-                    counts_str = f"showing $\\frac{{{display}}}{{{original}}}$ points"
-
-                all_legends_info_main[iteration][label] = {}
-                all_legends_info_main[iteration][label]["label"] = (
-                    f"{label} ({counts_str})"
-                    if iteration == lowest_iteration
-                    else f"{counts_str}"
-                )
-
-                all_legends_info_main[iteration][label] = {}
-                all_legends_info_main[iteration][label]["label"] = (
-                    f"{label} ({counts_str})"
-                    if iteration == lowest_iteration
-                    else f"{counts_str}"
-                )
-
-                final_plot_kws = dict(plot_kws)
-                final_plot_kws.setdefault("color", color)
-                final_plot_kws.setdefault("label", label)
-                final_plot_kws.setdefault("stat", stat)
-
-                if len(arr) == 0:
-                    continue  # Skip empty categories
-
-                sns.histplot(x=arr, ax=ax, **final_plot_kws)
-
-            # Optional vertical line
-            if metric == "delta_chi_sq" and delta_threshold is not None:
-                delta_chi2_threshold_label = (
-                    f"$\Delta\chi^2\mathrm{{-Threshold}}={delta_threshold:.1f}$"
-                    if delta_threshold < 10000
-                    else (
-                        r"$\Delta\chi^2\mathrm{-Threshold}="
-                        + self.sci_notation_latex(delta_threshold)
-                        + "$"
-                    )
-                )
-
-                delta_chi2_value = (
-                    f"{delta_threshold:.1f}"
-                    if delta_threshold < 10000
-                    else f"${self.sci_notation_latex(delta_threshold)}$"
-                )
-                ax.axvline(
-                    delta_threshold,
-                    color="purple",
-                    linestyle="--",
-                    label=delta_chi2_threshold_label,
-                )
-                all_legends_info_main[iteration][delta_chi2_threshold_label] = {}
-                all_legends_info_main[iteration][delta_chi2_threshold_label][
-                    "label"
-                ] = (
-                    delta_chi2_threshold_label
-                    if iteration == lowest_iteration
-                    else delta_chi2_value
-                )
-
-            elif metric == "loglkl" and best_fit is not None and not np.isnan(best_fit):
-                best_fit_label = (
-                    f"$\mathrm{{Best-Fit:}}\; -\log(\mathcal{{L}}) = {best_fit:.1f}$"
-                    if best_fit < 10000
-                    else (
-                        r"$\mathrm{Best-Fit:}\; -\log(\mathcal{L}) = "
-                        + self.sci_notation_latex(best_fit)
-                        + "$"
-                    )
-                )
-                # f"$\mathrm{{Best-Fit:}}\; -\log(\mathcal{{L}}) = {best_fit:.0e}$"
-
-                best_fit_value = (
-                    f"{best_fit:.1f}"
-                    if best_fit < 10000
-                    else self.sci_notation_latex(best_fit)
-                )
-                ax.axvline(
-                    best_fit,
-                    color="purple",
-                    linestyle="--",
-                    label=best_fit_label,
-                )
-                all_legends_info_main[iteration][best_fit_label] = {}
-                all_legends_info_main[iteration][best_fit_label]["label"] = (
-                    best_fit_label if iteration == lowest_iteration else best_fit_value
-                )
-
-            # --- Plot the inset if needed ---
-            if self.include_inset and inset_arrays:
-                ax_inset = inset_axes(
-                    ax, width="40%", height="40%", loc="upper right", borderpad=1
-                )
-                ax_inset.set_axisbelow(True)
-                ax_inset.grid(
-                    True, which="major", linestyle="-", linewidth=0.5, alpha=0.5
-                )
-
-                all_legends_info_inset[iteration] = {}
-
-                if first_inset_ax is None:
-                    first_inset_ax = ax_inset
-
-                for cat, arr, item_cfg in inset_arrays:
-                    color = item_cfg.get("color", None)
-                    label = item_cfg.get("label", None)
-                    plot_kws = item_cfg.get("plot_kws", {}).copy()
-                    plot_kws["bins"] = global_bin_edges
-
-                    if color is None:
-                        color = self.DATA_COLORS.get(cat, "gray")
-                    if label is None:
-                        label = self.category_labels.get(cat, cat)
-                    final_plot_kws = dict(plot_kws)
-                    final_plot_kws.setdefault("color", color)
-                    final_plot_kws.setdefault("label", label)
-                    final_plot_kws.setdefault("stat", stat)
-
-                    if len(arr) == 0:
-                        continue  # Skip empty categories
-
-                    sns.histplot(x=arr, ax=ax_inset, **final_plot_kws)
-
-                    display = self.count_points[iteration][cat]["display"]
-                    original = self.count_points[iteration][cat]["original"]
-
-                    if display is None or display == original:
-                        counts_str = f"{original} points"
-                    else:
-                        counts_str = (
-                            f"showing $\\frac{{{display}}}{{{original}}}$ points"
-                        )
-
-                    all_legends_info_inset[iteration][label] = {}
-                    all_legends_info_inset[iteration][label]["label"] = (
-                        f"{label} ({counts_str})"
-                        if iteration == lowest_iteration_inset
-                        else f"{counts_str}"
-                    )
-
-                # *Now* we unify the axis ranges for the inset
-                if x_min_inset is not None and x_max_inset is not None:
-                    ax_inset.set_xlim(x_min_inset, x_max_inset)
-                if y_min_inset is not None and y_max_inset is not None:
-                    ax_inset.set_ylim(y_min_inset, y_max_inset)
-
-                # Optional threshold lines in the inset
-                if metric == "delta_chi_sq" and delta_threshold is not None:
-                    ax_inset.axvline(
-                        delta_threshold,
-                        color="purple",
-                        linestyle="--",
-                        linewidth=1,
-                        label=delta_chi2_threshold_label,
-                    )
-
-                    all_legends_info_inset[iteration][delta_chi2_threshold_label] = {}
-                    all_legends_info_inset[iteration][delta_chi2_threshold_label][
-                        "label"
-                    ] = (
-                        delta_chi2_threshold_label
-                        if iteration == lowest_iteration_inset
-                        else delta_chi2_value
-                    )
-
-                elif (
-                    metric == "loglkl"
-                    and best_fit is not None
-                    and not np.isnan(best_fit)
-                ):
-                    ax_inset.axvline(
-                        best_fit,
-                        color="purple",
-                        linestyle="--",
-                        linewidth=1,
-                        label=best_fit_label,
-                    )
-                    all_legends_info_inset[iteration][best_fit_label] = {}
-                    all_legends_info_inset[iteration][best_fit_label]["label"] = (
-                        best_fit_label
-                        if iteration == lowest_iteration_inset
-                        else best_fit_value
-                    )
-
-                # ax_inset.legend(fontsize=5)
-                ax_inset.tick_params(axis="both", labelsize=6)
-                ax_inset.set_xlabel("")
-                ax_inset.set_ylabel("")
-                ax_inset.minorticks_on()
-
-                handles, labels = ax_inset.get_legend_handles_labels()
-                for handle, label in zip(handles, labels):
-
-                    all_legends_info_inset[iteration][label]["handle"] = handle
-
-                    if r"\Delta\chi^2\mathrm{-Threshold}=" in label:
-                        if not threshold_label_added_inset:
-                            all_handles_labels_inset[label] = handle
-                            threshold_label_added_inset = True
-                        continue  # skip adding any other threshold labels
-                    if r"\mathrm{Best-Fit" in label:
-                        if not threshold_label_added_inset:
-                            all_handles_labels_inset[label] = handle
-                            threshold_label_added_inset = True
-                        continue  # skip adding any other threshold labels
-                    if label not in all_handles_labels_inset:
-                        all_handles_labels_inset[label] = handle
-
-                # Set axis ranges for inset based on self.x_range_inset, self.y_range_inset
-                if self.x_range_inset is not None:
-                    ax_inset.set_xlim(self.x_range_inset)
-                if self.y_range_inset is not None:
-                    ax_inset.set_ylim(self.y_range_inset)
-
-                # if iteration > lowest_iteration_inset:
-                # Create legend for the subplot using all_legends_info_inset
-                legend_labels = []
-                legend_handles = []
-                for label in all_legends_info_inset[iteration].keys():
-                    legend_labels.append(
-                        all_legends_info_inset[iteration][label]["label"]
-                    )
-                    legend_handles.append(
-                        all_legends_info_inset[iteration][label]["handle"]
-                    )
-                legend_inset = ax_inset.legend(
-                    legend_handles,
-                    legend_labels,
-                    loc="upper left",
-                    fontsize=6,
-                    frameon=True,
-                )
-
-            # --- End of plotting inset ---
-
-            if i in bottom_row_indices and i in rightmost_col_indices:
-                ax.tick_params(axis="x", which="both", labelbottom=True)
-
-            from matplotlib.ticker import LogLocator
-
-            ax.xaxis.set_minor_locator(
-                LogLocator(base=10.0, subs="auto", numticks=None)
-            )
-
-            ax.minorticks_on()
-
-            ax.set_xlabel("")
-            ax.set_ylabel("")
-
-            # Collect handles and labels from each iteration
-
-            handles, labels = ax.get_legend_handles_labels()
-            for handle, label in zip(handles, labels):
-
-                all_legends_info_main[iteration][label]["handle"] = handle
-
-                if r"\Delta\chi^2\mathrm{-Threshold}=" in label:
-                    if not threshold_label_added:
-                        all_handles_labels[label] = handle
-                        threshold_label_added = True
-                    continue  # skip adding any other threshold labels
-                if r"\mathrm{Best-Fit" in label:
-                    if not threshold_label_added:
-                        all_handles_labels[label] = handle
-                        threshold_label_added = True
-                    continue  # skip adding any other threshold labels
-                if label not in all_handles_labels:
-                    all_handles_labels[label] = handle
-
-            # Owerwrite axis ranges based on self.x_range, self.y_range if not None
-            if self.x_range is not None:
-                ax.set_xlim(self.x_range)
-            if self.y_range is not None:
-                ax.set_ylim(self.y_range)
-
-        for label, handle in list(all_handles_labels.items()):
-            # Overwrite the legend labels with the counts
-            new_label = label
-            if label in all_legends_info_main[lowest_iteration]:
-                new_label = all_legends_info_main[lowest_iteration][label]["label"]
-
-            # reset the 'label' key to the new new_label key, but reuse the same handle as value
-            # Only rename if label changed
-            if new_label != label:
-                all_handles_labels[new_label] = handle
-                del all_handles_labels[label]
-
-        # Add a shared legend to the first subplot
-        fig.canvas.draw()
-
-        legend1 = axes[0].legend(
-            all_handles_labels.values(),
-            all_handles_labels.keys(),
-            loc="upper left",
-            # bbox_to_anchor=(0.01, 0.91),  # Place it outside the subplot to the right
-            fontsize=7,
-            frameon=True,
-            # add legend title
-            title="Shared Legend for all Iterations",
-            title_fontsize="8",
-            # bbox_transform=axes[0].transAxes,
-        )
-
-        fig.canvas.draw()
-
-        ax.annotate(
-            f"i = {lowest_iteration}",
-            xy=(0, 0),  # anchor to the bottom-left corner of the legend
-            xycoords=legend1,  # interpret (0,0) as fraction of the legend's bbox
-            xytext=(2, -6),  # shift by –10 points in y
-            textcoords="offset points",  # interpret xytext in points
-            ha="left",
-            va="top",  # "top" means the text's top is at the anchor
-            bbox=dict(
-                facecolor="white",
-                edgecolor="grey",
-                boxstyle="round,pad=0.4",
-                alpha=0.5,
-            ),
-            fontsize=7,
-        )
-
-        for iteration in range(len(plot_data)):
-            ax = axes[iteration]
-            if iteration > lowest_iteration:
-                # Create legend for the subplot using all_legends_info_main
-                legend_labels = []
-                legend_handles = []
-                for label in all_legends_info_main[iteration].keys():
-                    legend_labels.append(
-                        all_legends_info_main[iteration][label]["label"]
-                    )
-                    legend_handles.append(
-                        all_legends_info_main[iteration][label]["handle"]
-                    )
-                legend_main = ax.legend(
-                    legend_handles,
-                    legend_labels,
-                    loc="upper left",
-                    fontsize=7,
-                    frameon=True,
-                )
-
-                fig.canvas.draw()  # So legend_main has a realized bounding box
-
-                ax.annotate(
-                    f"i = {iteration}",
-                    xy=(0, 0),  # anchor to the bottom-left corner of the legend
-                    xycoords=legend_main,  # interpret (0,0) as fraction of the legend's bbox
-                    xytext=(2, -6),  # shift by –10 points in y
-                    textcoords="offset points",  # interpret xytext in points
-                    ha="left",
-                    va="top",  # "top" means the text's top is at the anchor
-                    bbox=dict(
-                        facecolor="white",
-                        edgecolor="grey",
-                        boxstyle="round,pad=0.4",
-                        alpha=0.5,
-                    ),
-                    fontsize=7,
-                )
-
-        for label, handle in list(all_handles_labels_inset.items()):
-            # Overwrite the legend labels with the counts
-            new_label = label
-            if label in all_legends_info_inset[lowest_iteration_inset]:
-                new_label = all_legends_info_inset[lowest_iteration_inset][label][
-                    "label"
-                ]
-
-            # reset the 'label' key to the new new_label key, but reuse the same handle as value
-            # Only rename if label changed
-            if new_label != label:
-                all_handles_labels_inset[new_label] = handle
-                del all_handles_labels_inset[label]
-
-        # Add legend to the first inset:
-        if self.include_inset:
-            first_inset_ax.legend(
-                all_handles_labels_inset.values(),  #
-                all_handles_labels_inset.keys(),
-                loc="upper left",
-                fontsize=5,
-                frameon=True,
-                title="Shared Legend for all Insets",
-                title_fontsize="6",
-            )
-
-        # Hide extra subplots
-
-        for j in range(i + 1, len(axes)):
-            axes[j].axis("off")
-
-        # Add super labels
-        if metric == "delta_chi_sq":
-            fig.supxlabel(r"$\Delta\chi^2$", fontsize=12, y=0.05)
-        else:
-            fig.supxlabel(r"$-\log(\mathcal{L})$", fontsize=12, y=0.05)
-        fig.supylabel("Counts" if stat == "count" else "Density", fontsize=12, x=0.08)
-
-        plt.subplots_adjust(wspace=0, hspace=0)
-
-        for fmt in self.save_formats:
-            plot_filename = f"per_iteration_{metric}_hist_{stat}.{fmt}"
-            save_path = os.path.join(self.analysis_dir, plot_filename)
-            plt.savefig(save_path, bbox_inches="tight", dpi=1000)
-
-        plt.close(fig)
-
-        if self.verbose >= 1:
-            print(
-                f"[_plot_per_iteration_hist] Saved histograms ({metric}, {stat}) to {save_path}"
             )
 
     # ================================================================
@@ -6324,21 +6640,57 @@ class Analyze_likelihoods:
                 print("[_plot_per_iteration_hist] Nothing to plot.")
             return
 
-        global_bin_edges = self.compute_global_bin_edges_seaborn_internal(
-            data=dummy_df,
-            x="value",
-            hue="category_iteration",
-            stat="count",
-            bins="auto",
-            log_scale=(True, False),
-            palette=sns.color_palette("tab20", n_colors=80),
-            alpha=1,
-            fill=True,
-            element="bars",
-            common_norm=True,
+
+
+        def _choose_scale(scale, arrs, type="bin"):
+            # 1) If the user explicitly set a scale, honor it:
+            if scale != "auto":
+                return scale
+
+            # 2) Normalize arrs → a single numpy array, or bail if there's nothing to concat:
+            if isinstance(arrs, np.ndarray):
+                all_data = arrs
+            else:
+                # filter out any empty sequences
+                non_empty = [a for a in arrs if hasattr(a, "__len__") and len(a) > 0]
+                if not non_empty:
+                    # no data at all → just go linear
+                    return "linear"
+                all_data = np.concatenate(non_empty)
+
+            # 3) If after concatenation you still have nothing, fallback:
+            if all_data.size == 0:
+                return "linear"
+
+            # 4) Now apply your logic:
+            if np.any(all_data <= 0):
+                if type == "bin":
+                    self.bin_scale_args.setdefault("linthresh", 1e-3)
+                elif type == "axis":
+                    self.axis_scale_args.setdefault("linthresh", 1e-3)
+                return "symlog"
+            elif all_data.min() > 0:
+                return "log"
+            else:
+                return "linear"
+
+            
+        self.bin_scale = _choose_scale(self.bin_scale, [dummy_df["value"].values], type="bin")
+        self.axis_scale = _choose_scale(self.axis_scale, [dummy_df["value"].values], type="axis")
+        
+        
+
+        global_bin_edges = self.compute_bin_edges(
+            dummy_df["value"].values,
+            hue=dummy_df["category_iteration"].values,
             common_bins=True,
-            multiple="layer",
+            bin_scale=self.bin_scale,
+            bin_scale_args=self.bin_scale_args,
+            axis_scale=self.axis_scale,
+            axis_scale_args=self.axis_scale_args,
+            bins=self.bins_numpy,
         )
+
 
         # ------------------------------------------------------------------
         # 1)  GATHER DATA FOR EACH ITERATION
@@ -6360,6 +6712,8 @@ class Analyze_likelihoods:
 
             for item in self.hist_main_panel:
                 cat = item["category"]
+                if cat not in self.data_categories:
+                    continue
                 arr = (
                     i_data_true.get(
                         f"delta_chi_sq_{cat}", np.array([], dtype=np.float32)
@@ -6372,6 +6726,8 @@ class Analyze_likelihoods:
             if self.include_inset:
                 for item in self.hist_inset:
                     cat = item["category"]
+                    if cat not in self.data_categories:
+                        continue
                     arr = (
                         i_data_true.get(
                             f"delta_chi_sq_{cat}", np.array([], dtype=np.float32)
@@ -6391,6 +6747,8 @@ class Analyze_likelihoods:
 
                 for item in self.hist_main_panel:
                     cat = item["category"]
+                    if cat not in self.data_categories_chain:
+                        continue
                     arr = (
                         i_data_fake.get(
                             f"delta_chi_sq_{cat}", np.array([], dtype=np.float32)
@@ -6403,6 +6761,8 @@ class Analyze_likelihoods:
                 if self.include_inset:
                     for item in self.hist_inset:
                         cat = item["category"]
+                        if cat not in self.data_categories_chain:
+                            continue
                         arr = (
                             i_data_fake.get(
                                 f"delta_chi_sq_{cat}", np.array([], dtype=np.float32)
@@ -6435,6 +6795,7 @@ class Analyze_likelihoods:
             if self.verbose >= 2:
                 print("[_plot_per_iteration_hist] No data to plot for histograms.")
             return
+        index2iter = {k: v["iteration"] for k, v in enumerate(plot_data)}
 
         # ------------------------------------------------------------------
         # 2)  GLOBAL INSET RANGES  (true + fake combined)
@@ -6455,10 +6816,17 @@ class Analyze_likelihoods:
         # ------------------------------------------------------------------
         # 3)  CREATE THE OUTER GRID (same as before)
         # ------------------------------------------------------------------
-        cols = max(3, int(round(math.sqrt(len(plot_data)))))
+        cols = min(2, int(round(math.sqrt(len(plot_data)))))
         rows = int(math.ceil(len(plot_data) / cols))
+        
+        total_width_in = self._to_inches(self.fig_width)
+        row_height_in = self._to_inches("7 cm")  # 7 cm per row
+        if iteration_data_chain is None:
+            row_height_in = row_height_in/2  # double height if no CHAIN data
+
         fig, axes = plt.subplots(
-            rows, cols, figsize=(6 * cols, 3 * rows), sharex=True, sharey=True
+            # rows, cols, figsize=(6 * cols, 3 * rows), sharex=True, sharey=True
+            rows, cols, figsize=(total_width_in, row_height_in * rows), sharex=True, sharey=True,
         )
         axes = axes.T.flatten() if rows * cols > 1 else [axes]
 
@@ -6510,6 +6878,17 @@ class Analyze_likelihoods:
         # ------------------------------------------------------------------
         from matplotlib.gridspec import GridSpecFromSubplotSpec
 
+        # ADD THIS BLOCK BEFORE THE MAIN PLOTTING LOOP
+        # Pre-calculate the indices of the plots at the bottom of each column
+        last_in_col = {}
+        for i in range(len(plot_data)):
+            # For column-major flattening, the column index is i // rows
+            col = i // rows
+            last_in_col[col] = i  # The last index for a column will be the highest one
+
+        bottom_indices = set(last_in_col.values())
+
+
         for axis_index, (ax_cell, entry) in enumerate(zip(axes, plot_data)):
             iteration = entry["iteration"]
 
@@ -6523,7 +6902,14 @@ class Analyze_likelihoods:
                 hspace=0,
                 subplot_spec=ax_cell.get_subplotspec(),
             )
-            ax_cell.set_axis_off()  # outer axis just a holder
+            
+
+            # Only hide the outer axis frame if we're creating inner subplots for a dual panel
+            if iteration_data_chain is not None:
+                ax_cell.set_xticks([])
+                ax_cell.set_yticks([])
+                ax_cell.xaxis.set_ticklabels([])
+                ax_cell.yaxis.set_ticklabels([])
 
             # helper to create / fetch a real axis object
             def _get_inner(r):
@@ -6543,11 +6929,6 @@ class Analyze_likelihoods:
                     ax_fake.sharex(master_ax)
                     ax_fake.sharey(master_ax)
 
-            if metric == "delta_chi_sq":
-                # if any of the CHAIN delta_chi_sq arrays go negative, switch to symlog
-                # if any(arr.min() < 0 for _, arr, _ in entry["main_arrays_fake"]):
-                ax_fake.set_xscale("symlog", linthresh=1e-2)
-                ax_true.set_xscale("symlog", linthresh=1e-2)
 
                 self._plot_one_panel(  # <<< NEW (wrapper)
                     ax=ax_fake,
@@ -6574,11 +6955,12 @@ class Analyze_likelihoods:
                     threshold_label_added_container=threshold_label_added_container,
                     threshold_label_added_inset_container=threshold_label_added_inset_container,
                 )
-                # first_inset_ax_fake = first_inset_ax_fake or ax_fake  # update link
+                    # first_inset_ax_fake = first_inset_ax_fake or ax_fake  # update link
                 panel_axes.append((ax_fake, axis_index, True))  # True  → is_fake
 
             # ---------- (ii) CLASS / true – lower (or only) panel --------
             ax_true = _get_inner(1 if iteration_data_chain is not None else 0)
+            # ax_true.set_xscale("symlog", linthresh=1e-2)
 
             if master_ax is None:
                 master_ax = ax_true  # could happen if first CHAIN was empty
@@ -6615,249 +6997,54 @@ class Analyze_likelihoods:
             panel_axes.append((ax_true, axis_index, False))  # False → CLASS
 
             main_axes.append(ax_true)
+            
+            
+            # ADD THIS BLOCK INSIDE THE LOOP, AFTER THE _plot_one_panel CALLS
 
-            # --------------------------------------------------------------
-            #  after both panels exist → decide whether to show x-tick labels
-            # --------------------------------------------------------------
-            # if axis_index in bottom_row_indices and axis_index in rightmost_col_indices:
-            #     ax_true.tick_params(axis="x", which="both", labelbottom=True)
-            #     if iteration_data_chain is not None:
-            #         ax_fake.tick_params(axis="x", which="both", labelbottom=True)
+            # --- Tick Label Visibility Logic ---
+            # Determine if the current plot is at the bottom of its column
+            is_bottom_plot = axis_index in bottom_indices
+            ax_true.tick_params(axis="x", which="both", labelbottom=is_bottom_plot)
 
-            def last_outer_row_idx(col, n_cells, n_cols):
-                """
-                highest outer-cell index that belongs to this column
-                (works even when the grid is ragged)
-                """
-                last = n_cells - 1
-                while last % n_cols != col:
-                    last -= 1
-                return last
-
-            # ------------- X / Y tick visibility -----------------------------
-            col = axis_index % cols
-            last_idx = last_outer_row_idx(col, len(plot_data), cols)
-
-            # y-labels only on first column
-            ax_true.tick_params(labelleft=(col == 0))
-            if iteration_data_chain is not None:
-                ax_fake.tick_params(labelleft=(col == 0))
-
-            # x-labels on the CLASS panel of the last row in *this* column
-            if axis_index == last_idx:
-                ax_true.tick_params(axis="x", which="both", labelbottom=True)
-            else:
-                ax_true.tick_params(axis="x", which="both", labelbottom=False)
-
-            # the CHAIN panel never shows x-labels
+            # CHAIN panel (upper) never shows x-tick labels
             if iteration_data_chain is not None:
                 ax_fake.tick_params(axis="x", which="both", labelbottom=False)
 
-            # if iteration_data_chain is not None:
-            #     ax_fake.text(
-            #         0.02,
-            #         0.96,
-            #         "CHAIN",
-            #         transform=ax_fake.transAxes,
-            #         fontsize=7,
-            #         fontweight="bold",
-            #         va="top",
-            #     )
+            # Determine if the current plot is in the first column for y-tick labels
+            is_first_column = (axis_index // rows) == 0
+            ax_true.tick_params(labelleft=is_first_column)
+            if iteration_data_chain is not None:
+                ax_fake.tick_params(labelleft=is_first_column)
 
-            # ax_true.text(
-            #     0.02,
-            #     0.96,
-            #     "CLASS",
-            #     transform=ax_true.transAxes,
-            #     fontsize=7,
-            #     fontweight="bold",
-            #     va="top",
-            # )
 
-            # row_y = np.linspace(0.5 + 1 / rows, 0.5 / rows, rows)  # centre of each row
-            # for k, y in enumerate(row_y):
-            #     fig.text(
-            #         0.995,
-            #         y,
-            #         "CHAIN" if k % 2 == 0 else "CLASS",
-            #         ha="right",
-            #         va="center",
-            #         fontsize=8,
-            #         fontweight="bold",
-            #     )
+        if self.x_range is None and master_ax is not None and dummy_df is not None:
+            vals = np.asarray(dummy_df["value"].values, dtype=float)
+            vals = vals[np.isfinite(vals)]
 
-            # if iteration_data_chain is not None:  # <<< NEW
-            #     total_panel_rows = rows * 2
-            #     for r in range(total_panel_rows):
-            #         y = 1 - (r + 0.5) / total_panel_rows
-            #         fig.text(
-            #             1.005,
-            #             y,
-            #             "CHAIN" if r % 2 == 0 else "CLASS",
-            #             ha="left",
-            #             va="center",
-            #             fontsize=8,
-            #             fontweight="bold",
-            #             transform=fig.transFigure,
-            #         )
+            # Safety for log-scale (should already be >0, but be robust)
+            if self.axis_scale == "log":
+                vals = vals[vals > 0]
 
-            if iteration_data_chain is not None and axis_index % cols == 0:
+            if vals.size > 0:
+                x0 = float(vals.min())
+                x1 = float(vals.max())
 
-                # ---- find the *right-most* outer cell in this row -------------
-                row_end_idx = min(axis_index + cols - 1, len(plot_data) - 1)
-                last_ax_cell = axes[row_end_idx]  # outer “holder” axis
-                bb = last_ax_cell.get_position(fig)
+                # Small padding for aesthetics / avoid clipping bars at edges
+                # pad = 0.02 * (x1 - x0) if x1 > x0 else 0.0
+                # x0 -= pad
+                # x1 += pad
 
-                # -- y-centres of the two stacked panels ------------------------
-                bb_fake = ax_fake.get_position(fig)
-                bb_true = ax_true.get_position(fig)
-                y_chain = 0.5 * (bb_fake.y0 + bb_fake.y1)
-                y_class = 0.5 * (bb_true.y0 + bb_true.y1)
+                if self.verbose >= 2:
+                    print(f"Setting shared x-limits from DATA to [{x0}, {x1}]")
 
-                x_txt = bb.x1 + 0.01  # a whisker to the right
-
-                fig.text(
-                    x_txt,
-                    y_chain,
-                    "CHAIN",
-                    ha="left",
-                    va="center",
-                    fontsize=8,
-                    fontweight="bold",
-                )
-
-                fig.text(
-                    x_txt,
-                    y_class,
-                    "CLASS",
-                    ha="left",
-                    va="center",
-                    fontsize=8,
-                    fontweight="bold",
-                )
-
-        # # ------------------------------------------------------------------
-        # # 5)  SHARED LEGENDS + SUPERTITLE  (unchanged code)
-        # # ------------------------------------------------------------------
-        # # (Everything from here down to the final savefig is *identical* to
-        # #  your original block – copy it without edits.)
-        # # ------------------------------------------------------------------
-        # # ---------------- copy-start -------------------------------------
-        # for label, handle in list(all_handles_labels.items()):
-        #     new_label = label
-        #     if label in all_legends_info_main[lowest_iteration]:
-        #         new_label = all_legends_info_main[lowest_iteration][label]["label"]
-        #     if new_label != label:
-        #         all_handles_labels[new_label] = handle
-        #         del all_handles_labels[label]
-
-        # fig.canvas.draw()
-        # legend1 = axes[0].legend(
-        #     all_handles_labels.values(),
-        #     all_handles_labels.keys(),
-        #     loc="upper left",
-        #     fontsize=7,
-        #     frameon=True,
-        #     title="Shared Legend for all Iterations",
-        #     title_fontsize="8",
-        # )
-        # fig.canvas.draw()
-        # axes[0].annotate(
-        #     f"i = {lowest_iteration}",
-        #     xy=(0, 0),
-        #     xycoords=legend1,
-        #     xytext=(2, -6),
-        #     textcoords="offset points",
-        #     ha="left",
-        #     va="top",
-        #     bbox=dict(
-        #         facecolor="white", edgecolor="grey", boxstyle="round,pad=0.4", alpha=0.5
-        #     ),
-        #     fontsize=7,
-        # )
-
-        # # per-subplot legends (main)
-        # for idx, entry in enumerate(plot_data):
-        #     if entry["iteration"] == lowest_iteration:
-        #         continue
-        #     ax_tmp = axes[idx]
-        #     legend_labels, legend_handles = [], []
-        #     for lbl in all_legends_info_main[entry["iteration"]]:
-        #         legend_labels.append(
-        #             all_legends_info_main[entry["iteration"]][lbl]["label"]
-        #         )
-        #         legend_handles.append(
-        #             all_legends_info_main[entry["iteration"]][lbl]["handle"]
-        #         )
-        #     legend_main = ax_tmp.legend(
-        #         legend_handles, legend_labels, loc="upper left", fontsize=7, frameon=True
-        #     )
-        #     fig.canvas.draw()
-        #     ax_tmp.annotate(
-        #         f"i = {entry['iteration']}",
-        #         xy=(0, 0),
-        #         xycoords=legend_main,
-        #         xytext=(2, -6),
-        #         textcoords="offset points",
-        #         ha="left",
-        #         va="top",
-        #         bbox=dict(
-        #             facecolor="white", edgecolor="grey", boxstyle="round,pad=0.4", alpha=0.5
-        #         ),
-        #         fontsize=7,
-        #     )
-
-        # # shared inset legend
-        # for label, handle in list(all_handles_labels_inset.items()):
-        #     new_label = label
-        #     if label in all_legends_info_inset[lowest_iteration_inset]:
-        #         new_label = all_legends_info_inset[lowest_iteration_inset][label]["label"]
-        #     if new_label != label:
-        #         all_handles_labels_inset[new_label] = handle
-        #         del all_handles_labels_inset[label]
-
-        # if self.include_inset and first_inset_ax_true or first_inset_ax_fake:
-        #     first_inset_ax_true.legend(
-        #         all_handles_labels_inset.values(),
-        #         all_handles_labels_inset.keys(),
-        #         loc="upper left",
-        #         fontsize=5,
-        #         frameon=True,
-        #         title="Shared Legend for all Insets",
-        #         title_fontsize="6",
-        #     )
-
-        #     if first_inset_ax_fake is not None:
-        #         first_inset_ax_fake.legend(
-        #             all_handles_labels_inset.values(),
-        #             all_handles_labels_inset.keys(),
-        #             loc="upper left",
-        #             fontsize=5,
-        #             frameon=True,
-        #             title="Shared Legend for all Insets",
-        #             title_fontsize="6",
-        #         )
-
+                # Set once on master; shared axes will follow
+                master_ax.set_xlim(x0, x1)
+                # master_ax.set_autoscalex_on(False)
         # ------------------------------------------------------------------
         # 5)  ONE *SUPER* LEGEND  (figure-level, main + inset combined)
         # ------------------------------------------------------------------
         from collections import OrderedDict
 
-        # # (a)  pretty-print labels that carry the “counts” text  -------------
-        # for lbl in list(all_handles_labels):
-        #     if lbl in all_legends_info_main[lowest_iteration]:
-        #         pretty = all_legends_info_main[lowest_iteration][lbl]["label"]
-        #         if pretty != lbl:
-        #             all_handles_labels[pretty] = all_handles_labels.pop(lbl)
-
-        # for lbl in list(all_handles_labels_inset):
-        #     if (
-        #         self.include_inset
-        #         and lbl in all_legends_info_inset[lowest_iteration_inset]
-        #     ):
-        #         pretty = all_legends_info_inset[lowest_iteration_inset][lbl]["label"]
-        #         if pretty != lbl:
-        #             all_handles_labels_inset[pretty] = all_handles_labels_inset.pop(lbl)
 
         for key in list(all_handles_labels):
             if r"\Delta\chi^2" in key:  # detected threshold line
@@ -6874,99 +7061,46 @@ class Analyze_likelihoods:
             if lbl not in combined_handles:
                 combined_handles[lbl] = hnd  # only add if not already present
 
+        # after you’ve done all of your subplots_adjust(…) / fig.legend(…) calls:
+        fig.canvas.draw()      # force the final layout
+
+        first_ax = axes[0]
+
+        # get the axes region in figure coords
+        ax_bbox = first_ax.get_position()  
+        # ax_bbox.y0 = bottom of axes;  ax_bbox.y1 = top of axes
+
+        # choose a physical offset:
+        offset_in = 0.1        # inches
+        fig_w, fig_h = fig.get_size_inches()
+        offset_frac = offset_in / fig_h
+        
+                # now place the legend just a little bit above the top of those axes:
+        legend_y = ax_bbox.y1 +  offset_frac
+
+
         # (c)  single super legend ------------------------------------------
         fig.legend(
             combined_handles.values(),
             combined_handles.keys(),
-            loc="upper center",
-            bbox_to_anchor=(0.5, 1.05),  # one legend, slightly higher
-            ncol=min(len(combined_handles), 8),
+            loc="lower center",
+            bbox_to_anchor=(0.5, legend_y),  # one legend, slightly higher
+            bbox_transform=fig.transFigure,  # in figure coords
+            ncol=min(len(combined_handles), 3),
             frameon=True,
             fontsize=7,
-            title="Shared Legend for all Iterations & Insets",
-            title_fontsize="8",
+            # title="Shared Legend for all Iterations & Insets",
+            # title_fontsize=10,
         )
 
-        # leave headroom so the super-legend isn’t cut off
-        plt.subplots_adjust(top=0.83)
-
-        # ------------------------------------------------------------------
-        # 5-bis)  PER-SUBPLOT “COUNTS-ONLY” LEGENDS  (like the original code)
-        #         ───────────────────────────────────────────────────────────
-        #         • Every main panel keeps its own legend that shows the
-        #           sample counts (including the first iteration).
-        #         • We ALSO annotate each legend with “i = …”.
-        # ------------------------------------------------------------------
-        # for idx, entry in enumerate(plot_data):
-
-        #     # axis that corresponds to this iteration
-        #     # ax_tmp = axes[idx]
-        #     ax_tmp = main_axes[idx]
-
-        #     # legend_labels = []
-        #     # legend_handles = []
-        #     # for lbl in all_legends_info_main[entry["iteration"]]:
-        #     #     legend_labels.append(
-        #     #         all_legends_info_main[entry["iteration"]][lbl]["label"]
-        #     #     )
-        #     #     legend_handles.append(
-        #     #         all_legends_info_main[entry["iteration"]][lbl]["handle"]
-        #     #     )
-
-        #     # legend_handles = [
-        #     #     info["handle"]
-        #     #     for info in all_legends_info_main[entry["iteration"]].values()
-        #     #     if "handle" in info
-        #     # ]
-        #     legend_handles = [
-        #         info["handle"]
-        #         for info in all_legends_info_main[entry["iteration"]].values()
-        #         if "handle" in info
-        #     ]
-        #     # legend_labels = [
-        #     #     info["label"]
-        #     #     for info in all_legends_info_main[entry["iteration"]].values()
-        #     #     if "handle" in info
-        #     # ]
-        #     legend_labels = [
-        #         info["label"]
-        #         for info in all_legends_info_main[entry["iteration"]].values()
-        #         if "handle" in info
-        #     ]
-
-        #     legend_main = ax_tmp.legend(
-        #         legend_handles,
-        #         legend_labels,
-        #         loc="upper left",
-        #         fontsize=7,
-        #         frameon=True,
-        #     )
-
-        #     # small annotation “i = …” inside that legend’s BBox
-        #     fig.canvas.draw()  # make sure bbox exists
-        #     ax_tmp.annotate(
-        #         f"i = {entry['iteration']}",
-        #         xy=(0, 0),
-        #         xycoords=legend_main,
-        #         xytext=(2, -6),
-        #         textcoords="offset points",
-        #         ha="left",
-        #         va="top",
-        #         bbox=dict(
-        #             facecolor="white",
-        #             edgecolor="grey",
-        #             boxstyle="round,pad=0.4",
-        #             alpha=0.5,
-        #         ),
-        #         fontsize=7,
-        #     )
 
         # ------------------------------------------------------------------
         # 5-bis)  one counts-only legend inside *every* panel
         # ------------------------------------------------------------------
 
         for ax, outer_idx, is_fake in panel_axes:  # <<< MOD
-            key = outer_idx if not is_fake else (outer_idx, "fake")  # <<< NEW
+            it  = index2iter[outer_idx] 
+            key = it if not is_fake else (it, "fake")  # <<< NEW
             infos = all_legends_info_main[key].values()  # <<< MOD
             handles = [i["handle"] for i in infos if "handle" in i]
             labels = [i["label"] for i in infos if "handle" in i]
@@ -6975,13 +7109,13 @@ class Analyze_likelihoods:
                 handles,
                 labels,
                 loc="upper left",
-                fontsize=7,
+                fontsize=6,
                 frameon=True,
             )
 
             fig.canvas.draw()  # so bbox exists
             ax.annotate(
-                f"i = {outer_idx}",
+                f"i = {it}",
                 xy=(0, 0),
                 xycoords=leg,
                 xytext=(2, -6),
@@ -6994,50 +7128,183 @@ class Analyze_likelihoods:
                     boxstyle="round,pad=0.4",
                     alpha=0.5,
                 ),
-                fontsize=7,
+                fontsize=6,
             )
 
-        # ------------------------------------------------------------------
-        # 6)  HEAVIER BORDER AROUND EACH TWO-PANEL CELL         (3)
-        # ------------------------------------------------------------------
-        for ax_cell in axes[: len(plot_data)]:  # <<< NEW
-            for spine in ax_cell.spines.values():
-                spine.set_linewidth(1.5)
-
-        # ------------------------------------------------------------------
-        # 7)  tick visibility – only left / bottom                 (2)
-        # ------------------------------------------------------------------
-        # for k, ax_true in enumerate(main_axes):  # <<< NEW
-
-        #     ax_true.tick_params(labelleft=False, labelbottom=False)
-        #     if k % cols == 0:
-        #         ax_true.tick_params(labelleft=True)
-        #     if k // cols == rows - 1:
-        #         ax_true.tick_params(labelbottom=True)
-
-        for ax, _, is_fake in panel_axes:
-
-            spec = ax.get_subplotspec().get_topmost_subplotspec()
-
-            # y-ticks on first outer column
-            ax.tick_params(labelleft=spec.is_first_col())
-
-            # x-ticks only on CLASS panels that are on the last outer row
-            ax.tick_params(labelbottom=(not is_fake) and spec.is_last_row())
 
         # hide unused outer cells
         for j in range(len(plot_data), len(axes)):
             axes[j].axis("off")
+            
 
-        if metric == "delta_chi_sq":
-            fig.supxlabel(r"$\Delta\chi^2$", fontsize=12, y=0.05)
-        else:
-            fig.supxlabel(r"$-\log(\mathcal{L})$", fontsize=12, y=0.05)
-        fig.supylabel("Counts" if stat == "count" else "Density", fontsize=12, x=0.08)
 
         plt.subplots_adjust(wspace=0, hspace=0)
+        
+        fig.canvas.draw()
+ 
+
+        content_axes = []
+        for ax in fig.axes:
+            # only include axes that live in your GridSpec, not the legend or insets
+            try:
+                spec = ax.get_subplotspec()
+            except AttributeError:
+                continue
+            content_axes.append(ax)
+
+        # 3) find the very lowest bottom‐edge in figure coords
+        y0_mins = [ax.get_position().y0 for ax in content_axes]
+        min_y0 = min(y0_mins)
+
+        # 4) compute a tiny pad in figure‐fraction, e.g. 0.1 inches
+        pad_in = 0.5
+        fig_w, fig_h = fig.get_size_inches()
+        pad_frac = pad_in / fig_h 
+
+        y_xlabel = min_y0 - pad_frac  # just below the lowest axis
+
+        if metric == "delta_chi_sq":
+            fig.supxlabel(r"$\Delta\chi^2$", fontsize=12, y=y_xlabel)
+        else:
+            fig.supxlabel(r"$-\log(\mathcal{L})$", fontsize=12, y=y_xlabel)
+        fig.supylabel("Counts" if stat == "count" else "Density", fontsize=12, x=-0.001)
+                
+
+        
+        
+        # +────────────────────────────────────────────────────────────────────
+        # + Annotate CHAIN / CLASS once per outer row, to the right of last
+        # + filled column.  panel_axes holds (ax, iteration_index, is_fake).
+        # +────────────────────────────────────────────────────────────────────
+
+
+        fig.canvas.draw()
+        filled = len(plot_data)
+
+        # Because axes = axes.T.flatten() is column-major, we need
+        # to compute “end-of-row” under column-major indexing.
+        row_ends = []
+        for row in range(rows):
+            # in column-major flatten, index = col*rows + row
+            candidates = [col*rows + row for col in range(cols) if col*rows + row < filled]
+            if candidates:
+                row_ends.append(max(candidates))
+                
+        for outer_end in row_ends:
+            
+            if iteration_data_chain is not None:
+                fake_ax = next(a for (a, idx, is_fake) in panel_axes
+                            if idx == outer_end and is_fake)
+
+                bb_fake = fake_ax.get_position(fig)
+                y_chain = 0.5 * (bb_fake.y0 + bb_fake.y1)
+                x_txt = bb_fake.x1 + 0.01
+
+                fig.text(x_txt, y_chain, "CHAIN",
+                        ha="left", va="center",
+                        fontsize=8, fontweight="bold")
+            
+            
+            true_ax = next(a for (a, idx, is_fake) in panel_axes
+                        if idx == outer_end and not is_fake)
+            bb_true = true_ax.get_position(fig)
+
+            y_class = 0.5 * (bb_true.y0 + bb_true.y1)
+
+            x_txt = bb_true.x1 + 0.01
+
+            fig.text(x_txt, y_class, "CLASS",
+                    ha="left", va="center",
+                    fontsize=8, fontweight="bold")
+    
+
+        # +────────────────────────────────────────────────────────────────────
+
+        # bolden the spines of the outer axes around the outer cells
+
+        if iteration_data_chain is not None:
+            for outer_idx in range(len(plot_data)):
+                # grab the two axes in this cell
+                fake_ax = next(ax for (ax,i,flag) in panel_axes if i==outer_idx and flag)
+                true_ax = next(ax for (ax,i,flag) in panel_axes if i==outer_idx and not flag)
+
+                # — FAKE PANEL: draw left, right, top only —
+                for loc in ("left","right","top"):
+                    spine = fake_ax.spines[loc]
+                    spine.set_visible(True)
+                    spine.set_linewidth(1.03)   # or whatever thickness you like
+                #     spine.set_color("black")
+                fake_ax.spines["bottom"].set_color("dimgrey")  # bottom spine gray
+
+                # — TRUE PANEL: draw left, right, bottom only —
+                for loc in ("left","right","bottom"):
+                    spine = true_ax.spines[loc]
+                    spine.set_visible(True)
+                    spine.set_linewidth(1.03)
+                #     spine.set_color("black")
+                true_ax.spines["top"].set_color("dimgrey")  # top spine gray
+
+
+        # after plt.subplots_adjust(wspace=0, hspace=0), before saving:
+        fig.canvas.draw()
+
+            
+            
+        for ax in fig.axes:
+            # skip axes that aren’t in your GridSpec (e.g. insets, legends)
+            spec0 = getattr(ax, "get_subplotspec", lambda: None)()
+            if spec0 is None:
+                continue
+
+            # now you know it's a “real” grid axis
+            spec = spec0.get_topmost_subplotspec()
+
+            # skip if it has no visible xticklabels
+            labels = ax.get_xticklabels()
+            if not labels or not any(lbl.get_visible() for lbl in labels):
+                continue
+
+            # figure out left / right position
+            is_first = spec.is_first_col()
+            is_last  = spec.is_last_col()
+
+            if is_first and is_last:
+                prune_arg = None
+            elif is_first:
+                prune_arg = "upper"   # drop the right‑most (upper) tick
+            elif is_last:
+                prune_arg = "lower"   # drop the left‑most (lower) tick
+            else:
+                prune_arg = "both"
+            
+            did_prune = self.ensure_readable_ticks(
+                ax=ax, axis="x",
+                scale=self.axis_scale,
+                scale_args=self.axis_scale_args,
+                prune=prune_arg,
+            )
+            if did_prune:
+                # e.g. bold the remaining tick marks:
+                for tick in ax.xaxis.get_major_ticks():
+                    if tick.label1.get_visible():
+                        tick.tick1line.set_linewidth(1.5)
+                        tick.tick2line.set_linewidth(1.5)
+                        tick.tick1line.set_markeredgewidth(1.5)
+                        tick.tick2line.set_markeredgewidth(1.5)
+
+
+            # ------------------------------------------------------------------            
+
+
+ 
+
+        # redraw once more, then save
+        fig.canvas.draw()
+        
+        suffix_part = f"_{self.suffix}" if self.suffix else ""
+             
         for fmt in self.save_formats:
-            plot_filename = f"per_iteration_{metric}_hist_{stat}.{fmt}"
+            plot_filename = f"per_iteration_{metric}_hist_{stat}{suffix_part}.{fmt}"
             save_path = os.path.join(self.analysis_dir, plot_filename)
             plt.savefig(save_path, bbox_inches="tight", dpi=1000)
         plt.close(fig)
@@ -7047,8 +7314,6 @@ class Analyze_likelihoods:
             )
         # ---------------- copy-end ---------------------------------------
 
-    # ==================================================================
-    #  _plot_one_panel  — ORIGINAL CODE MOVED UNCHANGED
     # ==================================================================
     def _plot_one_panel(
         self,
@@ -7083,6 +7348,49 @@ class Analyze_likelihoods:
         • pick the correct count-dictionary depending on `is_fake`
         """
 
+        # def _choose_scale(scale, arrs):
+        #     # 1) If the user explicitly set a scale, honor it:
+        #     if scale != "auto":
+        #         return scale
+
+        #     # 2) Normalize arrs → a single numpy array, or bail if there's nothing to concat:
+        #     if isinstance(arrs, np.ndarray):
+        #         all_data = arrs
+        #     else:
+        #         # filter out any empty sequences
+        #         non_empty = [a for a in arrs if hasattr(a, "__len__") and len(a) > 0]
+        #         if not non_empty:
+        #             # no data at all → just go linear
+        #             return "linear"
+        #         all_data = np.concatenate(non_empty)
+
+        #     # 3) If after concatenation you still have nothing, fallback:
+        #     if all_data.size == 0:
+        #         return "linear"
+
+        #     # 4) Now apply your logic:
+        #     if np.any(all_data <= 0):
+        #         self.axis_scale_args.setdefault("linthresh", 1e-3)
+                
+        #         return "symlog"
+        #     elif all_data.min() > 0:
+        #         return "log"
+        #     else:
+        #         return "linear"
+
+            
+        # axis_scale = _choose_scale(self.axis_scale,
+        #                    [arr for _, arr, _ in main_arrays])
+        
+        
+        if self.axis_scale == "log":
+            ax.set_xscale("log")
+        elif self.axis_scale == "symlog":
+            ax.set_xscale("symlog", **self.axis_scale_args)
+        else:
+            ax.set_xscale("linear")
+
+
         # pick counts dict
         cp = (
             self.count_points_chain if is_fake else self.count_points
@@ -7098,17 +7406,48 @@ class Analyze_likelihoods:
                 delta_threshold = delta_threshold[iteration]
             else:
                 delta_threshold = delta_threshold[-1]
+                
+                
+                
+        # --- 2. Helper function to build the smart legend string ---
+        def build_legend_string(counts, inset = False):
+            original = counts["original"]
+            display = counts["display"]
+            nan_count = counts["NaN"]
+            inf_count = counts["inf"]
 
+            if original == 0:
+                return None # Don't create a label for an empty category
+
+            if display == 0 and (nan_count + inf_count) == original:
+                label_str = f"{original} N/A*"
+            elif display != original:
+                label_str = f"$\\frac{{{display}}}{{{original}}}$"
+                # label_str += f"{display}/{original}"
+                if (nan_count + inf_count) > 0:
+                    label_str = f"$\\frac{{{display}}}{{{original}^*}}$"
+                if not inset:
+                    label_str += " shown"
+            else:
+                label_str = f"{original}"
+            if not inset:
+                label_str += " points"
+
+            return label_str
+        
+        
         # ----------------------------------------------------------------
         # Everything below is 100 % the original code – only `cp`
         # substituted where it used to be `self.count_points`.
         # ----------------------------------------------------------------
         # all_legends_info_main.setdefault(iteration, {})
-        ax.set_axisbelow(True)
+        ax.set_axisbelow(True) # This makes the grid lines appear below the plot elements
         ax.grid(True, which="major", linestyle="-", linewidth=0.5, alpha=0.5)
 
         # --- Plot main panel categories ----------------------------------
         for cat, arr, item_cfg in main_arrays:
+            if cat not in self.data_categories:
+                continue
             color = item_cfg.get("color", None)
             label = item_cfg.get("label", None)
             plot_kws = item_cfg.get("plot_kws", {}).copy()
@@ -7123,14 +7462,18 @@ class Analyze_likelihoods:
             else:
                 key = cat
 
-            display = cp[iteration][key]["display"]
-            original = cp[iteration][key]["original"]
-            counts_str = (
-                f"{original} points"
-                if display is None or display == original
-                else f"showing $\\frac{{{display}}}{{{original}}}$ points"
-            )
-            all_legends_info_main[dict_key][label] = {"label": counts_str}
+            # display = cp[iteration][key]["display"]
+            # original = cp[iteration][key]["original"]
+            # counts_str = (
+            #     f"{original} points"
+            #     if display == 0 or display == original
+            #     else f"showing $\\frac{{{display}}}{{{original}}}$ points"
+            # )
+
+            # counts_str = build_legend_string(cp[iteration][key], cat=cat)
+            # if counts_str is not None:
+            #     # add the label to the legend info dict
+            #     all_legends_info_main[dict_key][label] = {"label": counts_str}
 
             final_plot_kws = dict(plot_kws)
             final_plot_kws.setdefault("color", color)
@@ -7138,6 +7481,7 @@ class Analyze_likelihoods:
             final_plot_kws.setdefault("stat", stat)
             if len(arr) > 0:
                 sns.histplot(x=arr, ax=ax, **final_plot_kws)
+                
 
         # Optional vertical line -----------------------------------------
         if metric == "delta_chi_sq" and delta_threshold is not None:
@@ -7158,7 +7502,7 @@ class Analyze_likelihoods:
             ax.axvline(
                 delta_threshold, color="purple", linestyle="--", label=delta_label
             )
-            all_legends_info_main[dict_key][delta_label] = {"label": delta_value}
+            # all_legends_info_main[dict_key][delta_label] = {"label": delta_value}
 
         elif (
             metric == "loglkl"
@@ -7180,13 +7524,30 @@ class Analyze_likelihoods:
                 else self.sci_notation_latex(best_fit_loglkl)
             )
             ax.axvline(best_fit_loglkl, color="purple", linestyle="--", label=bf_label)
-            all_legends_info_main[dict_key][bf_label] = {"label": bf_value}
+            # all_legends_info_main[dict_key][bf_label] = {"label": bf_value}
 
+
+        should_draw_inset = False
+        if self.include_inset:
+            for item_cfg in self.hist_inset:
+                cat = item_cfg['category']
+                key = f"delta_chi_sq_{cat}" if metric == "delta_chi_sq" else cat
+                if cp.get(iteration, {}).get(key, {}).get("original", 0) > 0:
+                    should_draw_inset = True
+                    break # Found one, no need to check further
         # ---- INSET ------------------------------------------------------
-        if self.include_inset and inset_arrays:
+        if should_draw_inset:
             ax_inset = inset_axes(
-                ax, width="40%", height="40%", loc="upper right", borderpad=1
+                ax, width="33%", height="33%", loc="upper right", borderpad=1
             )
+            
+            if self.axis_scale == "log":
+                ax_inset.set_xscale("log")
+            elif self.axis_scale == "symlog":
+                ax_inset.set_xscale("symlog", **self.axis_scale_args)
+            else:
+                ax_inset.set_xscale("linear")
+
             ax_inset.set_axisbelow(True)
             ax_inset.grid(True, which="major", linestyle="-", linewidth=0.5, alpha=0.5)
             # all_legends_info_inset.setdefault(iteration, {})
@@ -7196,6 +7557,8 @@ class Analyze_likelihoods:
                 first_inset_ax_container[0] = ax_inset
 
             for cat, arr, item_cfg in inset_arrays:
+                if cat not in self.data_categories:
+                    continue
                 color = item_cfg.get("color", None) or self.DATA_COLORS.get(cat, "gray")
                 label = item_cfg.get("label", None) or self.category_labels.get(
                     cat, cat
@@ -7207,21 +7570,24 @@ class Analyze_likelihoods:
                 plot_kws.setdefault("stat", stat)
                 if len(arr) == 0:
                     continue
-                sns.histplot(x=arr, ax=ax_inset, **plot_kws)
+                sns.histplot(x=arr, ax=ax_inset, **plot_kws)                
 
                 if metric == "delta_chi_sq":
                     key = f"delta_chi_sq_{cat}"
                 else:
                     key = cat
 
-                display = cp[iteration][key]["display"]
-                original = cp[iteration][key]["original"]
-                counts_str = (
-                    f"{original} points"
-                    if display is None or display == original
-                    else f"showing $\\frac{{{display}}}{{{original}}}$ points"
-                )
-                all_legends_info_inset[dict_key][label] = {"label": counts_str}
+                # display = cp[iteration][key]["display"]
+                # original = cp[iteration][key]["original"]
+                # counts_str = (
+                #     f"{original} points"
+                #     if display == 0 or display == original
+                #     else f"$\\frac{{{display}}}{{{original}}}$ points"
+                # )
+
+                # counts_str = build_legend_string(cp[iteration][key], cat=cat)
+
+                # all_legends_info_inset[dict_key][label] = {"label": counts_str}
 
             if x_min_inset is not None and x_max_inset is not None:
                 ax_inset.set_xlim(x_min_inset, x_max_inset)
@@ -7234,7 +7600,7 @@ class Analyze_likelihoods:
                     delta_threshold, color="purple", linestyle="--", linewidth=1
                 )
 
-                all_legends_info_inset[dict_key][delta_label] = {"label": delta_value}
+                # all_legends_info_inset[dict_key][delta_label] = {"label": delta_value}
             elif (
                 metric == "loglkl"
                 and best_fit_loglkl is not None
@@ -7243,36 +7609,55 @@ class Analyze_likelihoods:
                 ax_inset.axvline(
                     best_fit_loglkl, color="purple", linestyle="--", linewidth=1
                 )
-                all_legends_info_inset[dict_key][bf_label] = {"label": bf_value}
+                # all_legends_info_inset[dict_key][bf_label] = {"label": bf_value}
 
-            ax_inset.tick_params(axis="both", labelsize=6)
+            ax_inset.tick_params(axis="both", labelsize=5)
             ax_inset.set_xlabel("")
             ax_inset.set_ylabel("")
             ax_inset.minorticks_on()
 
-            handles, labels = ax_inset.get_legend_handles_labels()
-            for h, l in zip(handles, labels):
-                # all_legends_info_inset[iteration].setdefault(l, {})["handle"] = h
-                # if r"\Delta\chi^2\mathrm{-Threshold}=" in l or r"\mathrm{Best-Fit" in l:
-                #     if not threshold_label_added_inset_container[0]:
-                #         all_handles_labels_inset[l] = h
-                #         threshold_label_added_inset_container[0] = True
-                #     continue
+            # =================== START: UNIFIED INSET LEGEND LOGIC ===================
+            # Get all handles and labels that were actually plotted in the inset
+            inset_handles, inset_labels = ax_inset.get_legend_handles_labels()
+            inset_plotted_map = dict(zip(inset_labels, inset_handles))
 
-                # 1. ALWAYS keep the handle for the per-subplot legend
-                info = all_legends_info_inset[dict_key].setdefault(l, {})
-                info["handle"] = h
+            # Loop through the inset master config to ensure the FINAL legend order is correct
+            for item_cfg in self.hist_inset:
+                cat = item_cfg['category']
+                label = item_cfg.get("label") or self.category_labels.get(cat, cat)
+                key = f"delta_chi_sq_{cat}" if metric == "delta_chi_sq" else cat
+                counts = cp.get(iteration, {}).get(key, {})
 
-                # 2. Add this artist to the *super* inset-legend only once
+                if not (counts and counts.get("original", 0) > 0):
+                    continue
+
+                counts_str = build_legend_string(counts, inset=True)
+                if not counts_str:
+                    continue
+
+                handle = inset_plotted_map.get(label)
+                if not handle:
+                    color = item_cfg.get("color") or self.DATA_COLORS.get(cat, "gray")
+                    handle = self._create_proxy_handle(color, label)
+
+                all_legends_info_inset[dict_key][label] = {"label": counts_str, "handle": handle}
+                
+            # <<< FIX: ADD THIS BLOCK TO POPULATE THE GLOBAL INSET SUPER-LEGEND >>>
+                if label not in all_handles_labels_inset:
+                    all_handles_labels_inset[label] = handle
+            
+            # Handle inset threshold line separately
+            for l, h in inset_plotted_map.items():
                 if r"\Delta\chi^2" in l or r"\mathrm{Best-Fit" in l:
-                    if not threshold_label_added_inset_container[0]:
-                        all_handles_labels_inset[l] = h
-                        threshold_label_added_inset_container[0] = True
-                # no `continue` → we’ve already stored the handle; the rest of
-                #   the loop body is harmless so we just fall through
-                else:
-                    if l not in all_handles_labels_inset:
-                        all_handles_labels_inset[l] = h
+                    if metric == "delta_chi_sq":
+                        delta_value = (f"{delta_threshold:.1f}" if delta_threshold < 10000 else f"${self.sci_notation_latex(delta_threshold)}$")
+                        all_legends_info_inset[dict_key][l] = {"label": delta_value, "handle": h}
+                    elif metric == "loglkl" and best_fit_loglkl is not None:
+                        bf_value = (f"{best_fit_loglkl:.1f}" if best_fit_loglkl < 10000 else self.sci_notation_latex(best_fit_loglkl))
+                        all_legends_info_inset[dict_key][l] = {"label": bf_value, "handle": h}
+            # =================== END: UNIFIED INSET LEGEND LOGIC ===================
+            
+            
 
             if self.x_range_inset is not None:
                 ax_inset.set_xlim(self.x_range_inset)
@@ -7280,64 +7665,87 @@ class Analyze_likelihoods:
                 ax_inset.set_ylim(self.y_range_inset)
             # per-subplot legends (inset)
 
-            if iteration > lowest_iteration_inset:
-                # legend_labels = [
-                #     all_legends_info_inset[iteration][lbl]["label"]
-                #     for lbl in all_legends_info_inset[iteration]
-                # ]
-                # legend_handles = [
-                #     all_legends_info_inset[iteration][lbl]["handle"]
-                #     for lbl in all_legends_info_inset[iteration]
-                # ]
 
-                legend_handles = [
-                    info["handle"]
-                    for info in all_legends_info_inset[dict_key].values()
-                    if "handle" in info
-                ]
-                legend_labels = [
-                    info["label"]
-                    for info in all_legends_info_inset[dict_key].values()
-                    if "handle" in info
-                ]
+            legend_handles = [
+                info["handle"]
+                for info in all_legends_info_inset[dict_key].values()
+                if "handle" in info
+            ]
+            legend_labels = [
+                info["label"]
+                for info in all_legends_info_inset[dict_key].values()
+                if "handle" in info
+            ]
 
+            if legend_handles:
                 ax_inset.legend(
                     legend_handles,
                     legend_labels,
                     loc="upper left",
-                    fontsize=6,
+                    fontsize=5,
                     frameon=True,
                 )
         # ------ MAIN legend bookkeeping ---------------------------------
+        
+        
+        # =================== START: UNIFIED LEGEND LOGIC (REPLACEMENT) ===================
+        # Get all handles and labels that were actually plotted by seaborn one time
         handles, labels = ax.get_legend_handles_labels()
-        for h, l in zip(handles, labels):
-            # all_legends_info_main[iteration].setdefault(l, {})["handle"] = h
-            # if r"\Delta\chi^2\mathrm{-Threshold}=" in l or r"\mathrm{Best-Fit" in l:
-            #     if not threshold_label_added_container[0]:
-            #         all_handles_labels[l] = h
-            #         threshold_label_added_container[0] = True
-            #     continue
-            # if l not in all_handles_labels:
-            #     all_handles_labels[l] = h
+        plotted_label_map = dict(zip(labels, handles))
 
-            info = all_legends_info_main[dict_key].setdefault(l, {})
-            info["handle"] = h
+        # Loop through the master config to ensure the FINAL legend order is correct
+        for item_cfg in self.hist_main_panel:
+            cat = item_cfg['category']
+            label = item_cfg.get("label") or self.category_labels.get(cat, cat)
+            key = f"delta_chi_sq_{cat}" if metric == "delta_chi_sq" else cat
+            counts = cp.get(iteration, {}).get(key, {})
 
-            # 1. ALWAYS keep the handle for the per-subplot legend
+            # Only proceed if this category existed in the data (original count > 0)
+            if not (counts and counts.get("original", 0) > 0):
+                continue
+            
+            counts_str = build_legend_string(counts, inset=False)
+            if not counts_str:
+                continue
+
+            # Check for a REAL handle; if not found, create a styled proxy
+            handle = plotted_label_map.get(label)
+            if not handle:
+                color = item_cfg.get("color") or self.DATA_COLORS.get(cat, "gray")
+                handle = self._create_proxy_handle(color, label)
+
+            # Populate the legend info for this subplot
+            all_legends_info_main[dict_key][label] = {"label": counts_str, "handle": handle}
+            
+            # Populate the global super-legend (if not already present)
+            if label not in all_handles_labels:
+                all_handles_labels[label] = handle
+
+        # The threshold line is a special case, handled last.
+        for l, h in plotted_label_map.items():
             if r"\Delta\chi^2" in l or r"\mathrm{Best-Fit" in l:
+                # This logic assumes the label for the threshold value was already populated
+                # by the original ax.axvline call's entry in all_legends_info_main.
+                # Since we commented that out, we must add the full entry here.
+                if metric == "delta_chi_sq":
+                     delta_value = (f"{delta_threshold:.1f}" if delta_threshold < 10000 else f"${self.sci_notation_latex(delta_threshold)}$")
+                     all_legends_info_main[dict_key][l] = {"label": delta_value, "handle": h}
+                elif metric == "loglkl" and best_fit_loglkl is not None:
+                     bf_value = (f"{best_fit_loglkl:.1f}" if best_fit_loglkl < 10000 else self.sci_notation_latex(best_fit_loglkl))
+                     all_legends_info_main[dict_key][l] = {"label": bf_value, "handle": h}
+
                 if not threshold_label_added_container[0]:
                     all_handles_labels[l] = h
                     threshold_label_added_container[0] = True
-            # no `continue` → we’ve already stored the handle; the rest of
-            #   the loop body is harmless so we just fall through
-            else:
-                if l not in all_handles_labels:
-                    all_handles_labels[l] = h
+        # =================== END: UNIFIED LEGEND LOGIC (REPLACEMENT) ===================
+
+
+        
         # ----------------------------------------------------------------
 
-        from matplotlib.ticker import LogLocator
+        # from matplotlib.ticker import LogLocator
 
-        ax.xaxis.set_minor_locator(LogLocator(base=10.0, subs="auto", numticks=None))
+        # ax.xaxis.set_minor_locator(LogLocator(base=10.0, subs="auto", numticks=None))
         ax.minorticks_on()
         ax.set_xlabel("")
         ax.set_ylabel("")
@@ -7347,6 +7755,28 @@ class Analyze_likelihoods:
             ax.set_xlim(self.x_range)
         if self.y_range is not None:
             ax.set_ylim(self.y_range)
+            
+
+        if should_draw_inset:
+            self.ensure_readable_ticks(
+                ax=ax_inset,
+                axis="x",
+                scale=self.axis_scale,
+                scale_args=self.axis_scale_args,
+                prune=None,
+            )
+
+
+
+    def _create_proxy_handle(self, color, label):
+            """Creates a proxy artist that mimics seaborn's histplot legend patch."""
+            import matplotlib.patches as mpatches
+            return mpatches.Patch(
+                facecolor=color,
+                label=label,
+                edgecolor='black',  # Adds the black border
+                linewidth=0.2       # Adjust to match seaborn's default
+            )
 
     def _compute_global_inset_ranges(self, all_inset_plots, metric, stat, bins="auto"):
         """
@@ -7386,6 +7816,9 @@ class Analyze_likelihoods:
 
             # Prepare a dummy figure
             fig, ax = plt.subplots()
+            
+            #Set axis scale:
+            ax.set_xscale(self.axis_scale, **self.axis_scale_args)
 
             # Build final_plot_kws similarly to how you do in the real pass
             final_plot_kws = dict(item_cfg.get("plot_kws", {}))
@@ -7423,7 +7856,7 @@ class Analyze_likelihoods:
 
         rows = []
         for iteration, i_data in iteration_data.items():
-            for cat in self.data_categories:
+            for cat in self.data_categories_class:
                 loglkl_arr = i_data.get(cat, np.array([], dtype=np.float32))
                 delta_arr = i_data.get(
                     f"delta_chi_sq_{cat}", np.array([], dtype=np.float32)
@@ -7449,12 +7882,12 @@ class Analyze_likelihoods:
             if self.verbose >= 2:
                 print("[_save_iteration_summaries] No data found for summary.")
             return
-
+        suffix_part = f"_{self.suffix}" if self.suffix else ""
         # Convert to DataFrame and save
         summary_df = pd.DataFrame(rows)
         os.makedirs(os.path.join(self.analysis_dir, "summary_table"), exist_ok=True)
         summary_path = os.path.join(
-            self.analysis_dir, "summary_table/per_iteration_likelihood_summary.csv"
+            self.analysis_dir, "summary_table/", f"per_iteration_likelihood_summary{suffix_part}.csv"
         )
         summary_df.to_csv(summary_path, index=False)
         if self.verbose >= 1:
@@ -7468,11 +7901,12 @@ class Analyze_likelihoods:
         if self.verbose >= 4:
             print("[_save_iteration_summaries] Summary Table:")
             print(table)
+            
 
         # Create self.analysis_dir/summary_table/ if it doesn't exist
         os.makedirs(os.path.join(self.analysis_dir, "summary_table/"), exist_ok=True)
         latex_table_path = os.path.join(
-            self.analysis_dir, "summary_table/", "per_iteration_summary.tex"
+            self.analysis_dir, "summary_table/", f"per_iteration_summary{suffix_part}.tex"
         )
         with open(latex_table_path, "w") as f:
             latex_table = tabulate(
@@ -7485,7 +7919,7 @@ class Analyze_likelihoods:
             )
 
         markdown_table_path = os.path.join(
-            self.analysis_dir, "summary_table/", "per_iteration_summary.md"
+            self.analysis_dir, "summary_table/", f"per_iteration_summary{suffix_part}.md"
         )
         with open(markdown_table_path, "w") as f:
             markdown_table = tabulate(
@@ -7517,7 +7951,7 @@ class Analyze_likelihoods:
         }
         qvals = np.quantile(array, self.quantiles)
         for q, val in zip(self.quantiles, qvals):
-            result[f"q_{int(q*100)}"] = float(val)
+            result[f"q_{q*100:.1f}"] = float(val)
         return result
 
     def _find_last_complete_iteration(self):
@@ -7566,62 +8000,6 @@ class Analyze_likelihoods:
 
         return last_complete_it
 
-    # def _create_dummy_df(self, iteration_data, metric="delta_chi_sq"):
-    #     """
-    #     Create a combined histogram across selected categories and iterations using Seaborn's histplot.
-
-    #     Parameters
-    #     ----------
-    #     iteration_data : dict
-    #         The dictionary returned by _gather_iteration_data().
-    #     metric : str
-    #         The metric to plot, e.g., 'delta_chi_sq' or 'loglkl'.
-    #     """
-    #     if self.verbose >= 2:
-    #         print(
-    #             f"[_create_dummy_df] Creating dummy DataFrame for {metric} combined histogram."
-    #         )
-
-    #     # Combine categories from main panel and (optionally) inset
-    #     selected_categories = {panel["category"] for panel in self.hist_main_panel}
-    #     if self.include_inset:
-    #         selected_categories.update(panel["category"] for panel in self.hist_inset)
-
-    #     # 1. Gather all data into a DataFrame
-    #     plot_rows = []
-    #     for iteration, i_data in iteration_data.items():
-    #         for cat in selected_categories:  # Only include selected categories
-    #             if metric == "delta_chi_sq":
-    #                 arr = i_data.get(
-    #                     f"delta_chi_sq_{cat}", np.array([], dtype=np.float32)
-    #                 )
-    #             else:  # loglkl
-    #                 arr = i_data.get(cat, np.array([], dtype=np.float32))
-
-    #             if len(arr) == 0:
-    #                 continue  # Skip empty categories
-
-    #             # Create a unique identifier for category-iteration
-    #             category_iteration = (
-    #                 f"{self.category_labels.get(cat, cat)}_i{iteration}"
-    #             )
-
-    #             for val in arr:
-    #                 plot_rows.append(
-    #                     {"value": val, "category_iteration": category_iteration}
-    #                 )
-
-    #     if not plot_rows:
-    #         if self.verbose >= 2:
-    #             print(
-    #                 f"[_create_dummy_df] No data available for {metric} combined histogram."
-    #             )
-    #         return
-
-    #     df = pd.DataFrame(plot_rows)
-
-    #     return df
-
     def _create_dummy_df(
         self,
         iteration_data,
@@ -7651,9 +8029,9 @@ class Analyze_likelihoods:
             print(f"[_create_dummy_df] Building histogram DataFrame for {metric}")
 
         # which categories to include
-        selected = {p["category"] for p in self.hist_main_panel}
+        selected = {p["category"] for p in self.hist_main_panel if p["category"] in self.data_categories}
         if self.include_inset:
-            selected.update({p["category"] for p in self.hist_inset})
+            selected.update({p["category"] for p in self.hist_inset if p["category"] in self.data_categories})
 
         rows = []
 
@@ -7690,244 +8068,6 @@ class Analyze_likelihoods:
 
         df = pd.DataFrame(rows)
         return df
-
-    def compute_global_bin_edges_seaborn_internal(
-        self,
-        data=None,
-        *,
-        # Vector variables
-        x=None,
-        y=None,
-        hue=None,
-        weights=None,
-        # Histogram computation parameters
-        stat="count",
-        bins="auto",
-        binwidth=None,
-        binrange=None,
-        discrete=None,
-        cumulative=False,
-        common_bins=True,
-        common_norm=True,
-        # Histogram appearance parameters
-        multiple="layer",
-        element="bars",
-        fill=True,
-        shrink=1,
-        # Histogram smoothing with a kernel density estimate
-        kde=False,
-        kde_kws=None,
-        line_kws=None,
-        # Bivariate histogram parameters
-        thresh=0,
-        pthresh=None,
-        pmax=None,
-        cbar=False,
-        cbar_ax=None,
-        cbar_kws=None,
-        # Hue mapping parameters
-        palette=None,
-        hue_order=None,
-        hue_norm=None,
-        color=None,
-        # Axes information
-        log_scale=None,
-        legend=True,
-        ax=None,
-        # Other appearance keywords
-        **kwargs,
-    ):
-        """
-        Use Seaborn's internal _DistributionPlotter with a custom Hist that
-        intercepts the bin edges. Returns the bin edges exactly as Seaborn
-        would compute them, for univariate data.
-        """
-
-        # 1) Initialize our custom plotter
-        p = Analyze_likelihoods.retrieve_bin_edges(
-            data=data,
-            variables=dict(x=x, y=y, hue=hue, weights=weights),  # univariate => x
-        )
-
-        p.map_hue(palette=palette, order=hue_order, norm=hue_norm)
-
-        if ax is None:
-            ax = plt.gca()
-
-        p._attach(ax, log_scale=log_scale)
-
-        from seaborn.utils import _default_color  # an internal function
-
-        if p.univariate:  # Note, bivariate plots won't cycle
-            if fill:
-                method = ax.bar if element == "bars" else ax.fill_between
-            else:
-                method = ax.plot
-            color = _default_color(method, hue, color, kwargs)
-
-        if not p.has_xy_data:
-            return ax
-
-        # Default to discrete bins for categorical variables
-        if discrete is None:
-            discrete = p._default_discrete()
-
-        estimate_kws = dict(
-            stat=stat,
-            bins=bins,
-            binwidth=binwidth,
-            binrange=binrange,
-            discrete=discrete,
-            cumulative=cumulative,
-        )
-
-        if p.univariate:
-
-            bin_edges = p.plot_univariate_histogram(
-                multiple=multiple,
-                element=element,
-                fill=fill,
-                shrink=shrink,
-                common_norm=common_norm,
-                common_bins=common_bins,
-                kde=kde,
-                kde_kws=kde_kws,
-                color=color,
-                legend=legend,
-                estimate_kws=estimate_kws,
-                line_kws=line_kws,
-                **kwargs,
-            )
-
-        return bin_edges
-
-    class EdgeCatcherHist(Hist):
-        """
-        Subclass of Hist that intercepts the bin edges so we can store them.
-        """
-
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.captured_bin_edges = None  # We'll store the edges here
-
-        def _eval(self, data, orient, bin_kws):
-
-            vals = data[orient]
-            weights = data.get("weight", None)
-
-            density = self.stat == "density"
-            hist, edges = np.histogram(
-                vals, **bin_kws, weights=weights, density=density
-            )
-            self.captured_bin_edges = edges
-
-            width = np.diff(edges)
-            center = edges[:-1] + width / 2
-
-            return pd.DataFrame({orient: center, "count": hist, "space": width})
-
-    class retrieve_bin_edges(_DistributionPlotter):
-
-        def plot_univariate_histogram(
-            self,
-            multiple,
-            element,
-            fill,
-            common_norm,
-            common_bins,
-            shrink,
-            kde,
-            kde_kws,
-            color,
-            legend,
-            line_kws,
-            estimate_kws,
-            **plot_kws,
-        ):
-
-            # -- Default keyword dicts
-            kde_kws = {} if kde_kws is None else kde_kws.copy()
-            line_kws = {} if line_kws is None else line_kws.copy()
-            estimate_kws = {} if estimate_kws is None else estimate_kws.copy()
-
-            # --  Input checking
-            from seaborn.utils import _check_argument  # an internal check
-
-            _check_argument("multiple", ["layer", "stack", "fill", "dodge"], multiple)
-            _check_argument("element", ["bars", "step", "poly"], element)
-
-            auto_bins_with_weights = (
-                "weights" in self.variables
-                and estimate_kws["bins"] == "auto"
-                and estimate_kws["binwidth"] is None
-                and not estimate_kws["discrete"]
-            )
-            if auto_bins_with_weights:
-                msg = (
-                    "`bins` cannot be 'auto' when using weights. "
-                    "Setting `bins=10`, but you will likely want to adjust."
-                )
-                warnings.warn(msg, UserWarning)
-                estimate_kws["bins"] = 10
-
-            # Simplify downstream code if we are not normalizing
-            if estimate_kws["stat"] == "count":
-                common_norm = False
-
-            orient = self.data_variable
-
-            # Now initialize the Histogram estimator
-            estimator = Analyze_likelihoods.EdgeCatcherHist(**estimate_kws)
-            histograms = {}
-
-            # Do pre-compute housekeeping related to multiple groups
-            all_data = self.comp_data.dropna()
-            all_weights = all_data.get("weights", None)
-
-            multiple_histograms = set(self.variables) - {"x", "y"}
-            if multiple_histograms:
-                if common_bins:
-                    bin_kws = estimator._define_bin_params(all_data, orient, None)
-            else:
-                common_norm = False
-
-            if common_norm and all_weights is not None:
-                whole_weight = all_weights.sum()
-            else:
-                whole_weight = len(all_data)
-
-            # Estimate the smoothed kernel densities, for use later
-            if kde:
-                # TODO alternatively, clip at min/max bins?
-                kde_kws.setdefault("cut", 0)
-                kde_kws["cumulative"] = estimate_kws["cumulative"]
-                densities = self._compute_univariate_density(
-                    self.data_variable,
-                    common_norm,
-                    common_bins,
-                    kde_kws,
-                    warn_singular=False,
-                )
-
-            # First pass through the data to compute the histograms
-            for sub_vars, sub_data in self.iter_data("hue", from_comp_data=True):
-
-                # Prepare the relevant data
-                key = tuple(sub_vars.items())
-                orient = self.data_variable
-
-                if "weights" in self.variables:
-                    sub_data["weight"] = sub_data.pop("weights")
-                    part_weight = sub_data["weight"].sum()
-                else:
-                    part_weight = len(sub_data)
-
-                # Do the histogram computation
-                if not (multiple_histograms and common_bins):
-                    bin_kws = estimator._define_bin_params(sub_data, orient, None)
-                res = estimator._normalize(estimator._eval(sub_data, orient, bin_kws))
-
-                return estimator.captured_bin_edges
 
     def _plot_likelihood_evolution(self, iteration_data):
         """
@@ -8163,8 +8303,9 @@ class Analyze_likelihoods:
         # ------------------------------------------------------
         # 3) Save figure
         # ------------------------------------------------------
+        suffix_part = f"_{self.suffix}" if self.suffix else ""
         for fmt in self.save_formats:
-            fname = f"likelihood_evolution_over_iterations.{fmt}"
+            fname = f"likelihood_evolution_over_iterations{suffix_part}.{fmt}"
             savepath = os.path.join(self.analysis_dir, fname)
             plt.savefig(savepath, dpi=1000, bbox_inches="tight")
             if self.verbose >= 2:
@@ -8188,6 +8329,221 @@ class Analyze_likelihoods:
         if round(mantissa, precision) == 1:
             return rf"10^{{{exponent}}}"
         return rf"{mantissa:.{precision}f} \times 10^{{{exponent}}}"
+    
+
+    def compute_bin_edges(
+        self, x, *,
+        hue=None, weights=None, common_bins=True,
+        bin_scale="linear", bin_scale_args=None,
+        axis_scale=None, axis_scale_args=None,
+        bins="auto", binwidth=None, binrange=None,
+        discrete=None,
+    ):
+        """
+        Returns edges _in axis-space_, having binned in bin_space.
+        """
+
+        axis_scale      = axis_scale or bin_scale
+        bin_scale_args  = bin_scale_args  or {}
+        axis_scale_args = axis_scale_args or {}
+
+        def _edges_for_slice(x_slice, w_slice):
+            # 1) Clean data
+            s = pd.Series(x_slice).dropna().astype(float)
+            if bin_scale == "log":
+                s = s[s>0]
+            s = s[np.isfinite(s)]
+            if s.empty:
+                return np.array([])
+
+            # 2) Build bin-space transform
+            scb  = scale_factory(bin_scale, axis=None, **bin_scale_args)
+            trb  = scb.get_transform()
+            fwdb = trb.transform
+            invb = trb.inverted().transform
+
+            # 3) Transform data → compute edges in bin-space
+            xt = fwdb(s.values)
+            if discrete:
+                edges_t = np.arange(xt.min() - .5, xt.max() + 1.5)
+            elif binwidth is not None:
+                n = max(int(round((xt.max() - xt.min())/binwidth)), 1)
+                edges_t = np.linspace(xt.min(), xt.max(), n+1)
+            else:
+                _bins = bins
+                edges_t = np.histogram_bin_edges(
+                    xt, bins=_bins,
+                    range=(xt.min(), xt.max()),
+                    weights=(None if w_slice is None else w_slice)
+                )
+                
+                if bin_scale == "linear" and len(edges_t) > 1000:
+                    edges_t = np.histogram_bin_edges(
+                        xt, bins="sturges",
+                        range=(xt.min(), xt.max()),
+                        weights=(None if w_slice is None else w_slice)
+                    )
+                    
+                    if len(edges_t) > 1000:
+                        edges_t = np.histogram_bin_edges(
+                            xt, bins=1000,
+                            range=(xt.min(), xt.max()),
+                            weights=(None if w_slice is None else w_slice)
+                        )
+
+            # 4) If axis==bin scale, we’re already in the right space
+            if axis_scale == bin_scale:
+                return edges_t
+
+            if bin_scale == "linear" and axis_scale != "linear":
+                #Transform edges_t to axis-space
+                sca  = scale_factory(axis_scale, axis=None, **axis_scale_args)
+                tra  = sca.get_transform()
+                fwda = tra.transform
+                return fwda(edges_t)
+                
+
+            # 5) Otherwise map edges back → data-space → axis-space
+            edges_data = invb(edges_t)
+
+            sca  = scale_factory(axis_scale, axis=None, **axis_scale_args)
+            tra  = sca.get_transform()
+            fwda = tra.transform
+
+            return fwda(edges_data)
+
+        # group‐by‐hue logic unchanged
+        if hue is None or common_bins:
+            return _edges_for_slice(x, weights)
+        else:
+            df = pd.DataFrame({
+                "_x": x, "_h": hue,
+                **({"_w": weights} if weights is not None else {})
+            })
+            out = {}
+            for lvl, sub in df.groupby("_h", sort=False):
+                out[lvl] = _edges_for_slice(sub["_x"], sub.get("_w"))
+            return out
+
+    def _to_inches(self, length_str):
+        """
+        Parse a length string like "440 pts", "15 cm" or "6 in" into inches.
+        """
+        val, unit = length_str.split()
+        val = float(val)
+        if unit in ("in", "inch", "inches"):
+            return val
+        elif unit in ("cm",):
+            return val / 2.54
+        elif unit in ("mm",):
+            return val / 25.4
+        elif unit in ("pt", "pts"):
+            return val / 72.27
+        else:
+            raise ValueError(f"Unrecognized unit in length: {unit!r}")
+
+    def ensure_readable_ticks(self, ax, axis="x", scale="linear", scale_args=None,
+                            prune="both"):
+        """
+        1) Install Matplotlib's automatic locator for the requested scale.
+        2) Prune first/last tick early on.
+        3) If labels overlap, tighten with MaxNLocator or LogLocator(numticks=...).
+        4) Final fallback: hide every Nth label if still overlapping.
+        Returns True if *any* tick-label got removed or hidden.
+        """
+        pruned_any = False
+
+        scale_args = scale_args or {}
+        axis_obj = getattr(ax, f"{axis}axis")
+
+        # 1) install the “auto” locator for this scale
+        if scale == "log":
+            axis_obj.set_major_locator(
+                LogLocator(base=scale_args.get("base", 10))
+            )
+        elif scale == "symlog":
+            linthresh = scale_args.get("linthresh", 1e-3)
+            base     = scale_args.get("base", 10)
+            axis_obj.set_major_locator(
+                SymmetricalLogLocator(linthresh=linthresh, base=base)
+            )
+        else:
+            axis_obj.set_major_locator(AutoLocator())
+
+        fig = ax.figure
+        fig.canvas.draw()  # force Matplotlib to lay out ticks
+
+        def prune_ticks(locator):
+            nonlocal pruned_any
+            vmin, vmax = axis_obj.get_view_interval()
+            ticks = locator.tick_values(vmin, vmax)
+            orig_len = len(ticks)
+            if prune in ("lower", "both") and len(ticks) > 1:
+                ticks = ticks[1:]
+            if prune in ("upper", "both") and len(ticks) > 1:
+                ticks = ticks[:-1]
+            if len(ticks) < orig_len:
+                pruned_any = True
+            axis_obj.set_major_locator(FixedLocator(ticks))
+
+        # 2) early prune of end‐ticks
+        major = axis_obj.get_major_locator()
+        if prune in ("lower","upper","both"):
+            if isinstance(major, MaxNLocator):
+                # MaxNLocator supports prune directly
+                before = major.tick_values(*axis_obj.get_view_interval())
+                major.set_params(prune=prune)
+                after = major.tick_values(*axis_obj.get_view_interval())
+                if len(after) < len(before):
+                    pruned_any = True
+                axis_obj.set_major_locator(major)
+
+            elif isinstance(major, (LogLocator, SymmetricalLogLocator)):
+                # manually prune log‐type
+                prune_ticks(major)
+
+        # 3) if labels overlap, tighten up
+        labels = getattr(ax, f"get_{axis}ticklabels")()
+        renderer = fig.canvas.get_renderer()
+        def labels_overlap(lbls):
+            boxes = [l.get_window_extent(renderer) for l in lbls if l.get_visible()]
+            if len(boxes) < 2:
+                return False
+            boxes.sort(key=lambda b: b.x0)
+            return any(b1.x1 > b2.x0 for b1, b2 in zip(boxes, boxes[1:]))
+
+        if labels_overlap(labels):
+            pruned_any = True
+            max_fit = max(int(axis_obj.get_tick_space()), 2)
+            if scale == "log":
+                loc = LogLocator(base=scale_args.get("base", 10), numticks=max_fit)
+            elif scale == "symlog":
+                linthresh = scale_args.get("linthresh", 1e-3)
+                base     = scale_args.get("base", 10)
+                loc = SymmetricalLogLocator(linthresh=linthresh, base=base)
+            else:
+                loc = MaxNLocator(nbins=max_fit, prune=prune)
+
+            axis_obj.set_major_locator(loc)
+            fig.canvas.draw()
+
+            # final fallback: hide every Nth label if still overlapping
+            labels = getattr(ax, f"get_{axis}ticklabels")()
+            if labels_overlap(labels):
+                step = int(np.ceil(len(labels) / max_fit))
+                for i, lab in enumerate(labels):
+                    if i % step != 0:
+                        lab.set_visible(False)
+                        pruned_any = True
+
+            # prune again for log/symlog
+            major = axis_obj.get_major_locator()
+            if prune in ("lower","upper","both") and isinstance(major, (LogLocator, SymmetricalLogLocator)):
+                prune_ticks(major)
+
+        return pruned_any
+
+
 
 
 # --------------------------------CLASS PlotIterations--------------------------------
@@ -8424,10 +8780,18 @@ class PlotIterations:
         plot_threshold_line=False,
         log_x=False,
         log_y=False,
+        smart_ticks=False,
+        num_ticks_per_axis=None,
         show_counts_in_legend=True,
         subplot_legend_location="upper left",
         tall_subplots=True,
         fig_width="440 pts",
+        suffix ="",
+        
+        class_posterior_path=None,
+        class_posterior_basename=None,
+        
+        
     ):
         """
         Initialize the PlotIterations class with user configuration and data.
@@ -8485,6 +8849,7 @@ class PlotIterations:
                 # Disable bold subplot legend for layout A
             )
         self.fig_width = fig_width
+        self.suffix = suffix
         self.data = data
         self.param_x = param_x
         self.param_y = param_y
@@ -8545,6 +8910,11 @@ class PlotIterations:
             self.param_connect, "delta_chi2_threshold", None
         )
 
+        self.class_posterior_path = class_posterior_path
+        self.class_posterior_basename = class_posterior_basename
+        self.class_contours_plotted = False # Legend flag
+
+
         self.global_norm = None
         self.powernorm_offset = 0.0
 
@@ -8554,6 +8924,9 @@ class PlotIterations:
 
         self.log_x = log_x
         self.log_y = log_y
+        
+        self.smart_ticks = bool(smart_ticks)
+        self.num_ticks_per_axis = num_ticks_per_axis
 
         if self.draw_contours:
             self.xs_all, self.ys_all, self.loglkl_all = (
@@ -8692,7 +9065,7 @@ class PlotIterations:
         matplotlib.rcParams.update(matplotlib.rcParamsDefault)
         matplotlib.use("Agg")  # Use non-interactive backend for saving figures
 
-        fontsize = 11
+        fontsize = 11/1.2
         latex_preamble = r"\usepackage{color} \usepackage{xcolor} \usepackage{siunitx} \usepackage{amsmath} \usepackage{amsfonts} \usepackage{amssymb} \usepackage{mathtools} \usepackage{bm} \usepackage{mathrsfs} \parindent = 0pt"
 
         matplotlib.rcParams.update(
@@ -8717,6 +9090,7 @@ class PlotIterations:
         # plt.rcParams["axes.linewidth"] = (
         #     10  # Sets a default thickness for all axes spines
         # )
+        plt.rcParams["axes.formatter.use_mathtext"] = True
 
         # make all axes spines thicker
         plt.rcParams["axes.linewidth"] = 0.9  # default is usually 0.8
@@ -8885,6 +9259,31 @@ class PlotIterations:
                 dy = (y1 - y0) * 0.05
                 axes[r, c].set_xlim(x0 - dx, x1 + dx)
                 axes[r, c].set_ylim(y0 - dy, y1 + dy)
+                
+                
+# ---------- smart ticks (if enabled) ----------
+                if (
+                    self.smart_ticks
+                    and self.num_ticks_per_axis is not None
+                    and self.num_ticks_per_axis > 0
+                ):
+                    # X axis: only if NOT custom and NOT log
+                    if self.x_range is None and not self.log_x:
+                        x_min_ax, x_max_ax = axes[r, c].get_xlim()
+                        xticks = get_smart_ticks(
+                            x_min_ax, x_max_ax, self.num_ticks_per_axis, self.param_x
+                        )
+                        if xticks:
+                            axes[r, c].set_xticks(xticks)
+
+                    # Y axis: only if NOT custom and NOT log
+                    if self.y_range is None and not self.log_y:
+                        y_min_ax, y_max_ax = axes[r, c].get_ylim()
+                        yticks = get_smart_ticks(
+                            y_min_ax, y_max_ax, self.num_ticks_per_axis, self.param_y
+                        )
+                        if yticks:
+                            axes[r, c].set_yticks(yticks)
 
         # Layout A: make room for subplot-legends by enlarging the figure height and adjusting default data limits
         if getattr(self, "use_layout_A", False):
@@ -9121,8 +9520,9 @@ class PlotIterations:
         os.makedirs(os.path.join(self.output_folder, "iteration_plots"), exist_ok=True)
         param_x_safe = self._sanitize_filename(self.param_x)
         param_y_safe = self._sanitize_filename(self.param_y)
+        suffix_part = f"_{self.suffix}" if self.suffix else ""
         for fmt in self.save_formats:
-            filename = f"iteration_plot_{param_x_safe}_{param_y_safe}.{fmt}"
+            filename = f"iteration_plot_{param_x_safe}_{param_y_safe}{suffix_part}.{fmt}"
             save_path = os.path.join(self.output_folder, "iteration_plots", filename)
             fig.savefig(save_path, dpi=600, format=fmt, bbox_inches="tight")
             if self.verbose >= 1:
@@ -9148,19 +9548,22 @@ class PlotIterations:
         # Define default legend labels
         default_legend_labels = {
             "accepted_new": "Accepted",
-            "accepted_old": "Accepted (Old)",
-            "accepted_accumulated": "Accepted (Accumulated)",
-            "discarded_iteration": "Discarded (Iteration)",
-            "discarded_oversampling": "Discarded (Oversampling)",
-            "discarded_likelihood": "Discarded (Likelihood)",
-            "discarded_likelihood_new": "Discarded (Likelihood new)",
-            "discarded_likelihood_old": "Discarded (Likelihood old)",
-            "failed_class": "Failed Class",
+            "accepted_old": "Accepted (old)",
+            "accepted_accumulated": "Accepted (accumulated)",
+            "discarded_iteration": "Discarded (iteration)",
+            "discarded_oversampling": "Discarded (oversampling)",
+            "discarded_likelihood": "Discarded (likelihood)",
+            "discarded_likelihood_new": "Discarded (likelihood, new)",
+            "discarded_likelihood_old": "Discarded (likelihood, old)",
+            "failed_class": "Failed CLASS",
             "best_fit": "Best Fit",
-            "accumulated_accepted_still": "Accepted (Still)",
-            "accumulated_discarded_old": "Discarded (Old)",
-            "accumulated_discarded_new": "Discarded (New)",
+            "accumulated_accepted_still": "Accepted (still)",
+            "accumulated_discarded_old": "Discarded (likelihood, old)",
+            "accumulated_discarded_new": "Discarded (likelihood, new)",
         }
+        
+        
+        
         return default_legend_labels
 
     def _set_default_marker_styles(self, marker_styles):
@@ -9270,8 +9673,8 @@ class PlotIterations:
                 "fillstyle": "full",  # Solid for emphasis
                 "color": "iter_color",  # Iteration-based color
                 "edgecolor": "black",  # Black edge for emphasis
-                "linewidth": 1,  # Thicker edge #What is the default linewidth? It is:
-                "size": self.marker_size + 50,  # Larger size to stand out
+                "linewidth": 0.8,  # Thicker edge #What is the default linewidth? It is:
+                "size": self.marker_size + 30,  # Larger size to stand out
                 "alpha": 1.0,  # Fully opaque
             },
             "accumulated_accepted_still": {
@@ -9340,18 +9743,34 @@ class PlotIterations:
             # Calculate how many iterations to group per column
             # Minimum grouping: 2 iterations per group
             # Adjust as necessary
-            base_group_size = math.ceil(iterations_left / remaining_columns)
+            # base_group_size = math.ceil(iterations_left / remaining_columns)
+            # start = 0
+            # for _ in range(remaining_columns):
+            #     end = start + base_group_size
+            #     group = keys[start:end]
+            #     if len(group) > 0:
+            #         grouped.append(group)
+            #     start = end
+            # # Handle any remaining iterations
+            # if start < iterations_left:
+            #     for it in keys[start:]:
+            #         grouped[-1].append(it)
+                    
+            # Vi skal gruppere iterationerne ud over remaining_columns,
+            # og vi vil BRUGE alle remaining_columns uden tomme grupper.
+            group_count = min(remaining_columns, iterations_left)
+
+            base_size = iterations_left // group_count
+            extra = iterations_left % group_count  # de første 'extra' grupper får én ekstra iteration
+
             start = 0
-            for _ in range(remaining_columns):
-                end = start + base_group_size
+            for i in range(group_count):
+                size = base_size + (1 if i < extra else 0)
+                end = start + size
                 group = keys[start:end]
-                if len(group) > 0:
-                    grouped.append(group)
-                start = end
-            # Handle any remaining iterations
-            if start < iterations_left:
-                for it in keys[start:]:
-                    grouped[-1].append(it)
+                grouped.append(group)
+                start = end              
+                    
 
         self.iteration_groups = grouped
 
@@ -9377,12 +9796,44 @@ class PlotIterations:
                         df.dropna()
                     )  # Drop rows with NaN (which now includes former infs)
 
+                # if df is not None and not df.empty:
+                #     # Check x/y columns exist
+                #     if self.param_x not in df.columns or self.param_y not in df.columns:
+                #         raise ValueError(
+                #             f"DataFrame for {block_key} in iteration {it} missing param_x = {self.param_x} or param_y = {self.param_y}"
+                #         )
+                
                 if df is not None and not df.empty:
                     # Check x/y columns exist
-                    if self.param_x not in df.columns or self.param_y not in df.columns:
-                        raise ValueError(
-                            f"DataFrame for {block_key} in iteration {it} missing param_x = {self.param_x} or param_y = {self.param_y}"
+                    missing_cols = [
+                        col for col in (self.param_x, self.param_y)
+                        if col not in df.columns
+                    ]
+                    if missing_cols:
+                        # Special handling for failed_class:
+                        # here we expect ONLY model parameters (not derived like sigma8),
+                        # so if something is missing, we just treat this block as empty.
+                        if block_key == "failed_class":
+                            if self.verbose > 1:
+                                print(
+                                    f"[prepare_dataframes_for] INFO: block '{block_key}' in iteration {it} "
+                                    f"missing columns {missing_cols} (typically derived parameters); "
+                                    f"skipping failed_class for ({self.param_x}, {self.param_y})."
+                                )
+                            return None
+
+                        # For alle andre blokke: print tydelig advarsel, men crash ikke.
+                        msg = (
+                            f"[prepare_dataframes_for] WARNING: block '{block_key}' in iteration {it} "
+                            f"missing columns {missing_cols} for ({self.param_x}, {self.param_y}); "
+                            f"skipping this block in the plot."
                         )
+                        # Use self.verbose here if you want to be able to turn it off.
+                        print(msg)
+                        return None
+                
+                
+                
                 return df
 
             processed[it] = {
@@ -9458,11 +9909,28 @@ class PlotIterations:
         plotted_keys_upper = self._plot_upper_panel(
             ax_upper, iteration_group, norm=norm
         )
+        
+        # START OF NEW CODE BLOCK
+        # --- Overlay CLASS contours on Upper Panel ---
+        if self.class_posterior_path and self.class_posterior_basename:
+            self._overlay_class_contours(
+                ax_upper, self.param_x, self.param_y
+            )
+        
 
         # 2) Plot lower panel, retrieve which (iteration, key) were actually plotted
         plotted_keys_lower = self._plot_lower_panel(
             ax_lower, iteration_group, norm=norm
         )
+        
+        # START OF NEW CODE BLOCK
+        # --- Overlay CLASS contours on Lower Panel ---
+        if self.class_posterior_path and self.class_posterior_basename:
+            self._overlay_class_contours(
+                ax_lower, self.param_x, self.param_y
+            )
+        # END OF NEW CODE BLOCK
+        
 
         # 3) Build legends for each panel from the keys that were actually plotted
         self._create_subplot_legend(ax_upper, plotted_keys_upper)
@@ -9551,7 +10019,7 @@ class PlotIterations:
                         "alpha": 1.0,
                     },
                 )
-                self._scatter_single(ax, x_bf, y_bf, style, iteration=it, zorder=zorder)
+                self._scatter_single(ax, x_bf, y_bf, style, iteration=it, zorder=9002)
                 plotted_keys.append((it, "best_fit"))
 
         self.current_group_is_multi = False  # NEW LINE
@@ -9820,7 +10288,7 @@ class PlotIterations:
         ].get("best_fit", False):
             x_bf, y_bf = current_it_data["best_fit"]
             style = self.marker_styles.get("best_fit", {...})
-            self._scatter_single(ax, x_bf, y_bf, style, iteration=max_it, zorder=zorder)
+            self._scatter_single(ax, x_bf, y_bf, style, iteration=max_it, zorder=9002)
             plotted_keys.append((max_it, "best_fit"))
             zorder += 1
 
@@ -10237,7 +10705,23 @@ class PlotIterations:
 
         # Create the legend only if there are handles to display
         if handles:
+            
+            
+            
+            if hasattr(self, "class_contours_plotted") and self.class_contours_plotted:
+                handles.append(
+                    Line2D(
+                        [0],
+                        [0],
+                        color='purple',
+                        linestyle="-",
+                        linewidth=1.5,
+                    )
+                )
+                labels.append(r"CLASS 1$\sigma$ and 2$\sigma$ contours")
+
             num_handles = len(handles)
+            
 
             # 1) decide how many inches *above* the top of the axes
             pad_inches = 0.025
@@ -11568,6 +12052,386 @@ class PlotIterations:
                 artists.append(artist)
 
             return artists
+        
+        
+    # START OF NEW CODE BLOCK
+
+
+    def _overlay_class_contours(self, ax, param_x, param_y):
+        """
+        Loads and plots the 1-sigma and 2-sigma contours from a CLASS run.
+        """
+        # We need the path to the 'plots' subdirectory
+        class_plots_path = os.path.join(self.class_posterior_path, "plots")
+        
+        if not os.path.isdir(class_plots_path):
+            if self.verbose >= 1:
+                print(f"Warning: CLASS posterior 'plots' directory not found at {class_plots_path}")
+            return
+
+        contours = load_class_contours(
+            class_plots_path,
+            param_x,
+            param_y,
+            self.class_posterior_basename
+        )
+
+        if contours:
+            x95, y95, x68, y68 = contours
+            
+            # Plot 2-sigma (95%) contours
+            for cont_idx in range(len(x95)):
+                ax.plot(x95[cont_idx], y95[cont_idx], "-", color='purple', lw=0.8, alpha=0.65, zorder=9000)
+            
+            # Plot 1-sigma (68%) contours
+            for cont_idx in range(len(x68)):
+                ax.plot(x68[cont_idx], y68[cont_idx], "-", color='purple', lw=1, alpha=0.85, zorder=9001)
+            self.class_contours_plotted = True # Set flag for legend
+    # END OF NEW CODE BLOCK
+
+
+
+def load_class_contours_legacy(class_plots_path, param1, param2, basename, verbose=0):
+    """
+    Tries to load the pre-computed 68% and 95% contour data
+    from a MontePython 'analyze' run.
+    """
+    
+    # Handle the '100*theta_s' vs '100theta_s' inconsistency
+    # and the 'log10' prefix case you mentioned.
+    def get_name_variations(p):
+        variations = [p]
+        if p == "100*theta_s":
+            variations.append("100theta_s")
+        elif p.startswith("log10"):
+            variations.append(p.replace("log10", "log10^"))
+        else:
+            variations.append(f"log10{p}")
+            variations.append(f"log10^{p}")
+        return list(set(variations)) # unique names
+
+    # param1 is the parameter for the X-AXIS
+    # param2 is the parameter for the Y-AXIS
+    param1_vars = get_name_variations(param1) 
+    param2_vars = get_name_variations(param2) 
+
+    dat_path = None
+    # This flag tells us if the file content matches the requested (X,Y) order
+    # or if the content is (Y,X) relative to our request.
+    # analyze.py saves as Y-X.dat, with content (X, Y).
+    file_is_swapped = False 
+
+    # --- Find the file ---
+    path_ji_found = False
+    for p2 in param2_vars: # Y-param
+        for p1 in param1_vars: # X-param
+            # This is the standard MontePython format: ..._2d_{Y_PARAM}-{X_PARAM}.dat
+            path_ji = os.path.join(class_plots_path, f"{basename}_2d_{p2}-{p1}.dat")
+            if os.path.exists(path_ji):
+                dat_path = path_ji
+                # File content (col 0, col 1) is (X, Y), matching our (param1, param2) request.
+                file_is_swapped = False
+                path_ji_found = True
+                break
+        if path_ji_found:
+            break
+
+    if not dat_path:
+        # Fallback: check for X-Y file
+        for p1 in param1_vars:
+            for p2 in param2_vars:
+                # This is the non-standard format: ..._2d_{X_PARAM}-{Y_PARAM}.dat
+                path_ij = os.path.join(class_plots_path, f"{basename}_2d_{p1}-{p2}.dat")
+                if os.path.exists(path_ij):
+                    dat_path = path_ij
+                    # File content (col 0, col 1) is (X, Y), but our request
+                    # was (param1=Y, param2=X). This is the old triangleplot.py bug.
+                    # We will assume the file content is (Y, X) and set swap flag.
+                    file_is_swapped = True
+                    break
+            if dat_path:
+                break
+    
+    if not dat_path:
+        return None  # No file found
+
+    try:
+        # --- Parse the file ---
+        # x_list_file *always* gets col 0, y_list_file *always* gets col 1
+        x95_list_file, y95_list_file = [], []
+        x68_list_file, y68_list_file = [], []
+        
+        with open(dat_path) as f:
+            current_list_x, current_list_y = None, None
+            current_x, current_y = [], []
+
+            for line in f:
+                if line.strip().startswith('# contour for confidence level 0.95'):
+                    if current_x: 
+                        current_list_x.append(current_x)
+                        current_list_y.append(current_y)
+                    current_list_x, current_list_y = x95_list_file, y95_list_file
+                    current_x, current_y = [], []
+                    continue
+                elif line.strip().startswith('# contour for confidence level 0.68'):
+                    if current_x: 
+                        current_list_x.append(current_x)
+                        current_list_y.append(current_y)
+                    current_list_x, current_list_y = x68_list_file, y68_list_file
+                    current_x, current_y = [], []
+                    continue
+                elif line.strip().startswith('#'):
+                    continue
+
+                if not line.strip() and current_list_x is not None:
+                    if current_x:
+                        current_list_x.append(current_x)
+                        current_list_y.append(current_y)
+                    current_x, current_y = [], []
+                    continue
+
+                if current_list_x is None:
+                    continue 
+
+                try:
+                    parts = line.split()
+                    val_x, val_y = float(parts[0]), float(parts[1])
+                    current_x.append(val_x)
+                    current_y.append(val_y)
+                except (ValueError, IndexError, TypeError):
+                    continue 
+            
+            if current_x and current_list_x is not None:
+                current_list_x.append(current_x)
+                current_list_y.append(current_y)
+                
+        
+        # --- Assign parameter names to the data we just read ---
+        if file_is_swapped:
+            # File was X-Y.dat. We assume content is (Y, X).
+            # So col 0 (x_list_file) is Y-data, col 1 (y_list_file) is X-data.
+            x_data_param_name = param2
+            y_data_param_name = param1
+        else:
+            # File was Y-X.dat. Content is (X, Y).
+            # So col 0 (x_list_file) is X-data, col 1 (y_list_file) is Y-data.
+            x_data_param_name = param1
+            y_data_param_name = param2
+
+        # --- Scale the data lists based on their assigned parameter name ---
+        if x_data_param_name == 'omega_b':
+            if x95_list_file and x95_list_file[0] and np.mean(x95_list_file[0]) > 1.0:
+                if verbose >= 2: 
+                    print(f"Rescaling param '{x_data_param_name}' (file col 0) by /100.")
+                x95_list_file = [[x / 100.0 for x in sublist] for sublist in x95_list_file]
+                x68_list_file = [[x / 100.0 for x in sublist] for sublist in x68_list_file]
+
+        if y_data_param_name == 'omega_b':
+            if y95_list_file and y95_list_file[0] and np.mean(y95_list_file[0]) > 1.0:
+                if verbose >= 2: 
+                    print(f"Rescaling param '{y_data_param_name}' (file col 1) by /100.")
+                y95_list_file = [[y / 100.0 for y in sublist] for sublist in y95_list_file]
+                y68_list_file = [[y / 100.0 for y in sublist] for sublist in y68_list_file]
+        
+        # --- Return the data in the requested X, Y order ---
+        # The plot function always wants (X_DATA, Y_DATA) corresponding to (param1, param2).
+        
+        if file_is_swapped:
+            # File was X-Y.dat, content assumed (Y, X).
+            # x_list_file is Y-data, y_list_file is X-data.
+            # We must return (y_list_file, x_list_file) to match (param1=X, param2=Y).
+            return y95_list_file, x95_list_file, y68_list_file, x68_list_file
+        else:
+            # File was Y-X.dat, content is (X, Y).
+            # x_list_file is X-data, y_list_file is Y-data.
+            # We must return (x_list_file, y_list_file) to match (param1=X, param2=Y).
+            return x95_list_file, y95_list_file, x68_list_file, y68_list_file
+            
+    except Exception as e:
+        print(f"Warning: Could not parse contour file {dat_path}. Error: {e}")
+        return None
+
+
+
+
+def load_class_contours(class_plots_path, param1, param2, basename, verbose=0):
+    """
+    Tries to load the pre-computed 68% and 95% contour data
+    from a MontePython 'analyze' run.
+    """
+    
+    # Handle the '100*theta_s' vs '100theta_s' inconsistency
+    # and the 'log10' prefix case you mentioned.
+    def get_name_variations(p):
+        variations = [p]
+        if p == "100*theta_s":
+            variations.append("100theta_s")
+        elif p.startswith("log10"):
+            variations.append(p.replace("log10", "log10^"))
+        else:
+            variations.append(f"log10{p}")
+            variations.append(f"log10^{p}")
+        return list(set(variations)) # unique names
+
+    # param1 is the parameter for the X-AXIS
+    # param2 is the parameter for the Y-AXIS
+    param1_vars = get_name_variations(param1) 
+    param2_vars = get_name_variations(param2) 
+
+    dat_path = None
+    file_is_swapped = False 
+    
+    # --- NYT: Variabler til at gemme hvilket navn der faktisk blev fundet ---
+    found_p1_name = None
+    found_p2_name = None
+
+    # --- Find the file ---
+    path_ji_found = False
+    for p2 in param2_vars: # Y-param
+        for p1 in param1_vars: # X-param
+            path_ji = os.path.join(class_plots_path, f"{basename}_2d_{p2}-{p1}.dat")
+            if os.path.exists(path_ji):
+                dat_path = path_ji
+                file_is_swapped = False
+                path_ji_found = True
+                # --- NYT: Gem de fundne navne ---
+                found_p1_name = p1
+                found_p2_name = p2
+                break
+        if path_ji_found:
+            break
+
+    if not dat_path:
+        # Fallback: check for X-Y file
+        for p1 in param1_vars:
+            for p2 in param2_vars:
+                path_ij = os.path.join(class_plots_path, f"{basename}_2d_{p1}-{p2}.dat")
+                if os.path.exists(path_ij):
+                    dat_path = path_ij
+                    file_is_swapped = True
+                    # --- NYT: Gem de fundne navne ---
+                    found_p1_name = p1
+                    found_p2_name = p2
+                    break
+            if dat_path:
+                break
+    
+    if not dat_path:
+        return None  # No file found
+
+    try:
+        # --- Parse the file ---
+        # x_list_file *always* gets col 0, y_list_file *always* gets col 1
+        x95_list_file, y95_list_file = [], []
+        x68_list_file, y68_list_file = [], []
+        
+        with open(dat_path) as f:
+            current_list_x, current_list_y = None, None
+            current_x, current_y = [], []
+
+            for line in f:
+                if line.strip().startswith('# contour for confidence level 0.95'):
+                    if current_x: 
+                        current_list_x.append(current_x)
+                        current_list_y.append(current_y)
+                    current_list_x, current_list_y = x95_list_file, y95_list_file
+                    current_x, current_y = [], []
+                    continue
+                elif line.strip().startswith('# contour for confidence level 0.68'):
+                    if current_x: 
+                        current_list_x.append(current_x)
+                        current_list_y.append(current_y)
+                    current_list_x, current_list_y = x68_list_file, y68_list_file
+                    current_x, current_y = [], []
+                    continue
+                elif line.strip().startswith('#'):
+                    continue
+
+                if not line.strip() and current_list_x is not None:
+                    if current_x:
+                        current_list_x.append(current_x)
+                        current_list_y.append(current_y)
+                    current_x, current_y = [], []
+                    continue
+
+                if current_list_x is None:
+                    continue 
+
+                try:
+                    parts = line.split()
+                    val_x, val_y = float(parts[0]), float(parts[1])
+                    current_x.append(val_x)
+                    current_y.append(val_y)
+                except (ValueError, IndexError, TypeError):
+                    continue 
+            
+            if current_x and current_list_x is not None:
+                current_list_x.append(current_x)
+                current_list_y.append(current_y)
+                
+        
+        # --- Assign parameter names to the data we just read ---
+        # Også her definerer vi hvilken "fundet" variabel der hører til hvilken kolonne
+        if file_is_swapped:
+            # File was X-Y.dat. Content assumed (Y, X).
+            # So col 0 (x_list_file) is Y-data, col 1 (y_list_file) is X-data.
+            x_data_param_name = param2
+            y_data_param_name = param1
+            
+            # Mapped found names to columns
+            found_name_col0 = found_p2_name
+            found_name_col1 = found_p1_name
+        else:
+            # File was Y-X.dat. Content is (X, Y).
+            # So col 0 (x_list_file) is X-data, col 1 (y_list_file) is Y-data.
+            x_data_param_name = param1
+            y_data_param_name = param2
+            
+            # Mapped found names to columns
+            found_name_col0 = found_p1_name
+            found_name_col1 = found_p2_name
+
+        # --- NYT: Tjek om vi skal konvertere log10 data til lineær ---
+        # Tjek Kolonne 0
+        if found_name_col0 and found_name_col0.startswith("log10") and not x_data_param_name.startswith("log10"):
+            if verbose > 1:
+                print(f"Converting {x_data_param_name} (Col 0) from log10 to linear.")
+            x95_list_file = [[10**x for x in sublist] for sublist in x95_list_file]
+            x68_list_file = [[10**x for x in sublist] for sublist in x68_list_file]
+
+        # Tjek Kolonne 1
+        if found_name_col1 and found_name_col1.startswith("log10") and not y_data_param_name.startswith("log10"):
+            if verbose > 1:
+                print(f"Converting {y_data_param_name} (Col 1) from log10 to linear.")
+            y95_list_file = [[10**y for y in sublist] for sublist in y95_list_file]
+            y68_list_file = [[10**y for y in sublist] for sublist in y68_list_file]
+        # -------------------------------------------------------------
+
+        # --- Scale the data lists based on their assigned parameter name ---
+        # (Din eksisterende omega_b logik)
+        if x_data_param_name == 'omega_b':
+            if x95_list_file and x95_list_file[0] and np.mean(x95_list_file[0]) > 1.0:
+                if verbose >= 2: 
+                    print(f"Rescaling param '{x_data_param_name}' (file col 0) by /100.")
+                x95_list_file = [[x / 100.0 for x in sublist] for sublist in x95_list_file]
+                x68_list_file = [[x / 100.0 for x in sublist] for sublist in x68_list_file]
+
+        if y_data_param_name == 'omega_b':
+            if y95_list_file and y95_list_file[0] and np.mean(y95_list_file[0]) > 1.0:
+                if verbose >= 2: 
+                    print(f"Rescaling param '{y_data_param_name}' (file col 1) by /100.")
+                y95_list_file = [[y / 100.0 for y in sublist] for sublist in y95_list_file]
+                y68_list_file = [[y / 100.0 for y in sublist] for sublist in y68_list_file]
+        
+        # --- Return the data in the requested X, Y order ---
+        if file_is_swapped:
+            return y95_list_file, x95_list_file, y68_list_file, x68_list_file
+        else:
+            return x95_list_file, y95_list_file, x68_list_file, y68_list_file
+            
+    except Exception as e:
+        print(f"Warning: Could not parse contour file {dat_path}. Error: {e}")
+        return None
 
 
 # ---------------------------------CLASS TrianglePlot---------------------------------#
@@ -11746,6 +12610,8 @@ class TrianglePlot:
         custom_axis_ranges=None,  # dict e.g. {'H0': (50,80), 'Ω_m':[0.1,1]}
         log_scale_params=None,  # iterable/ set e.g. {'H0','Gamma_dcdm'}
         custom_ticks=None,  # dict e.g. {'H0':[40,60,80], 'Ω_m':[.2,.4,.6]}
+        smart_ticks=False,        # NEW: auto-computed ticks from axis range
+        num_ticks_per_axis=None,  # NEW: target number of ticks per axis
         grid_vars=None,
         # Below: new contour-related arguments
         plot_contours=False,
@@ -11767,6 +12633,12 @@ class TrianglePlot:
         plot_threshold_line=False,
         delta_chi2_threshold_color="purple",
         delta_chi2_threshold_linewidth=2,
+        fig_width="440 pts",
+        suffix="",
+        
+        class_posterior_path=None,
+        class_posterior_basename=None,
+        
     ):
         """
         Parameters
@@ -11816,6 +12688,7 @@ class TrianglePlot:
             Width of contour lines.
         """
 
+        self.fig_width = fig_width
         self.data = data
         self.output_folder = output_folder
         self.save_formats = save_formats
@@ -11834,6 +12707,10 @@ class TrianglePlot:
         self.downsampling_fraction = downsampling_fraction
         self.colormap = colormap
         self.preferred_legend_position = preferred_legend_position
+        self.suffix = suffix
+        self.class_posterior_path = class_posterior_path
+        self.class_posterior_basename = class_posterior_basename
+        self.class_contours_plotted = False  # Flag to track if CLASS contours were plotted
 
         self.custom_axis_ranges = custom_axis_ranges or {}
 
@@ -11851,6 +12728,9 @@ class TrianglePlot:
         else:
             self.log_scale_params = set(log_scale_params or [])
         self.custom_ticks = custom_ticks or {}
+        
+        self.smart_ticks = bool(smart_ticks)
+        self.num_ticks_per_axis = num_ticks_per_axis
 
         self.grid_vars = grid_vars
 
@@ -11936,7 +12816,7 @@ class TrianglePlot:
         matplotlib.use("Agg")
 
         # -- Basic figure styling
-        fontsize = 11
+        fontsize = 11/1.2
         latex_preamble = r"\usepackage{siunitx} \usepackage{amsmath} \usepackage{amsfonts} \usepackage{amssymb} \usepackage{mathtools} \usepackage{bm} \usepackage{mathrsfs} \parindent=0pt"
 
         if self.param_labels is not None:
@@ -11969,6 +12849,7 @@ class TrianglePlot:
         plt.rcParams["xtick.labelsize"] = 8
         plt.rcParams["ytick.labelsize"] = 8
         plt.rcParams["legend.fontsize"] = 8
+        plt.rcParams["axes.formatter.use_mathtext"] = True
 
         # 1) Find last complete iteration
         last_complete_it = self._find_last_complete_iteration()
@@ -12058,9 +12939,18 @@ class TrianglePlot:
         )
         self.df_long.sort_values("group_key", inplace=True)
 
-        # Set fixed figure size
-        textwidth = 440  # JCAP uses a textwidth of 440 pts
-        width = textwidth / 72.27
+        unit = self.fig_width.split()[1]
+        value = float(self.fig_width.split()[0])
+
+        if unit == "in":
+            width = value  # Already in inches
+        elif unit == "cm":
+            width = value / 2.54  # Convert cm to inches
+        elif unit == "pts":
+            width = value / 72.27  # Convert TeX points to inches
+        else:
+            raise ValueError(f"Unrecognized unit in fig_width: {unit}")
+
         # height = width  # square figure
         # pp.figure.set_size_inches(width, height)
 
@@ -12089,9 +12979,33 @@ class TrianglePlot:
         )
 
         # Set to zero white space between subplots
-        pp.figure.subplots_adjust(wspace=0, hspace=0)
+        # pp.figure.subplots_adjust(wspace=0, hspace=0)
 
-        # pp.fig.set_size_inches(width, width)
+        # --- FIX: START ---
+        # 1. Disable Seaborn's automatic layout engine.
+        # This stops it from squishing the plot.
+        # try:
+        #     pp.figure.set_layout_engine('none')
+        # except AttributeError:
+        #     print("Warning: Could not disable layout engine; using fallback spacing.")
+        #     pass # Fallback for older matplotlib
+
+        # 2. Manually adjust subplot spacing to make room for your
+        #    rotated labels, since the automatic layout is off.
+        #    You may need to TUNE 'left' and 'bottom' if labels still overlap.
+        
+        pp.figure.subplots_adjust(
+            left=0.10,    # Increase left margin for horizontal y-labels
+            bottom=0.10,  # Increase bottom margin for rotated x-labels
+            right=0.95,   # Keep tight to the right
+            top=0.95,     # Leave space for the legend above the plot
+            wspace=0,
+            hspace=0
+        )
+        
+        # --- FIX: END ---
+
+        # pp.figure.set_size_inches(width, width)
 
         # 6) (Optional) apply custom axis labels
         if self.param_labels:
@@ -12101,6 +13015,7 @@ class TrianglePlot:
         self.palette_dict = palette_dict
 
         self._customize_kde_styles(pp, hue_order)
+                 
 
         # 7) (Optional) fix axis ranges if ignoring iteration 0
         if combined_limits is not None:
@@ -12129,16 +13044,70 @@ class TrianglePlot:
                         ax_ij.set_xticks(self.custom_ticks[param_x])
                     if param_y in self.custom_ticks:
                         ax_ij.set_yticks(self.custom_ticks[param_y])
+                        
+                        
+                    # ---------- smart ticks (if enabled) ----------
+                    if (
+                        self.smart_ticks
+                        and self.num_ticks_per_axis is not None
+                        and self.num_ticks_per_axis > 0
+                    ):
+                        # X axis: only if not custom and on linear scale
+                        if (
+                            param_x not in self.custom_ticks
+                            and ax_ij.get_xscale() == "linear"
+                        ):
+                            x_min, x_max = ax_ij.get_xlim()
+                            xticks = get_smart_ticks(
+                                x_min, x_max, self.num_ticks_per_axis, param_x
+                            )
+                            if xticks:
+                                ax_ij.set_xticks(xticks)
+
+                        # Y axis: only if not custom and on linear scale
+                        if (
+                            param_y not in self.custom_ticks
+                            and ax_ij.get_yscale() == "linear"
+                        ):
+                            y_min, y_max = ax_ij.get_ylim()
+                            yticks = get_smart_ticks(
+                                y_min, y_max, self.num_ticks_per_axis, param_y
+                            )
+                            if yticks:
+                                ax_ij.set_yticks(yticks)
+                        
+
 
         # 8) If requested, plot the 2D \Delta \chi^2 contours on each subplot
         if self.plot_contours:
             self._plot_contours_on_pairplot(
                 pp, plot_cols, plot_cols, last_complete_it, plot_mode="triangle"
             )
+            
+        if self.class_posterior_path and self.class_posterior_basename:
+                    if self.verbose > 1:
+                        print("Overlaying CLASS posterior contours...")
+                    num_vars = len(plot_cols)
+                    for i in range(num_vars):
+                        for j in range(num_vars):
+                            ax_ij = pp.axes[i, j]
+                            if ax_ij is None:
+                                continue
+                            if i == j: # skip diagonal
+                                continue
+                            if corner and j > i: # skip upper triangle
+                                continue
+
+                            param_y = plot_cols[i]
+                            param_x = plot_cols[j]
+                            
+                            self._overlay_class_contours(ax_ij, param_x, param_y)
+            
 
         for ax in pp.axes.flatten():
             if ax is None:
                 continue
+                   
 
             # a+b) all four spines on, width=1.0
             for spine in ax.spines.values():
@@ -12147,34 +13116,126 @@ class TrianglePlot:
 
             if ax.get_xscale() == ax.get_yscale() == "linear":
                 ax.ticklabel_format(style="sci", axis="both", scilimits=(-3, 3))
+                
+
+            # --- START: SURGICAL EDIT FOR X-TICK ROTATION (.plot) ---
+            # We must apply rotation *after* ticklabel_format runs.
+            # This logic finds the (i, j) index of the current ax in the
+            # pp.axes grid, so we can apply rotation *only* to the bottom row.
+            
+            n_rows, n_cols = pp.axes.shape
+            i, j = -1, -1
+            for row_idx in range(n_rows):
+                for col_idx in range(n_cols):
+                    if pp.axes[row_idx, col_idx] is ax:
+                        i, j = row_idx, col_idx
+                        break
+                if i != -1:
+                    break
+
+            # Only apply to the bottom row (i == n_rows - 1)
+            if i == n_rows - 1:
+                # This method rotates the *existing* tick labels
+                # without replacing the formatter, thus preserving
+                # the scientific notation.
+                for label in ax.get_xticklabels():
+                    label.set_rotation(45)
+                    label.set_horizontalalignment('right')
+            # --- END: SURGICAL EDIT ---
+
+
 
             # c) ticks point in
             # ax.tick_params(direction='in', top=True, right=True, labelsize=8) # Adjust
 
-            # 1) grab the built-in offset Text object
-            off = ax.yaxis.get_offset_text()
-            txt = off.get_text().strip()
-            # hide the default one
-            off.set_visible(False)
+            # # 1) grab the built-in offset Text object
+            # off = ax.yaxis.get_offset_text()
+            # txt = off.get_text().strip()
+            # # hide the default one
+            # off.set_visible(False)
 
-            # if there was anything to show, place it yourself:
-            if txt:
-                # 2) find the top‐left corner of this Axes in figure coords
-                bb = ax.get_position()  # Bbox(x0, y0, x1, y1) in fig‐fraction
-                x_fig = bb.x0 - 0.005  # a hair to the left
-                y_fig = bb.y1 - 0.01  # a hair below
+            # # if there was anything to show, place it yourself:
+            # if txt:
+            #     # 2) find the top‐left corner of this Axes in figure coords
+            #     bb = ax.get_position()  # Bbox(x0, y0, x1, y1) in fig‐fraction
+            #     x_fig = bb.x0 - 0.005  # a hair to the left
+            #     y_fig = bb.y1 - 0.01  # a hair below
 
-                # 3) put it there
-                #    (ha='right' so it reads back into the plot, va='bottom' so it's just above)
+            #     # 3) put it there
+            #     #    (ha='right' so it reads back into the plot, va='bottom' so it's just above)
+            #     pp.figure.text(
+            #         x_fig,
+            #         y_fig,
+            #         txt,
+            #         ha="right",
+            #         va="bottom",
+            #         transform=pp.figure.transFigure,
+            #         fontsize=ax.yaxis.get_offset_text().get_fontsize(),
+            #     )
+            
+            
+            
+                # ------------------------------------------------------------------
+            # Handle scientific-notation "×10^n" offset texts.
+            #
+            #  - y-axis offset: show only on the FIRST column (one per row)
+            #  - x-axis offset: show only on the BOTTOM row (one per column)
+            #
+            # Everywhere else we hide the offsets so they don't float randomly
+            # inside the triangle.
+            # ------------------------------------------------------------------
+            n_rows, n_cols = pp.axes.shape
+            sub = ax.get_subplotspec()
+
+            # ---------- Y-axis offset: only first column ----------
+            off_y = ax.yaxis.get_offset_text()
+            txt_y = off_y.get_text().strip()
+            off_y.set_visible(False)  # hide default position
+
+            if txt_y and sub.colspan.start == 0:
+                # place just to the left of the top of this axes
+                bb = ax.get_position()  # Bbox(x0, y0, x1, y1) in fig coords
+                x_fig = bb.x0 - 0.005   # a hair to the left
+                y_fig = bb.y1 - 0.01    # a hair below the top
+
                 pp.figure.text(
                     x_fig,
                     y_fig,
-                    txt,
+                    txt_y,
                     ha="right",
                     va="bottom",
                     transform=pp.figure.transFigure,
-                    fontsize=ax.yaxis.get_offset_text().get_fontsize(),
+                    fontsize=off_y.get_fontsize(),
                 )
+
+            # ---------- X-axis offset: only bottom row ----------
+            off_x = ax.xaxis.get_offset_text()
+            txt_x = off_x.get_text().strip()
+            off_x.set_visible(False)  # hide default position
+
+            # bottom row if rowspan.stop == n_rows
+            if txt_x and sub.rowspan.stop == n_rows:
+                # place just below the bottom-right of this axes
+                bb = ax.get_position()
+                x_fig = bb.x1 - 0.01   # near right edge of axes
+                y_fig = bb.y0 - 0.03   # a bit below the axes
+
+                pp.figure.text(
+                    x_fig,
+                    y_fig,
+                    txt_x,
+                    ha="right",
+                    va="top",
+                    transform=pp.figure.transFigure,
+                    fontsize=off_x.get_fontsize(),
+                )
+            
+            
+            
+            
+            
+            
+            
 
         legend = self._create_custom_legend(pp)
 
@@ -12204,8 +13265,9 @@ class TrianglePlot:
         # 9) Save
         os.makedirs(self.output_folder, exist_ok=True)
         os.makedirs(os.path.join(self.output_folder, "pairplots"), exist_ok=True)
+        suffix_part = f"_{self.suffix}" if self.suffix else ""
         for fmt in self.save_formats:
-            filename = f"triangle_plot.{fmt}"
+            filename = f"triangle_plot{suffix_part}.{fmt}"
             save_path = os.path.join(self.output_folder, "pairplots", filename)
             pp.savefig(
                 save_path, dpi=1000, format=fmt, bbox_inches="tight"
@@ -12233,7 +13295,7 @@ class TrianglePlot:
         matplotlib.use("Agg")
 
         # -- Basic figure styling
-        fontsize = 11
+        fontsize = 11/1.2
         latex_preamble = r"\usepackage{siunitx} \usepackage{amsmath} \usepackage{amsfonts} \usepackage{amssymb} \usepackage{mathtools} \usepackage{bm} \usepackage{mathrsfs} \parindent=0pt"
 
         if self.param_labels is not None:
@@ -12266,6 +13328,7 @@ class TrianglePlot:
         plt.rcParams["xtick.labelsize"] = 8
         plt.rcParams["ytick.labelsize"] = 8
         plt.rcParams["legend.fontsize"] = 8
+        plt.rcParams["axes.formatter.use_mathtext"] = True
 
         # 1) Find last complete iteration
         last_complete_it = self._find_last_complete_iteration()
@@ -12370,10 +13433,17 @@ class TrianglePlot:
         self.df_long.sort_values("group_key", inplace=True)
 
         # Set fixed figure size
-        textwidth = 440  # JCAP uses a textwidth of 440 pts
-        width = textwidth / 72.27
-        # height = width  # square figure
-        # pp.figure.set_size_inches(width, height)
+        unit = self.fig_width.split()[1]
+        value = float(self.fig_width.split()[0])
+
+        if unit == "in":
+            width = value  # Already in inches
+        elif unit == "cm":
+            width = value / 2.54  # Convert cm to inches
+        elif unit == "pts":
+            width = value / 72.27  # Convert TeX points to inches
+        else:
+            raise ValueError(f"Unrecognized unit in fig_width: {unit}")
 
         n = len(x_vars)
         facet_size = width / n
@@ -12402,7 +13472,39 @@ class TrianglePlot:
         )
 
         # Set to zero white space between subplots
-        pp.figure.subplots_adjust(wspace=0, hspace=0)
+        # pp.figure.subplots_adjust(wspace=0, hspace=0)
+
+        # --- FIX: START ---
+        # 1. Disable Seaborn's automatic layout engine.
+        # try:
+        #     pp.figure.set_layout_engine('none')
+        # except AttributeError:
+        #     print("Warning: Could not disable layout engine; using fallback spacing.")
+        #     pass # Fallback for older matplotlib
+
+        # 2. Manually adjust subplot spacing.
+        # #    You may need to TUNE 'left' and 'bottom'.
+        # pp.figure.subplots_adjust(
+        #     left=0.15,    # Increase left margin for horizontal y-labels
+        #     bottom=0.15,  # Increase bottom margin for rotated x-labels
+        #     right=0.98,   # Keep tight to the right
+        #     top=0.85,     # Leave space for the legend above the plot
+        #     wspace=0,
+        #     hspace=0
+        # )
+        
+        pp.figure.subplots_adjust(
+            left=0.10,    # Increase left margin for horizontal y-labels
+            bottom=0.10,  # Increase bottom margin for rotated x-labels
+            right=0.95,   # Keep tight to the right
+            top=0.95,     # Leave space for the legend above the plot
+            wspace=0,
+            hspace=0
+        )
+        
+        
+        # --- FIX: END ---
+        
 
         # pp.fig.set_size_inches(width, width)
 
@@ -12411,10 +13513,20 @@ class TrianglePlot:
 
             self._apply_custom_axis_labels(pp, x_vars, y_vars)
 
+
+        
+        ncols = len(x_vars)
+        nrows = len(y_vars)
+
+        # self._enforce_square_panels(pp, ncols, nrows)
+
+
         # Remove Seaborn’s default legend and create a custom one
         self.palette_dict = palette_dict
 
         self._customize_kde_styles(pp, hue_order)
+        
+        
 
         # 7) (Optional) fix axis ranges if ignoring iteration 0
         if combined_limits is not None:
@@ -12442,12 +13554,67 @@ class TrianglePlot:
                         ax_ij.set_xticks(self.custom_ticks[param_x])
                     if param_y in self.custom_ticks:
                         ax_ij.set_yticks(self.custom_ticks[param_y])
+                        
+                        
+                    # ---------- smart ticks (if enabled) ----------
+                    if (
+                        self.smart_ticks
+                        and self.num_ticks_per_axis is not None
+                        and self.num_ticks_per_axis > 0
+                    ):
+                        # X axis
+                        if (
+                            param_x not in self.custom_ticks
+                            and ax_ij.get_xscale() == "linear"
+                        ):
+                            x_min, x_max = ax_ij.get_xlim()
+                            xticks = get_smart_ticks(
+                                x_min, x_max, self.num_ticks_per_axis, param_x
+                            )
+                            if xticks:
+                                ax_ij.set_xticks(xticks)
+
+                        # Y axis
+                        if (
+                            param_y not in self.custom_ticks
+                            and ax_ij.get_yscale() == "linear"
+                        ):
+                            y_min, y_max = ax_ij.get_ylim()
+                            yticks = get_smart_ticks(
+                                y_min, y_max, self.num_ticks_per_axis, param_y
+                            )
+                            if yticks:
+                                ax_ij.set_yticks(yticks)
+
 
         # 8) If requested, plot the 2D \Delta \chi^2 contours on each subplot
         if self.plot_contours:
             self._plot_contours_on_pairplot(
                 pp, x_vars, y_vars, last_complete_it, plot_mode="matrix"
             )
+            
+            
+        if self.class_posterior_path and self.class_posterior_basename:
+                    if self.verbose > 1:
+                        print("Overlaying CLASS posterior contours...")
+                    for i in range(len(y_vars)):
+                        for j in range(len(x_vars)):
+                            ax_ij = pp.axes[i, j]
+                            if ax_ij is None:
+                                continue
+                            
+                            # Skip diagonal if it exists
+                            is_diag = (i == j) and (x_vars[j] == y_vars[i])
+                            if is_diag:
+                                continue
+
+                            param_y = y_vars[i]
+                            param_x = x_vars[j]
+                            
+                            self._overlay_class_contours(ax_ij, param_x, param_y)
+            
+            
+            
 
         for ax in pp.axes.flatten():
             if ax is None:
@@ -12460,6 +13627,32 @@ class TrianglePlot:
 
             if ax.get_xscale() == ax.get_yscale() == "linear":
                 ax.ticklabel_format(style="sci", axis="both", scilimits=(-3, 3))
+
+            # --- START: SURGICAL EDIT FOR X-TICK ROTATION (.plot_matrix) ---
+            # We must apply rotation *after* ticklabel_format runs.
+            # This logic finds the (i, j) index of the current ax in the
+            # pp.axes grid, so we can apply rotation *only* to the bottom row.
+            
+            n_rows, n_cols = pp.axes.shape
+            i, j = -1, -1
+            for row_idx in range(n_rows):
+                for col_idx in range(n_cols):
+                    if pp.axes[row_idx, col_idx] is ax:
+                        i, j = row_idx, col_idx
+                        break
+                if i != -1:
+                    break
+
+            # Only apply to the bottom row (i == n_rows - 1)
+            if i == n_rows - 1:
+                # This method rotates the *existing* tick labels
+                # without replacing the formatter, thus preserving
+                # the scientific notation.
+                for label in ax.get_xticklabels():
+                    label.set_rotation(45)
+                    label.set_horizontalalignment('right')
+            # --- END: SURGICAL EDIT ---
+
 
             # c) ticks point in
             # ax.tick_params(direction='in', top=True, right=True, labelsize=8) # Adjust
@@ -12520,8 +13713,9 @@ class TrianglePlot:
         # 9) Save
         os.makedirs(self.output_folder, exist_ok=True)
         os.makedirs(os.path.join(self.output_folder, "pairplots"), exist_ok=True)
+        suffix_part = f"_{self.suffix}" if self.suffix else ""
         for fmt in self.save_formats:
-            filename = f"grid_plot.{fmt}"
+            filename = f"grid_plot{suffix_part}.{fmt}"
             save_path = os.path.join(self.output_folder, "pairplots", filename)
             pp.savefig(
                 save_path, dpi=600, format=fmt, bbox_inches="tight"
@@ -13032,6 +14226,11 @@ class TrianglePlot:
         ):
             if status_to_color[st]:
                 rows.append((st, (self._get_status_label(st), marker)))
+                
+        if self.class_contours_plotted:
+            rows.append(("class_posterior", (r"CLASS Posterior (1$\sigma$, 2$\sigma$)", "line")))
+                
+                
         nrows = len(rows)
 
         # 5) sizing constants (in points)
@@ -13159,30 +14358,45 @@ class TrianglePlot:
                 )
             else:
                 lab, mk = info
-                # a) colored markers
-                for i, it in enumerate(iteration_list):
-                    col = status_to_color[st].get(it, (1, 1, 1, 0))
+                
+                if mk == "line":
+                    # This is our custom entry for CLASS contours
+                    half = ms / total_w
                     ax.plot(
-                        [centers[i]],
-                        [y],
-                        marker=mk,
-                        markersize=ms,
-                        markerfacecolor=col,
-                        markeredgecolor=col,
-                        linestyle="",
+                        [style_c - half, style_c + half],
+                        [y, y],
+                        linestyle="-",
+                        color="purple", # Use the same color
+                        linewidth=1.5,
                         transform=ax.transAxes,
                     )
-                # b) style line
-                ls = self.kde_styles[st]["linestyle"]
-                half = ms / total_w
-                ax.plot(
-                    [style_c - half, style_c + half],
-                    [y, y],
-                    linestyle=ls,
-                    color=("tab:blue" if st == "accepted" else "gray"),
-                    linewidth=1.5,
-                    transform=ax.transAxes,
-                )
+                
+                
+                else:
+                    # a) colored markers
+                    for i, it in enumerate(iteration_list):
+                        col = status_to_color[st].get(it, (1, 1, 1, 0))
+                        ax.plot(
+                            [centers[i]],
+                            [y],
+                            marker=mk,
+                            markersize=ms,
+                            markerfacecolor=col,
+                            markeredgecolor=col,
+                            linestyle="",
+                            transform=ax.transAxes,
+                        )
+                    # b) style line
+                    ls = self.kde_styles[st]["linestyle"]
+                    half = ms / total_w
+                    ax.plot(
+                        [style_c - half, style_c + half],
+                        [y, y],
+                        linestyle=ls,
+                        color=("tab:blue" if st == "accepted" else "gray"),
+                        linewidth=1.5,
+                        transform=ax.transAxes,
+                    )
                 # c) category label
                 ax.text(
                     label_x,
@@ -13358,7 +14572,19 @@ class TrianglePlot:
                     label = (
                         self.param_labels.get(name, name) if self.param_labels else name
                     )
-                    ax.set_xlabel(label, fontsize=11)
+                    ax.set_xlabel(label, fontsize=11/1.2)
+                    
+                    # --- MODIFICATION START ---
+                    # Task 1: Rotate X-axis label
+                    ax.xaxis.label.set_rotation(45)
+                    ax.xaxis.label.set_horizontalalignment('right')
+                    # Add padding to push it down (avoids rotated ticks)
+                    # You will likely need to tune this value.
+                    ax.xaxis.labelpad = 10
+                    # --- MODIFICATION END ---
+                    
+                    
+                    
 
                 # Only label y on the first column
                 if j == 0:
@@ -13366,7 +14592,16 @@ class TrianglePlot:
                     label = (
                         self.param_labels.get(name, name) if self.param_labels else name
                     )
-                    ax.set_ylabel(label, fontsize=11)
+                    
+                    # --- MODIFICATION START ---
+                    # Task 2: Rotate Y-axis label to horizontal
+                    ax.set_ylabel(label, fontsize=11/1.2, rotation=0, ha='right', va='center')
+                    # Adjust label position to be left of the axis ticks.
+                    # (x, y) are in *axis* coordinates. May need tuning.
+                    ax.yaxis.labelpad = 10
+                    # --- MODIFICATION END --
+                    
+                    
 
     def _determine_axis_ranges(self, iters_to_use):
         """
@@ -13534,7 +14769,7 @@ class TrianglePlot:
                 poly.set_edgecolor(assigned_color)
 
                 # Ensure line width is visible
-                poly.set_linewidth(2.5)
+                poly.set_linewidth(1.6)
 
                 if self.verbose >= 2:
                     print(
@@ -14453,6 +15688,166 @@ class TrianglePlot:
             extra_line_pts = self.markersize * 1.2 if self.line_style else 0.0
 
             return n_cols * per_marker_pts + (n_cols - 1) * per_spacing_pts
+        
+        
+    def _overlay_class_contours(self, ax, param_x, param_y):
+        """
+        Loads and plots the 1-sigma and 2-sigma contours from a CLASS run.
+        """
+        # We need the path to the 'plots' subdirectory
+        class_plots_path = os.path.join(self.class_posterior_path, "plots")
+        
+        if not os.path.isdir(class_plots_path):
+            if self.verbose >= 1:
+                print(f"Warning: CLASS posterior 'plots' directory not found at {class_plots_path}")
+            return
+
+        contours = load_class_contours(
+            class_plots_path,
+            param_x,
+            param_y,
+            self.class_posterior_basename
+        )
+
+        if contours:
+            x95, y95, x68, y68 = contours
+            
+            # Plot 2-sigma (95%) contours
+            for cont_idx in range(len(x95)):
+                ax.plot(x95[cont_idx], y95[cont_idx], "-", color='purple', lw=0.8, alpha=0.65, zorder=9000)
+            
+            # Plot 1-sigma (68%) contours
+            for cont_idx in range(len(x68)):
+                ax.plot(x68[cont_idx], y68[cont_idx], "-", color='purple', lw=1, alpha=0.85, zorder=9001)
+            self.class_contours_plotted = True # Set flag for legend
+    # END OF NEW CODE BLOCK
+    
+
+
+    def _enforce_square_panels(self, pp, ncols, nrows):
+        """
+        Adjust figure height so that each axes panel is visually square,
+        keeping the figure width (from fig_width) fixed.
+        Works for both full triangle and 1×N grid.
+        """
+        fig = pp.fig
+
+        # First draw so positions/bboxes are up to date
+        fig.canvas.draw()
+
+        # Find en "normal" data-akse (ignorer evt. legend-axes)
+        axes_array = np.array(pp.axes)
+        # pick first non-None axes
+        ax = None
+        for candidate in axes_array.flat:
+            if candidate is not None:
+                ax = candidate
+                break
+        if ax is None:
+            return  # nothing to do
+
+        # Axes-position i figur-koordinater [0,1]
+        bbox = ax.get_position()
+        fig_w, fig_h = fig.get_size_inches()
+
+        # Fysisk bredde/højde af én panel (inkl. labels) i inches
+        ax_w = bbox.width * fig_w
+        ax_h = bbox.height * fig_h
+
+        # Hvis bredde > højde, skal figuren være relativt højere
+        scale = ax_w / ax_h
+        if not np.isclose(scale, 1.0, atol=1e-2):
+            new_fig_h = fig_h * scale  # hold bredde fast, skaler højde
+            fig.set_size_inches(fig_w, new_fig_h, forward=True)
+            fig.canvas.draw()
+
+
+
+
+def get_smart_ticks(min_val, max_val, nbins, param_name=""):
+    """
+    Compute 'nice' tick positions between min_val and max_val.
+
+    The algorithm:
+    1. Determine a reasonable decimal precision based on the range.
+    2. Expand [min_val, max_val] outward to a 'nice' frame at that precision.
+    3. Place `nbins` ticks inside that frame:
+       - nbins = 1  -> 1 tick at 50%
+       - nbins = 2  -> ticks at 20% and 80%
+       - nbins = 3  -> 20%, 50%, 80%
+       - nbins >= 4 -> evenly spaced inside the frame.
+    4. Round ticks to the chosen precision and ensure uniqueness.
+
+    Returns
+    -------
+    list[float]
+        Tick locations (possibly fewer than nbins in edge cases).
+    """
+    if nbins < 1:
+        return []
+
+    data_range = max_val - min_val
+    if data_range <= 0:
+        return []
+
+    mid_val = (min_val + max_val) / 2.0
+
+    # Dynamic precision: integers for large values, more decimals for small ranges
+    if np.abs(mid_val) >= 10.0:
+        decimals = 0
+    else:
+        power = np.floor(np.log10(data_range))
+        decimals = -int(power) + 1
+        if decimals < 0:
+            decimals = 0
+
+    multiplier = 10 ** decimals
+    frame_min = np.floor(min_val * multiplier) / multiplier
+    frame_max = np.ceil(max_val * multiplier) / multiplier
+
+    new_data_range = frame_max - frame_min
+    if new_data_range <= 0:
+        # Fallback if rounding collapsed the frame
+        new_data_range = data_range
+        frame_min = min_val
+        frame_max = max_val
+
+    # Place ticks inside this "nice" frame
+    if nbins == 1:
+        ticks = [frame_min + 0.5 * new_data_range]
+    elif nbins == 2:
+        ticks = [
+            frame_min + 0.2 * new_data_range,
+            frame_min + 0.8 * new_data_range,
+        ]
+    elif nbins == 3:
+        ticks = [
+            frame_min + 0.2 * new_data_range,
+            frame_min + 0.5 * new_data_range,
+            frame_min + 0.8 * new_data_range,
+        ]
+    else:
+        ticks = np.linspace(frame_min, frame_max, nbins + 2)[1:-1]
+
+    # Round + deduplicate
+    rounded_ticks = [np.round(t, decimals) for t in ticks]
+
+    unique_ticks = []
+    for t in rounded_ticks:
+        if t not in unique_ticks:
+            unique_ticks.append(t)
+
+    # If we lost too many due to rounding, relax precision slightly
+    if len(unique_ticks) < nbins and nbins > 1:
+        decimals += 1
+        rounded_ticks = [np.round(t, decimals) for t in ticks]
+        unique_ticks = []
+        for t in rounded_ticks:
+            if t not in unique_ticks:
+                unique_ticks.append(t)
+
+    return unique_ticks
+
 
 
 # ---------- Helper classes ----------------------

@@ -532,7 +532,7 @@ class Training:
                     epsilon=1e-4,
                     amsgrad=True,
                     name="Adam",
-                    global_clipnorm=1.0,
+                    clipnorm=1e+2,
                 )
 
                 # Optionally, create LR scheduler and early stopping callbacks if enabled.
@@ -568,7 +568,7 @@ class Training:
                         mode="min",
                         verbose=1,
                         baseline=None,
-                        min_delta=0.0001,
+                        min_delta=0.0005,
                     )
                     callbacks.append(early_stopping)
 
@@ -672,12 +672,13 @@ class Training:
             self.param.epochs = int(epochs)
 
         adam = tf.keras.optimizers.Adam(
-            learning_rate=0.0001,
+            learning_rate=0.001,
             beta_1=0.9,
             beta_2=0.999,
             epsilon=1e-4,
             amsgrad=True,
             name="Adam",
+            clipnorm=1e+2,
         )
 
         self.training_success = False

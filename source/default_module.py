@@ -74,12 +74,12 @@ class Parameters:
             ),  # Number of steps to use for "burn-in" before doing the superupdate
             ### Parameters for the likelihood filter
             "use_likelihood_filter": (True, bool),
-            "delta_chi2_threshold": (200, (float, int, list)),
+            "delta_chi2_threshold": (200, (float, int, list, str)),
             "min_points_to_keep": (5000, (int, list)),
             "nuisance_params_lkl": ({"A_planck": 1.0}, dict),
             "keep_initial_data": (True, bool),
             "discard_worst_first": (True, bool),
-            "max_consecutive_bad_states": (5, int),
+            "max_consecutive_bad_states": (3, int),
             "strict_filtering_final_iteration": (False, bool),
             "auto_update_threshold": (False, bool),
             "compute_oversampled_likelihoods": (False, bool),
@@ -87,6 +87,9 @@ class Parameters:
                 5000,
                 int,
             ),
+            "auto_threshold_percentile": (99.3, (float, int)),
+            "auto_bulk_anchor_percentile": (30.0, (float, int)),
+            
             # Number of points to generate in the first iteration
             ### Additional parameters for other kinds of sampling
             "hypersphere_surface": (False, bool),

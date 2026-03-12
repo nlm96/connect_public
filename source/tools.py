@@ -639,3 +639,46 @@ def compare_dataframes(
         )
 
     return matched_params, matched_likelihood
+
+
+def load_data_file(file_path, verbose=1):
+    """
+    Load a data file that has a header line starting with '#' and returns a DataFrame.
+    """
+    import pandas as pd
+    if not os.path.isfile(file_path):
+        if verbose >= 1:
+            print(f"[load_data_file] File {file_path} does not exist.", flush=True)
+        return None
+
+    header_line = None
+    with open(file_path, "r") as f:
+        for line in f:
+            if line.startswith("#"):
+                header_line = line.lstrip("#").strip()
+                break
+
+    if header_line is None:
+        raise ValueError(f"No header line starting with '#' found in {file_path}")
+
+    columns = header_line.split()
+    if verbose >= 3:
+        print(f"[load_data_file] Columns for {file_path}: {columns}", flush=True)
+
+    df = pd.read_csv(
+        file_path,
+        sep=r"\s+",
+        comment="#",
+        names=columns,
+        index_col=False,
+        dtype=np.float32,
+    )
+
+    # Optional sanity checks
+    if df.empty and verbose >= 2:
+        print(
+            f"[load_data_file] Warning: Loaded DataFrame from {file_path} is empty.",
+            flush=True,
+        )
+
+    return df
